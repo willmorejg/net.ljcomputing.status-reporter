@@ -37,7 +37,6 @@
   <infinispan.version>8.0.2.Final</infinispan.version>
   <ehcache.version>2.10.1</ehcache.version>
   <ehcache-core.version>2.6.11</ehcache-core.version>
-<!--   <modelmapper.version>0.7.5</modelmapper.version> -->
   <dozer.version>5.5.1</dozer.version>
 
   <webjars-bootstrap.version>3.3.5</webjars-bootstrap.version>
@@ -52,7 +51,6 @@
   <webjars-fullcalendar.version>2.4.0</webjars-fullcalendar.version>
   <webjars-fullcalendar.version>2.4.0</webjars-fullcalendar.version>
   <webjars-angular-ui-bootstrap.version>0.14.3</webjars-angular-ui-bootstrap.version>
-  <!-- <webjars-angular-ui-calendar.version>1.0.1</webjars-angular-ui-calendar.version> -->
   <webjars-angular-bootstrap-calendar.version>0.18.1</webjars-angular-bootstrap-calendar.version>
   <webjars-angular-ui-date.version>0.0.11</webjars-angular-ui-date.version>
   <webjars-svg.version>2.1.0</webjars-svg.version>
@@ -192,12 +190,6 @@
    <artifactId>ehcache-core</artifactId>
   </dependency>
 
-<!--   <dependency> -->
-<!--    <groupId>org.modelmapper.extensions</groupId> -->
-<!--    <artifactId>modelmapper-spring</artifactId> -->
-<!--    <version>${modelmapper.version}</version> -->
-<!--   </dependency> -->
-
   <dependency>
    <groupId>net.sf.dozer</groupId>
    <artifactId>dozer</artifactId>
@@ -282,12 +274,6 @@
    <version>${webjars-angular-bootstrap-calendar.version}</version>
   </dependency>
 
-  <!-- <dependency> -->
-  <!-- <groupId>org.webjars.bower</groupId> -->
-  <!-- <artifactId>angular-ui-calendar</artifactId> -->
-  <!-- <version>${webjars-angular-ui-calendar.version}</version> -->
-  <!-- </dependency> -->
-
   <dependency>
    <groupId>org.webjars.npm</groupId>
    <artifactId>angular-ui-date</artifactId>
@@ -301,21 +287,6 @@
   </dependency>
 
  </dependencies>
-
- <!-- <dependencyManagement> -->
-
- <!-- <dependencies> -->
-
- <!-- <dependency> -->
- <!-- <groupId>org.jboss.logging</groupId> -->
- <!-- <artifactId>jboss-logging</artifactId> -->
- <!-- <version>3.2.0.Final</version> -->
- <!-- </dependency> -->
-
- <!-- </dependencies> -->
-
- <!-- </dependencyManagement> -->
-
 
  <dependencyManagement>
 
@@ -458,6 +429,22 @@
       License.&lt;/p&gt;
       &lt;/div&gt;</top>
      <linksource>true</linksource>
+    </configuration>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-pmd-plugin</artifactId>
+    <configuration>
+     <linkXref>true</linkXref>
+     <sourceEncoding>utf-8</sourceEncoding>
+     <minimumTokens>100</minimumTokens>
+     <targetJdk>1.8</targetJdk>
+     <outputDirectory>reports</outputDirectory>
+     <format>csv</format>
+     <excludeRoots>
+      <excludeRoot>target/generated-sources</excludeRoot>
+     </excludeRoots>
     </configuration>
    </plugin>
 
