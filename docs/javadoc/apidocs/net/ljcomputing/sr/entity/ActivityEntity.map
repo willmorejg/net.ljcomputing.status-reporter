@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../core/entity/AbstractPersistedEntity.html" title="net.ljcomputing.core.entity.AbstractPersistedEntity" alt="" coords="164,134,308,173"/>
+<area shape="rect" id="node1" href="../../core/entity/AbstractPersistedEntity.html" title="&lt;TABLE&gt;" alt="" coords="154,129,319,178"/>
+<area shape="rect" id="node7_1" href="./EventEntity.html" title="net.ljcomputing.sr.entity.EventEntity" alt="" coords="283,255,363,281"/>
+<area shape="rect" id="node7" href="./EventEntity.html" title="&lt;TABLE&gt;" alt="" coords="272,244,374,292"/>
+<area shape="rect" id="node8_2" href="./ActivityEntity.html" title="net.ljcomputing.sr.entity.ActivityEntity" alt="" coords="324,361,410,386"/>
+<area shape="rect" id="node8" href="./ActivityEntity.html" title="&lt;TABLE&gt;" alt="" coords="313,349,421,397"/>
+<area shape="rect" id="node9_3" href="./WbsEntity.html" title="net.ljcomputing.sr.entity.WbsEntity" alt="" coords="330,457,404,482"/>
+<area shape="rect" id="node9" href="./WbsEntity.html" title="&lt;TABLE&gt;" alt="" coords="320,445,414,493"/>
+<area shape="rect" id="node2_4" href="../../core/entity/PersistedEntity.html" title="net.ljcomputing.core.entity.PersistedEntity" alt="" coords="320,11,449,66"/>
+<area shape="rect" id="node2" href="../../core/entity/PersistedEntity.html" title="&lt;TABLE&gt;" alt="" coords="309,6,460,71"/>
+<area shape="rect" id="node3_5" href="../../core/domain/Domain.html" title="net.ljcomputing.core.domain.Domain" alt="" coords="758,126,894,181"/>
+<area shape="rect" id="node3" href="../../core/domain/Domain.html" title="&lt;TABLE&gt;" alt="" coords="747,121,904,186"/>
+<area shape="rect" id="node4_6" href="../repository/EventEntityRepository.html" title="net.ljcomputing.sr.repository.EventEntityRepository" alt="" coords="459,241,598,295"/>
+<area shape="rect" id="node4" href="../repository/EventEntityRepository.html" title="&lt;TABLE&gt;" alt="" coords="448,235,608,301"/>
+<area shape="rect" id="node5_7" href="../repository/ActivityEntityRepository.html" title="net.ljcomputing.sr.repository.ActivityEntityRepository" alt="" coords="41,241,186,295"/>
+<area shape="rect" id="node5" href="../repository/ActivityEntityRepository.html" title="&lt;TABLE&gt;" alt="" coords="30,235,197,301"/>
+<area shape="rect" id="node6_8" href="../strategy/impl/ActivityStrategy.html" title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" alt="" coords="643,249,792,287"/>
+<area shape="rect" id="node6" href="../strategy/impl/ActivityStrategy.html" title="&lt;TABLE&gt;" alt="" coords="632,243,803,293"/>
+</map>

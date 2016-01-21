@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../../core/service/AbstractDomainEntityServiceImpl.html" title="net.ljcomputing.core.service.AbstractDomainEntityServiceImpl" alt="" coords="16,19,1307,58"/>
+<area shape="rect" id="node1" href="../../../core/service/AbstractDomainEntityServiceImpl.html" title="&lt;TABLE&gt;" alt="" coords="5,14,1317,63"/>
+<area shape="rect" id="node3_1" href="./WbsDomainEntityServiceImpl.html" title="net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl" alt="" coords="1202,131,1382,157"/>
+<area shape="rect" id="node3" href="./WbsDomainEntityServiceImpl.html" title="&lt;TABLE&gt;" alt="" coords="1191,120,1393,168"/>
+<area shape="rect" id="node2_2" href="../../domain/WorkBreakdownStructure.html" title="net.ljcomputing.sr.domain.WorkBreakdownStructure" alt="" coords="1283,222,1440,261"/>
+<area shape="rect" id="node2" href="../../domain/WorkBreakdownStructure.html" title="&lt;TABLE&gt;" alt="" coords="1272,217,1451,266"/>
+<area shape="rect" id="node4_3" href="../WbsDomainEntityService.html" title="net.ljcomputing.sr.service.WbsDomainEntityService" alt="" coords="1352,11,1509,66"/>
+<area shape="rect" id="node4" href="../WbsDomainEntityService.html" title="&lt;TABLE&gt;" alt="" coords="1341,6,1520,71"/>
+</map>

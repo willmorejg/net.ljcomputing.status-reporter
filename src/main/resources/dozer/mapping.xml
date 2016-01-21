@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings
+ xmlns="http://dozer.sourceforge.net"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+ <mapping>
+  <class-a>net.ljcomputing.sr.entity.WbsEntity</class-a>
+  <class-b
+   map-null="true"
+   map-empty-string="true">net.ljcomputing.sr.domain.WorkBreakdownStructure
+  </class-b>
+  <field>
+   <a>uuid</a>
+   <b is-accessible="true">uuid</b>
+  </field>
+  <field>
+   <a>name</a>
+   <b is-accessible="true">name</b>
+  </field>
+  <field>
+   <a>description</a>
+   <b is-accessible="true">description</b>
+  </field>
+  <field>
+   <a>activities</a>
+   <b is-accessible="true">activities</b>
+  </field>
+ </mapping>
+ <mapping>
+  <class-a>net.ljcomputing.sr.entity.ActivityEntity</class-a>
+  <class-b
+   map-null="true"
+   map-empty-string="true">net.ljcomputing.sr.domain.Activity</class-b>
+  <field>
+   <a>uuid</a>
+   <b is-accessible="true">uuid</b>
+  </field>
+  <field>
+   <a>name</a>
+   <b is-accessible="true">name</b>
+  </field>
+  <field>
+   <a>description</a>
+   <b is-accessible="true">description</b>
+  </field>
+  <field>
+   <a>events</a>
+   <b is-accessible="true">events</b>
+  </field>
+ </mapping>
+ <mapping>
+  <class-a>net.ljcomputing.sr.entity.EventEntity</class-a>
+  <class-b
+   map-null="true"
+   map-empty-string="true">net.ljcomputing.sr.domain.Event</class-b>
+  <field>
+   <a>uuid</a>
+   <b is-accessible="true">uuid</b>
+  </field>
+  <field>
+   <a>description</a>
+   <b is-accessible="true">description</b>
+  </field>
+  <field>
+   <a>endTime</a>
+   <b is-accessible="true">endTime</b>
+  </field>
+  <field>
+   <a>startTime</a>
+   <b is-accessible="true">startTime</b>
+  </field>
+  <field>
+   <a>ticketNumber</a>
+   <b is-accessible="true">ticketNumber</b>
+  </field>
+ </mapping>
+</mappings>

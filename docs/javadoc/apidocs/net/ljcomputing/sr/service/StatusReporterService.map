@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../domain/WorkBreakdownStructure.html" title="net.ljcomputing.sr.domain.WorkBreakdownStructure" alt="" coords="165,211,322,250"/>
+<area shape="rect" id="node1" href="../domain/WorkBreakdownStructure.html" title="&lt;TABLE&gt;" alt="" coords="154,206,333,255"/>
+<area shape="rect" id="node3_1" href="../domain/Activity.html" title="net.ljcomputing.sr.domain.Activity" alt="" coords="148,310,273,349"/>
+<area shape="rect" id="node3" href="../domain/Activity.html" title="&lt;TABLE&gt;" alt="" coords="137,305,284,354"/>
+<area shape="rect" id="node2_2" href="../domain/Event.html" title="net.ljcomputing.sr.domain.Event" alt="" coords="76,409,201,447"/>
+<area shape="rect" id="node2" href="../domain/Event.html" title="&lt;TABLE&gt;" alt="" coords="65,403,212,453"/>
+<area shape="rect" id="node4_3" href="./impl/StatusReporterServiceImpl.html" title="net.ljcomputing.sr.service.impl.StatusReporterServiceImpl" alt="" coords="49,113,214,151"/>
+<area shape="rect" id="node4" href="./impl/StatusReporterServiceImpl.html" title="&lt;TABLE&gt;" alt="" coords="38,107,225,157"/>
+<area shape="rect" id="node5_4" href="./StatusReporterService.html" title="net.ljcomputing.sr.service.StatusReporterService" alt="" coords="126,11,268,53"/>
+<area shape="rect" id="node5" href="./StatusReporterService.html" title="&lt;TABLE&gt;" alt="" coords="116,6,278,58"/>
+</map>

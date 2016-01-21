@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../../core/strategy/AbstractDomainEntityStrategy.html" title="net.ljcomputing.core.strategy.AbstractDomainEntityStrategy" alt="" coords="15,126,755,165"/>
+<area shape="rect" id="node1" href="../../../core/strategy/AbstractDomainEntityStrategy.html" title="&lt;TABLE&gt;" alt="" coords="5,121,766,170"/>
+<area shape="rect" id="node3_1" href="./WbsStrategy.html" title="net.ljcomputing.sr.strategy.impl.WbsStrategy" alt="" coords="551,230,639,255"/>
+<area shape="rect" id="node3" href="./WbsStrategy.html" title="&lt;TABLE&gt;" alt="" coords="540,219,649,267"/>
+<area shape="rect" id="node2_2" href="../../../core/service/DomainEntityConverterStrategy.html" title="net.ljcomputing.core.service.DomainEntityConverterStrategy" alt="" coords="482,11,707,66"/>
+<area shape="rect" id="node2" href="../../../core/service/DomainEntityConverterStrategy.html" title="&lt;TABLE&gt;" alt="" coords="471,6,718,71"/>
+<area shape="rect" id="node4_3" href="../../entity/WbsEntity.html" title="net.ljcomputing.sr.entity.WbsEntity" alt="" coords="443,321,562,359"/>
+<area shape="rect" id="node4" href="../../entity/WbsEntity.html" title="&lt;TABLE&gt;" alt="" coords="433,315,573,365"/>
+<area shape="rect" id="node5_4" href="../../domain/WorkBreakdownStructure.html" title="net.ljcomputing.sr.domain.WorkBreakdownStructure" alt="" coords="608,321,765,359"/>
+<area shape="rect" id="node5" href="../../domain/WorkBreakdownStructure.html" title="&lt;TABLE&gt;" alt="" coords="597,315,776,365"/>
+</map>
