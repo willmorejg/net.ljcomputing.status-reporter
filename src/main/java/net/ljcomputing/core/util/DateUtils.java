@@ -32,7 +32,7 @@ public final class DateUtils {
    * @param dateAsString the date as string
    * @return the properties
    */
-  private static final Properties parseDateString(final String dateAsString) {
+  private static Properties parseDateString(final String dateAsString) {
     String year = dateAsString.substring(0, 4);
     String month = dateAsString.substring(4, 6);
     String day = dateAsString.substring(6, 8);
@@ -52,7 +52,7 @@ public final class DateUtils {
    * @param key the key
    * @return the property as integer
    */
-  private static final Integer getPropertyAsInteger(final Properties properties,
+  private static Integer getPropertyAsInteger(final Properties properties,
       final String key) {
     return Integer.parseInt(properties.getProperty(key));
   }
@@ -65,7 +65,7 @@ public final class DateUtils {
    * @param daysPrior the days prior
    * @return the long
    */
-  public static final long dateStringToStart(final String dateAsString,
+  public static long dateStringToStart(final String dateAsString,
       int daysPrior) {
     Properties props = parseDateString(dateAsString);
 
@@ -81,7 +81,7 @@ public final class DateUtils {
    * @param dateAsString the date as string
    * @return the long
    */
-  public static final long dateStringToStart(final String dateAsString) {
+  public static long dateStringToStart(final String dateAsString) {
     return dateStringToStart(dateAsString, 0);
   }
 
@@ -91,7 +91,7 @@ public final class DateUtils {
    * @param dateAsString the date as string
    * @return the long
    */
-  public static final long dateStringToEnd(final String dateAsString) {
+  public static long dateStringToEnd(final String dateAsString) {
     Properties props = parseDateString(dateAsString);
 
     return new DateTime().withYear(getPropertyAsInteger(props, "year"))

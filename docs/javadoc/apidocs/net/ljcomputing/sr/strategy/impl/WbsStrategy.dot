@@ -50,9 +50,9 @@ digraph G {
 	c1977:p -> c1993:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.sr.strategy.impl.WbsStrategy implements net.ljcomputing.core.service.DomainEntityConverterStrategy<T, S>
 	c1986:p -> c1993:p [dir=back,arrowtail=empty,style=dashed];
-	// net.ljcomputing.sr.strategy.impl.WbsStrategy DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
-	c1993:p -> c1997:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.strategy.impl.WbsStrategy DEPEND net.ljcomputing.sr.entity.WbsEntity
 	c1993:p -> c1996:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.strategy.impl.WbsStrategy DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
+	c1993:p -> c1997:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

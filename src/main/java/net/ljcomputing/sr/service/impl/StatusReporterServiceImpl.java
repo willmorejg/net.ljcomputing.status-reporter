@@ -46,6 +46,7 @@ import java.util.List;
 public class StatusReporterServiceImpl implements StatusReporterService {
 
   /** The logger. */
+  @SuppressWarnings("unused")
   @InjectLogging
   private static Logger logger;
 

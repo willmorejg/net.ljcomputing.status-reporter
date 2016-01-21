@@ -43,9 +43,7 @@ public abstract class AbstractPersistedEntity extends AbstractDomain
   /** The modified ts. */
   private Long modifiedTs;
 
-  /*
-   * (non-Javadoc)
-   * 
+  /**
    * @see net.ljcomputing.core.entity.PersistedEntity#getCreatedTs()
    */
   @Column(name = "created_ts", nullable = false, unique = false,
@@ -55,19 +53,14 @@ public abstract class AbstractPersistedEntity extends AbstractDomain
     return createdTs;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * net.ljcomputing.core.entity.PersistedEntity#setCreatedTs(java.lang.Long)
+  /**
+   * @see net.ljcomputing.core.entity.PersistedEntity#setCreatedTs(java.lang.Long)
    */
   public void setCreatedTs(Long createdTs) {
     this.createdTs = createdTs;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
+  /**
    * @see net.ljcomputing.core.entity.PersistedEntity#getModifiedTs()
    */
   @Column(name = "modified_ts", nullable = true, unique = false,
@@ -76,11 +69,8 @@ public abstract class AbstractPersistedEntity extends AbstractDomain
     return modifiedTs;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * net.ljcomputing.core.entity.PersistedEntity#setModifiedTs(java.lang.Long)
+  /**
+   * @see net.ljcomputing.core.entity.PersistedEntity#setModifiedTs(java.lang.Long)
    */
   public void setModifiedTs(Long modifiedTs) {
     this.modifiedTs = modifiedTs;
@@ -89,6 +79,7 @@ public abstract class AbstractPersistedEntity extends AbstractDomain
   /**
    * Update the created time stamp with the current date.
    */
+  @SuppressWarnings("unused")
   @PrePersist
   private void createdAt() {
     this.createdTs = new Date().getTime();
@@ -97,6 +88,7 @@ public abstract class AbstractPersistedEntity extends AbstractDomain
   /**
    * Update the modified time stamp with the current date.
    */
+  @SuppressWarnings("unused")
   @PreUpdate
   private void modifiedAt() {
     this.modifiedTs = new Date().getTime();

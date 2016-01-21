@@ -54,16 +54,16 @@ digraph G {
 	c1777:p -> c1775:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.domain.Activity NAVASSOC net.ljcomputing.sr.domain.Event
 	c1777:p -> c1776:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
-	c1780:p -> c1777:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Event
 	c1780:p -> c1776:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
+	c1780:p -> c1777:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
 	c1780:p -> c1775:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
-	c1785:p -> c1777:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Event
 	c1785:p -> c1776:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
+	c1785:p -> c1777:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
 	c1785:p -> c1775:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }

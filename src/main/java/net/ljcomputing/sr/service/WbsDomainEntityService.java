@@ -40,6 +40,6 @@ public interface WbsDomainEntityService extends
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public WorkBreakdownStructure findByName(String name)
+  WorkBreakdownStructure findByName(String name)
       throws RequiredValueException, NoEntityFoundException;
 }

@@ -26,12 +26,12 @@ import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 import java.util.List;
 
 /**
- * Status Rreporter service.
+ * Status Reporter service.
  * 
  * @author James G. Willmore
  *
  */
-public interface StatusReporterService {
+ public interface StatusReporterService {
   
   /**
    * Save the work breakdown structure.
@@ -41,7 +41,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public WorkBreakdownStructure saveWbs(WorkBreakdownStructure wbs) throws RequiredValueException, NoEntityFoundException;
+   WorkBreakdownStructure saveWbs(WorkBreakdownStructure wbs) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * List all work breakdown structures.
@@ -50,7 +50,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public List<WorkBreakdownStructure> listAllWbs() throws RequiredValueException, NoEntityFoundException;
+   List<WorkBreakdownStructure> listAllWbs() throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find work breakdown structure by name.
@@ -60,7 +60,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public WorkBreakdownStructure findWbsByName(String wbsName) throws RequiredValueException, NoEntityFoundException;
+   WorkBreakdownStructure findWbsByName(String wbsName) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Removes the work breakdown structure.
@@ -70,7 +70,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Boolean removeWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Save the activity to the work breakdown structure.
@@ -81,7 +81,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Activity saveActivity(Activity activity, String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   Activity saveActivity(Activity activity, String wbsUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find activity by name.
@@ -91,7 +91,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Activity findActivityByName(String activityName) throws RequiredValueException, NoEntityFoundException;
+   Activity findActivityByName(String activityName) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find activities for the given work breakdown structure.
@@ -101,7 +101,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public List<Activity> findActivitiesForWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   List<Activity> findActivitiesForWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Removes the activiy.
@@ -111,7 +111,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Boolean removeActiviy(String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeActiviy(String activityUuid) throws RequiredValueException, NoEntityFoundException;
 
   /**
    * Save the event to the activity.
@@ -122,7 +122,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Event saveEvent(Event event, String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   Event saveEvent(Event event, String activityUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find events for activity.
@@ -132,7 +132,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public List<Event> findEventsForActivity(String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   List<Event> findEventsForActivity(String activityUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Indicate the end of an event.
@@ -142,7 +142,7 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Event endEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
+   Event endEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Removes the event.
@@ -152,5 +152,5 @@ public interface StatusReporterService {
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public Boolean removeEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
 }

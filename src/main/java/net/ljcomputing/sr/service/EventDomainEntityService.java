@@ -43,7 +43,7 @@ public interface EventDomainEntityService extends
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public List<Event> findByActivity(Activity activity)
+  List<Event> findByActivity(Activity activity)
       throws RequiredValueException, NoEntityFoundException;
 
   /**
@@ -54,6 +54,6 @@ public interface EventDomainEntityService extends
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  public List<Event> findByActivity(String activityUuid)
-      throws RequiredValueException, NoEntityFoundException;
+  List<Event> findByActivity(String activityUuid)
+          throws RequiredValueException, NoEntityFoundException;
 }

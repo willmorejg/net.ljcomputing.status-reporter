@@ -121,7 +121,7 @@ public class JpaConfiguration {
     configProps.put("poolName", poolName);
     configProps.put("maximumPoolSize", maximumPoolSize);
     configProps.put("minimumIdle", minimumIdle);
-    configProps.put("minimumIdle", minimumIdle);
+    configProps.put("maxLifetime", maxLifetime);
     configProps.put("connectionTimeout", connectionTimeout);
     configProps.put("idleTimeout", idleTimeout);
 

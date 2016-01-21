@@ -48,6 +48,7 @@ public abstract class AbstractDomainEntityServiceImpl<T extends Domain, S extend
     implements DomainEntityService<T, S, ID, R> {
 
   /** The logger. */
+  @SuppressWarnings("unused")
   @InjectLogging
   private static Logger logger;
 
