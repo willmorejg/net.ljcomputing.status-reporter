@@ -1,11 +1,5 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-
-README for module ${artifactId}
-===============================
-
-${rootArtifactId}
+README for LJ Computing - Status Reporter
+=========================================
 
 Capture time allocated to a work breakdown structure.
 
