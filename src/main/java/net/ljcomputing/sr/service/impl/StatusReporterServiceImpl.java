@@ -35,7 +35,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /**
  * Status Reporter service implementation.
  * 
@@ -79,6 +78,14 @@ public class StatusReporterServiceImpl implements StatusReporterService {
   }
 
   /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findWbsByUuid(java.lang.String)
+   */
+  public final WorkBreakdownStructure findWbsByUuid(String wbsUuid)
+      throws RequiredValueException, NoEntityFoundException {
+    return wbsService.findById(wbsUuid);
+  }
+
+  /**
    * @see net.ljcomputing.sr.service.StatusReporterService#findWbsByName(java.lang.String)
    */
   public final WorkBreakdownStructure findWbsByName(final String wbsName)
@@ -91,6 +98,14 @@ public class StatusReporterServiceImpl implements StatusReporterService {
    */
   public final Boolean removeWbs(final String wbsUuid)
       throws RequiredValueException, NoEntityFoundException {
+    WorkBreakdownStructure wbs = findWbsByUuid(wbsUuid);
+    
+    if(null != wbs.getActivities()) {
+      for(Activity activity : wbs.getActivities()) {
+        removeActivity(activity.getUuid());
+      }
+    }
+    
     return wbsService.delete(wbsUuid);
   }
 
@@ -117,6 +132,14 @@ public class StatusReporterServiceImpl implements StatusReporterService {
   }
 
   /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findActivityByUuid(java.lang.String)
+   */
+  public final Activity findActivityByUuid(String activityUuid) 
+      throws RequiredValueException, NoEntityFoundException {
+    return activityService.findById(activityUuid);
+  }
+
+  /**
    * @see net.ljcomputing.sr.service.StatusReporterService#findActivitiesForWbs(java.lang.String)
    */
   public final List<Activity> findActivitiesForWbs(final String wbsUuid)
@@ -125,10 +148,18 @@ public class StatusReporterServiceImpl implements StatusReporterService {
   }
 
   /**
-   * @see net.ljcomputing.sr.service.StatusReporterService#removeActiviy(java.lang.String)
+   * @see net.ljcomputing.sr.service.StatusReporterService#removeActivity(java.lang.String)
    */
-  public final Boolean removeActiviy(String activityUuid)
+  public final Boolean removeActivity(String activityUuid)
       throws RequiredValueException, NoEntityFoundException {
+    Activity activity = findActivityByUuid(activityUuid);
+    
+    if(null != activity.getEvents()) {
+      for(Event event : activity.getEvents()) {
+        removeEvent(event.getUuid());
+      }
+    }
+    
     return activityService.delete(activityUuid);
   }
 
@@ -151,6 +182,14 @@ public class StatusReporterServiceImpl implements StatusReporterService {
   public final List<Event> findEventsForActivity(final String activityUuid)
       throws RequiredValueException, NoEntityFoundException {
     return eventService.findByActivity(activityUuid);
+  }
+
+  /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findEventByUuid(java.lang.String)
+   */
+  public final Event findEventByUuid(final String eventUuid) 
+      throws RequiredValueException, NoEntityFoundException {
+    return eventService.findById(eventUuid);
   }
 
   /**

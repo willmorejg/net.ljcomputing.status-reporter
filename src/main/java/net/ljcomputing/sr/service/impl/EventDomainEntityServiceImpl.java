@@ -55,10 +55,11 @@ public class EventDomainEntityServiceImpl extends
    */
   public List<Event> findByActivity(Activity activity)
       throws RequiredValueException, NoEntityFoundException {
-    if(null == activity) {
-      throw new RequiredValueException("Cannot search for events without an activity.");
+    if (null == activity) {
+      throw new RequiredValueException(
+          "Cannot search for events without an activity.");
     }
-    
+
     return findByActivity(activity.getUuid());
   }
 
@@ -67,17 +68,18 @@ public class EventDomainEntityServiceImpl extends
    */
   public List<Event> findByActivity(String activityUuid)
       throws RequiredValueException, NoEntityFoundException {
-    if(null == activityUuid) {
-      throw new RequiredValueException("Cannot search for events without an activity.");
+    if (null == activityUuid) {
+      throw new RequiredValueException(
+          "Cannot search for events without an activity.");
     }
-    
+
     ActivityEntity entity = activityRepository.findOne(activityUuid);
-    
-    if(null == entity) {
-      throw new NoEntityFoundException("Activity provided not found - cannot search for events without an activity.");
+
+    if (null == entity) {
+      throw new NoEntityFoundException(
+          "Activity provided not found - cannot search for events without an activity.");
     }
-    
+
     return strategy.entityToDomain(repository.findByActivity(entity));
   }
-
 }

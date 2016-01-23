@@ -10,24 +10,24 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// net.ljcomputing.sr.strategy.impl.ActivityStrategy
-	c313 [label=<<table title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ActivityStrategy.html">
+	c417 [label=<<table title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ActivityStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ActivityStrategy </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ActivityStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy
-	c314 [label=<<table title="net.ljcomputing.sr.strategy.impl.EventStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./EventStrategy.html">
+	c418 [label=<<table title="net.ljcomputing.sr.strategy.impl.EventStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./EventStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EventStrategy </td></tr>
 		</table></td></tr>
 		</table>>, URL="./EventStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.strategy.impl.WbsStrategy
-	c315 [label=<<table title="net.ljcomputing.sr.strategy.impl.WbsStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WbsStrategy.html">
+	c419 [label=<<table title="net.ljcomputing.sr.strategy.impl.WbsStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./WbsStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WbsStrategy </td></tr>
 		</table></td></tr>
 		</table>>, URL="./WbsStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy NAVASSOC net.ljcomputing.sr.strategy.impl.ActivityStrategy
-	c314:p -> c313:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c418:p -> c417:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 }
 

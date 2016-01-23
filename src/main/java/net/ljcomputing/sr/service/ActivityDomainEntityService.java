@@ -40,9 +40,11 @@ public interface ActivityDomainEntityService extends
    * @param name the name
    * @return the activity
    * @throws RequiredValueException the required value exception
+   * @throws NoEntityFoundException the no entity found exception
    */
-  Activity findByName(String name) throws RequiredValueException, NoEntityFoundException;
-  
+  Activity findByName(String name)
+      throws RequiredValueException, NoEntityFoundException;
+
   /**
    * Find by work breakdown structure.
    *
@@ -51,5 +53,6 @@ public interface ActivityDomainEntityService extends
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-  List<Activity> findByWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+      List<Activity> findByWbs(String wbsUuid)
+          throws RequiredValueException, NoEntityFoundException;
 }

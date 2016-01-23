@@ -60,6 +60,14 @@ public interface DomainEntityService<T extends Domain, S extends PersistedEntity
   boolean delete(final T domain);
 
   /**
+   * Delete entities by domains.
+   *
+   * @param domains the domains
+   * @return true, if successful
+   */
+  boolean delete(final List<T> domains);
+
+  /**
    * Delete all entities.
    *
    * @return true, if successful

@@ -17,6 +17,7 @@
 package net.ljcomputing.sr.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import net.ljcomputing.core.exception.NoEntityFoundException;
@@ -87,7 +88,7 @@ public class StatusReporterUseCaseTests {
   private static List<WorkBreakdownStructure> wbsS;
 
   /** The Constant wbs's - saved. */
-  private static List<WorkBreakdownStructure> wbsSaved;
+  private static List<WorkBreakdownStructure> wbsSaved = new ArrayList<WorkBreakdownStructure>();
 
   /** The Constant activities. */
   private static List<Activity> activities;
@@ -95,40 +96,52 @@ public class StatusReporterUseCaseTests {
   /** The Constant events. */
   private static List<Event> events;
 
+  /** The Constant total test cases. */
+  private static final int totalCases = 20;
+
+  /** The Constant start count. */
+  private static final int startCount = 1;
+
+  /**
+   * A before class method.
+   */
   @BeforeClass
-  public static void aBeforClassMethod() {
+  public static void aBeforeClassMethod() {
     try {
       wbsS = new ArrayList<WorkBreakdownStructure>();
       activities = new ArrayList<Activity>();
       events = new ArrayList<Event>();
 
-      int count = 1;
-      wbsS.add(new WorkBreakdownStructure("WBS" + count++));
-      wbsS.add(new WorkBreakdownStructure("WBS" + count++));
-      wbsS.add(new WorkBreakdownStructure("WBS" + count++));
-      wbsS.add(new WorkBreakdownStructure("WBS" + count++));
-      wbsS.add(new WorkBreakdownStructure("WBS" + count++));
+      int count = startCount;
+      for (int i = 0; i < totalCases; i++) {
+        wbsS.add(new WorkBreakdownStructure("WBS" + count++));
+      }
 
-      count = 1;
-      activities.add(new Activity("ACT" + count++));
-      activities.add(new Activity("ACT" + count++));
-      activities.add(new Activity("ACT" + count++));
-      activities.add(new Activity("ACT" + count++));
-      activities.add(new Activity("ACT" + count++));
+      count = startCount;
+      for (int i = 0; i < totalCases; i++) {
+        activities.add(new Activity("ACT" + count++));
+      }
 
-      events.add(new Event());
-      events.add(new Event());
-      events.add(new Event());
-      events.add(new Event());
-      events.add(new Event());
+      for (int i = 0; i < totalCases; i++) {
+        events.add(new Event());
+      }
     } catch (Exception e) {
       logger.error("FAILED to execute before class method : ", e);
     }
   }
 
+  /**
+   * Perform an initial batch save of work breakdown structures, activities, 
+   * and events. Will create if non-existent, 
+   * or update if entities already exist.
+   */
   @Test
   public void test0() {
     try {
+      for (WorkBreakdownStructure wbs : srService.listAllWbs()) {
+        srService.removeWbs(wbs.getUuid());
+      }
+
       for (int i = 0; i < wbsS.size(); i++) {
         logger.info("adding wbs : {}", wbsS.get(i));
 
@@ -143,34 +156,22 @@ public class StatusReporterUseCaseTests {
 
         Event savedEvent = srService.saveEvent(events.get(i),
             savedActivity.getUuid());
-        savedEvent.description = "Event for activity "
+        savedEvent.description = "1st Event for activity "
+            + savedActivity.getName();
+        srService.saveEvent(savedEvent, savedActivity.getUuid());
+
+        assertNotNull("saved event value was null", savedEvent);
+
+        savedEvent = srService.saveEvent(events.get(i),
+            savedActivity.getUuid());
+        savedEvent.description = "2nd Event for activity "
             + savedActivity.getName();
         srService.saveEvent(savedEvent, savedActivity.getUuid());
 
         assertNotNull("saved event value was null", savedEvent);
       }
 
-      List<WorkBreakdownStructure> results = srService.listAllWbs();
-
-      for (WorkBreakdownStructure wbs : results) {
-        List<Activity> savedActivities = srService
-            .findActivitiesForWbs(wbs.getUuid());
-        for (Activity activity : savedActivities) {
-          logger.debug("     activity : {}", activity);
-          List<Event> savedEvents = srService
-              .findEventsForActivity(activity.getUuid());
-          for (Event event : savedEvents) {
-            logger.debug("          event : {}", event);
-          }
-        }
-      }
-
-      assertNotNull("gsonConverterService is null", gsonConverterService);
-
-      logger.info("test results : {}",
-          gsonConverterService.toJson(srService.listAllWbs()));
-
-      wbsSaved = new ArrayList<WorkBreakdownStructure>();
+      wbsSaved.clear();
       wbsSaved = srService.listAllWbs();
 
       logger.info("test results : {}", gsonConverterService.toJson(wbsSaved));
@@ -182,15 +183,18 @@ public class StatusReporterUseCaseTests {
       fail("No entity found exception");
     }
   }
-  
+
+  /**
+   * Update existing entities.
+   */
   @Test
   public void test1() {
     try {
-      for(WorkBreakdownStructure wbs : wbsSaved) {
+      for (WorkBreakdownStructure wbs : wbsSaved) {
         wbs.description = "Updated";
-        for(Activity activity : wbs.getActivities()) {
+        for (Activity activity : wbs.getActivities()) {
           activity.description = "Updated";
-          for(Event event : activity.getEvents()) {
+          for (Event event : activity.getEvents()) {
             event.description = event.description + " - updated";
             srService.saveEvent(event, activity.getUuid());
             srService.endEvent(event.getUuid());
@@ -203,7 +207,60 @@ public class StatusReporterUseCaseTests {
       logger.info("test results : {}",
           gsonConverterService.toJson(srService.listAllWbs()));
 
-      wbsSaved = new ArrayList<WorkBreakdownStructure>();
+      wbsSaved.clear();
+      wbsSaved = srService.listAllWbs();
+
+      logger.info("test results : {}", gsonConverterService.toJson(wbsSaved));
+    } catch (RequiredValueException e) {
+      logger.error("failed test : ", e);
+      fail("Required value exception");
+    } catch (NoEntityFoundException e) {
+      logger.error("failed test : ", e);
+      fail("No entity found exception");
+    }
+  }
+
+  /**
+   * Remove various work breakdown structures, activities, and events.
+   */
+  @Test
+  public void test2() {
+    try {
+      for (WorkBreakdownStructure wbs : srService.listAllWbs()) {
+        int wbsTest = Integer
+            .valueOf(wbs.getName().substring(3, wbs.getName().length()));
+        if ((wbsTest % 2) == 0) {
+          assertTrue("Could not delete wbs",
+              srService.removeWbs(wbs.getUuid()));
+        }
+      }
+
+      for (WorkBreakdownStructure wbs : srService.listAllWbs()) {
+        for (Activity activity : srService
+            .findActivitiesForWbs(wbs.getUuid())) {
+          int activityTest = Integer.valueOf(
+              activity.getName().substring(3, activity.getName().length()));
+          if ((activityTest % 4) == 0) {
+            assertTrue("Could not delete activity",
+                srService.removeActivity(activity.getUuid()));
+          }
+        }
+      }
+
+      for (WorkBreakdownStructure wbs : srService.listAllWbs()) {
+        for (Activity activity : srService
+            .findActivitiesForWbs(wbs.getUuid())) {
+          for (Event event : srService
+              .findEventsForActivity(activity.getUuid())) {
+            int eventTest = Integer.valueOf(event.description.substring(0, 1));
+            if (eventTest == 1) {
+              assertTrue("Could not delete event", srService.removeEvent(event.getUuid()));
+            }
+          }
+        }
+      }
+
+      wbsSaved.clear();
       wbsSaved = srService.listAllWbs();
 
       logger.info("test results : {}", gsonConverterService.toJson(wbsSaved));

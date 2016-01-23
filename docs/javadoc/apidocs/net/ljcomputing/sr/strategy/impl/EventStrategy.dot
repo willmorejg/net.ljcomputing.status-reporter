@@ -10,14 +10,14 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity>
-	c1459 [label=<<table title="net.ljcomputing.core.strategy.AbstractDomainEntityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/strategy/AbstractDomainEntityStrategy.html">
+	c1912 [label=<<table title="net.ljcomputing.core.strategy.AbstractDomainEntityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/strategy/AbstractDomainEntityStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> AbstractDomainEntityStrategy&lt;T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity&gt; </font></td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> net.ljcomputing.core.strategy </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../core/strategy/AbstractDomainEntityStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.core.service.DomainEntityConverterStrategy<T, S>
-	c1468 [label=<<table title="net.ljcomputing.core.service.DomainEntityConverterStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/service/DomainEntityConverterStrategy.html">
+	c1925 [label=<<table title="net.ljcomputing.core.service.DomainEntityConverterStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/service/DomainEntityConverterStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> DomainEntityConverterStrategy&lt;T, S&gt; </td></tr>
@@ -25,46 +25,46 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../../../core/service/DomainEntityConverterStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.strategy.impl.ActivityStrategy
-	c1473 [label=<<table title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ActivityStrategy.html">
+	c1930 [label=<<table title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ActivityStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ActivityStrategy </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ActivityStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy
-	c1474 [label=<<table title="net.ljcomputing.sr.strategy.impl.EventStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./EventStrategy.html">
+	c1931 [label=<<table title="net.ljcomputing.sr.strategy.impl.EventStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./EventStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EventStrategy </td></tr>
 		</table></td></tr>
 		</table>>, URL="./EventStrategy.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.entity.EventEntity
-	c1476 [label=<<table title="net.ljcomputing.sr.entity.EventEntity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../entity/EventEntity.html">
+	c1933 [label=<<table title="net.ljcomputing.sr.entity.EventEntity" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../entity/EventEntity.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> EventEntity </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> net.ljcomputing.sr.entity </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../../entity/EventEntity.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.domain.Event
-	c1480 [label=<<table title="net.ljcomputing.sr.domain.Event" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../domain/Event.html">
+	c1937 [label=<<table title="net.ljcomputing.sr.domain.Event" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../domain/Event.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Event </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> net.ljcomputing.sr.domain </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../../domain/Event.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	//net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity> implements net.ljcomputing.core.service.DomainEntityConverterStrategy<T, S>
-	c1468:p -> c1459:p [dir=back,arrowtail=empty,style=dashed];
+	c1925:p -> c1912:p [dir=back,arrowtail=empty,style=dashed];
 	//net.ljcomputing.sr.strategy.impl.ActivityStrategy extends net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<net.ljcomputing.sr.domain.Activity, net.ljcomputing.sr.entity.ActivityEntity>
-	c1459:p -> c1473:p [dir=back,arrowtail=empty];
+	c1912:p -> c1930:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.sr.strategy.impl.ActivityStrategy implements net.ljcomputing.core.service.DomainEntityConverterStrategy<T, S>
-	c1468:p -> c1473:p [dir=back,arrowtail=empty,style=dashed];
+	c1925:p -> c1930:p [dir=back,arrowtail=empty,style=dashed];
 	//net.ljcomputing.sr.strategy.impl.EventStrategy extends net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<net.ljcomputing.sr.domain.Event, net.ljcomputing.sr.entity.EventEntity>
-	c1459:p -> c1474:p [dir=back,arrowtail=empty];
+	c1912:p -> c1931:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.sr.strategy.impl.EventStrategy implements net.ljcomputing.core.service.DomainEntityConverterStrategy<T, S>
-	c1468:p -> c1474:p [dir=back,arrowtail=empty,style=dashed];
+	c1925:p -> c1931:p [dir=back,arrowtail=empty,style=dashed];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy NAVASSOC net.ljcomputing.sr.strategy.impl.ActivityStrategy
-	c1474:p -> c1473:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
+	c1931:p -> c1930:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.domain.Event
-	c1474:p -> c1480:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1931:p -> c1937:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.entity.EventEntity
-	c1474:p -> c1476:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c1931:p -> c1933:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

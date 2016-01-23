@@ -2,6 +2,7 @@ net.ljcomputing.core.repository
 net.ljcomputing.core.exception
 net.ljcomputing.core.strategy
 net.ljcomputing.core.entity
+net.ljcomputing.core.controler
 net.ljcomputing.core.util
 net.ljcomputing.core.domain
 net.ljcomputing.core.service
@@ -13,3 +14,4 @@ net.ljcomputing.sr.service.impl
 net.ljcomputing.sr.service
 net.ljcomputing.sr
 net.ljcomputing.sr.config
+net.ljcomputing.sr.controller

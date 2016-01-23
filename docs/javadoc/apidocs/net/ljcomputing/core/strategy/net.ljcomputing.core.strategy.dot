@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity>
-	c77 [label=<<table title="net.ljcomputing.core.strategy.AbstractDomainEntityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractDomainEntityStrategy.html">
+	c91 [label=<<table title="net.ljcomputing.core.strategy.AbstractDomainEntityStrategy" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractDomainEntityStrategy.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> AbstractDomainEntityStrategy&lt;T extends Domain, S extends PersistedEntity&gt; </font></td></tr>
 		</table></td></tr>

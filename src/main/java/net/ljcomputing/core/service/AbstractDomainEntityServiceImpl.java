@@ -106,6 +106,20 @@ public abstract class AbstractDomainEntityServiceImpl<T extends Domain, S extend
   }
 
   /**
+   * @see net.ljcomputing.core.service.DomainEntityService#delete(java.util.List)
+   */
+  @SuppressWarnings("unchecked")
+  public boolean delete(final List<T> domains) {
+    boolean result = false;
+    
+    for(T domain : domains) {
+      result &= delete(domain);
+    }
+    
+    return result;
+  }
+
+  /**
    * @see net.ljcomputing.core.service.DomainEntityService#deleteAll()
    */
   @Transactional

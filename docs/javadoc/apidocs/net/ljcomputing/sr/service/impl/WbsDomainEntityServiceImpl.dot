@@ -10,27 +10,27 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// net.ljcomputing.core.service.AbstractDomainEntityServiceImpl<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity, ID extends java.io.Serializable, R extends net.ljcomputing.core.repository.BaseRepository<S, ID>>
-	c1874 [label=<<table title="net.ljcomputing.core.service.AbstractDomainEntityServiceImpl" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/service/AbstractDomainEntityServiceImpl.html">
+	c2645 [label=<<table title="net.ljcomputing.core.service.AbstractDomainEntityServiceImpl" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../../core/service/AbstractDomainEntityServiceImpl.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="Helvetica-Oblique"> AbstractDomainEntityServiceImpl&lt;T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity, ID extends java.io.Serializable, R extends net.ljcomputing.core.repository.BaseRepository&lt;S, ID&gt;&gt; </font></td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> net.ljcomputing.core.service </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../../../core/service/AbstractDomainEntityServiceImpl.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.domain.WorkBreakdownStructure
-	c1886 [label=<<table title="net.ljcomputing.sr.domain.WorkBreakdownStructure" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../domain/WorkBreakdownStructure.html">
+	c2657 [label=<<table title="net.ljcomputing.sr.domain.WorkBreakdownStructure" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../../domain/WorkBreakdownStructure.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WorkBreakdownStructure </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> net.ljcomputing.sr.domain </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="../../domain/WorkBreakdownStructure.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl
-	c1889 [label=<<table title="net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./WbsDomainEntityServiceImpl.html">
+	c2660 [label=<<table title="net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./WbsDomainEntityServiceImpl.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> WbsDomainEntityServiceImpl </td></tr>
 		</table></td></tr>
 		</table>>, URL="./WbsDomainEntityServiceImpl.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.sr.service.WbsDomainEntityService
-	c1895 [label=<<table title="net.ljcomputing.sr.service.WbsDomainEntityService" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../WbsDomainEntityService.html">
+	c2666 [label=<<table title="net.ljcomputing.sr.service.WbsDomainEntityService" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../WbsDomainEntityService.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> WbsDomainEntityService </td></tr>
@@ -38,12 +38,12 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../WbsDomainEntityService.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	//net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl extends net.ljcomputing.core.service.AbstractDomainEntityServiceImpl<net.ljcomputing.sr.domain.WorkBreakdownStructure, net.ljcomputing.sr.entity.WbsEntity, java.lang.String, net.ljcomputing.sr.repository.WbsEntityRepository>
-	c1874:p -> c1889:p [dir=back,arrowtail=empty];
+	c2645:p -> c2660:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl implements net.ljcomputing.sr.service.WbsDomainEntityService
-	c1895:p -> c1889:p [dir=back,arrowtail=empty,style=dashed];
+	c2666:p -> c2660:p [dir=back,arrowtail=empty,style=dashed];
 	// net.ljcomputing.sr.service.impl.WbsDomainEntityServiceImpl DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
-	c1889:p -> c1886:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2660:p -> c2657:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.WbsDomainEntityService DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
-	c1895:p -> c1886:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2666:p -> c2657:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

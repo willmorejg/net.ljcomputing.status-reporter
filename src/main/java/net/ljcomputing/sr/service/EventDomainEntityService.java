@@ -55,5 +55,5 @@ public interface EventDomainEntityService extends
    * @throws NoEntityFoundException the no entity found exception
    */
   List<Event> findByActivity(String activityUuid)
-          throws RequiredValueException, NoEntityFoundException;
+      throws RequiredValueException, NoEntityFoundException;
 }

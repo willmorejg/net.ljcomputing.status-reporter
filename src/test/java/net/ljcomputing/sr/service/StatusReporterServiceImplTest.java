@@ -234,7 +234,7 @@ public class StatusReporterServiceImplTest {
       for (Activity activity : wbs.getActivities()) {
         logger.debug("deleting activity : {}", activity);
         assertTrue("FAILED to delete activity",
-            srService.removeActiviy(activity.getUuid()));
+            srService.removeActivity(activity.getUuid()));
       }
 
       logger.info("wbs : {}", gsonConverterService.toJson(wbs));

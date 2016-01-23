@@ -30,7 +30,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 /**
  * Status Reporter application.
@@ -46,7 +45,6 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
     LoggingConfiguration.class, JpaConfiguration.class, DozerConfig.class })
 // ModelMapperConfig.class})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@EnableSpringDataWebSupport
 public class StatusReporter {
 
   /**

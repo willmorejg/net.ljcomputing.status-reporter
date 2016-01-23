@@ -41,7 +41,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   WorkBreakdownStructure saveWbs(WorkBreakdownStructure wbs) throws RequiredValueException, NoEntityFoundException;
+   WorkBreakdownStructure saveWbs(WorkBreakdownStructure wbs) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * List all work breakdown structures.
@@ -50,8 +51,20 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   List<WorkBreakdownStructure> listAllWbs() throws RequiredValueException, NoEntityFoundException;
-  
+   List<WorkBreakdownStructure> listAllWbs() 
+       throws RequiredValueException, NoEntityFoundException;
+
+   /**
+    * Find work breakdown structure by uuid.
+    *
+    * @param wbsUuid the wbs uuid
+    * @return the work breakdown structure
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   WorkBreakdownStructure findWbsByUuid(String wbsUuid) 
+       throws RequiredValueException, NoEntityFoundException;
+
   /**
    * Find work breakdown structure by name.
    *
@@ -60,7 +73,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   WorkBreakdownStructure findWbsByName(String wbsName) throws RequiredValueException, NoEntityFoundException;
+   WorkBreakdownStructure findWbsByName(String wbsName) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Removes the work breakdown structure.
@@ -70,7 +84,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Boolean removeWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeWbs(String wbsUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Save the activity to the work breakdown structure.
@@ -81,7 +96,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Activity saveActivity(Activity activity, String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   Activity saveActivity(Activity activity, String wbsUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find activity by name.
@@ -91,7 +107,19 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Activity findActivityByName(String activityName) throws RequiredValueException, NoEntityFoundException;
+   Activity findActivityByName(String activityName) 
+       throws RequiredValueException, NoEntityFoundException;
+   
+   /**
+    * Find activity by uuid.
+    *
+    * @param activityUuid the activity uuid
+    * @return the activity
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   Activity findActivityByUuid(String activityUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find activities for the given work breakdown structure.
@@ -101,17 +129,19 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   List<Activity> findActivitiesForWbs(String wbsUuid) throws RequiredValueException, NoEntityFoundException;
+   List<Activity> findActivitiesForWbs(String wbsUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
-   * Removes the activiy.
+   * Removes the activity.
    *
    * @param activityUuid the activity uuid
    * @return the boolean
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Boolean removeActiviy(String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeActivity(String activityUuid) 
+       throws RequiredValueException, NoEntityFoundException;
 
   /**
    * Save the event to the activity.
@@ -122,7 +152,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Event saveEvent(Event event, String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   Event saveEvent(Event event, String activityUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Find events for activity.
@@ -132,7 +163,8 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   List<Event> findEventsForActivity(String activityUuid) throws RequiredValueException, NoEntityFoundException;
+   List<Event> findEventsForActivity(String activityUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
   /**
    * Indicate the end of an event.
@@ -142,8 +174,20 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Event endEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
+   Event endEvent(String eventUuid) 
+       throws RequiredValueException, NoEntityFoundException;
   
+   /**
+    * Find event by uuid.
+    *
+    * @param eventUuid the event uuid
+    * @return the event
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   Event findEventByUuid(String eventUuid) 
+       throws RequiredValueException, NoEntityFoundException;
+
   /**
    * Removes the event.
    *
@@ -152,5 +196,6 @@ import java.util.List;
    * @throws RequiredValueException the required value exception
    * @throws NoEntityFoundException the no entity found exception
    */
-   Boolean removeEvent(String eventUuid) throws RequiredValueException, NoEntityFoundException;
+   Boolean removeEvent(String eventUuid) 
+       throws RequiredValueException, NoEntityFoundException;
 }

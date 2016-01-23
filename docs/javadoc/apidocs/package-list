@@ -1,3 +1,4 @@
+net.ljcomputing.core.controler
 net.ljcomputing.core.domain
 net.ljcomputing.core.entity
 net.ljcomputing.core.exception
@@ -7,6 +8,7 @@ net.ljcomputing.core.strategy
 net.ljcomputing.core.util
 net.ljcomputing.sr
 net.ljcomputing.sr.config
+net.ljcomputing.sr.controller
 net.ljcomputing.sr.domain
 net.ljcomputing.sr.entity
 net.ljcomputing.sr.repository
