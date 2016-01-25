@@ -97,7 +97,7 @@ public class StatusReporterUseCaseTests {
   private static List<Event> events;
 
   /** The Constant total test cases. */
-  private static final int totalCases = 20;
+  private static final int totalCases = 10;
 
   /** The Constant start count. */
   private static final int startCount = 1;
@@ -254,7 +254,8 @@ public class StatusReporterUseCaseTests {
               .findEventsForActivity(activity.getUuid())) {
             int eventTest = Integer.valueOf(event.description.substring(0, 1));
             if (eventTest == 1) {
-              assertTrue("Could not delete event", srService.removeEvent(event.getUuid()));
+              assertTrue("Could not delete event",
+                  srService.removeEvent(event.getUuid()));
             }
           }
         }

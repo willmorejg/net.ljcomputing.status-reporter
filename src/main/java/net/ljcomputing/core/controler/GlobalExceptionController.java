@@ -16,12 +16,12 @@
 
 package net.ljcomputing.core.controler;
 
-import javax.servlet.http.HttpServletRequest;
+import net.ljcomputing.core.exception.NoEntityFoundException;
+import net.ljcomputing.core.exception.RequiredValueException;
+import net.ljcomputing.logging.annotation.InjectLogging;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
+
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -31,8 +31,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import net.ljcomputing.core.exception.NoEntityFoundException;
-import net.ljcomputing.logging.annotation.InjectLogging;
+import javax.servlet.http.HttpServletRequest;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Global exception handler for controllers.
@@ -43,74 +46,125 @@ import net.ljcomputing.logging.annotation.InjectLogging;
 @ControllerAdvice
 public class GlobalExceptionController {
 
-	/** The Constant logger. */
-	@InjectLogging
-	private static Logger logger;
-	
-	/** The timestamp format. */
-	private final static DateTimeFormatter fmt = DateTimeFormat.forPattern("MMM d, yyyy h:m:s a");
+  /** The Constant logger. */
+  @InjectLogging
+  private static Logger logger;
 
-	/**
-	 * Gets the current timestamp.
-	 *
-	 * @return the current timestamp
-	 */
-	private String getCurrentTimestamp() {
-		return fmt.print(new DateTime());
-	}
+  /** The timestamp format. */
+  private final static DateTimeFormatter fmt = DateTimeFormat
+      .forPattern("MMM d, yyyy h:m:s a");
 
-	/**
-	 * Handle all exceptions.
-	 *
-	 * @param req
-	 *            the req
-	 * @param exception
-	 *            the exception
-	 * @return the error info
-	 */
-	@Order(Ordered.LOWEST_PRECEDENCE)
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public @ResponseBody ErrorInfo handleAllExceptions(HttpServletRequest req, Exception exception) {
-		logger.error("An error occured during the processing of {}:", req.getRequestURL().toString(), exception);
-		return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST, req.getRequestURL().toString(), exception);
-	}
+  /**
+   * Gets the current timestamp.
+   *
+   * @return the current timestamp
+   */
+  private String getCurrentTimestamp() {
+    return fmt.print(new DateTime());
+  }
 
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	@ExceptionHandler(NullPointerException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public @ResponseBody ErrorInfo handleAllNullPointerExceptions(HttpServletRequest req, Exception exception) {
-		logger.error("The data sent for processing had errors {}:", req.getRequestURL().toString(), exception);
-		return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST, req.getRequestURL().toString(), new Exception("An invalid value was sent or requested."));
-	}
+  /**
+   * Handle all exceptions.
+   *
+   * @param req
+   *            the req
+   * @param exception
+   *            the exception
+   * @return the error info
+   */
+  @Order(Ordered.LOWEST_PRECEDENCE)
+  @ExceptionHandler(Exception.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public @ResponseBody ErrorInfo handleAllExceptions(HttpServletRequest req,
+      Exception exception) {
+    logger.error("An error occured during the processing of {}:",
+        req.getRequestURL().toString(), exception);
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+        req.getRequestURL().toString(), exception);
+  }
 
+  /**
+   * Handle all null pointer exceptions.
+   *
+   * @param req the req
+   * @param exception the exception
+   * @return the error info
+   */
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  @ExceptionHandler(NullPointerException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public @ResponseBody ErrorInfo handleAllNullPointerExceptions(
+      HttpServletRequest req, Exception exception) {
+    logger.error("The data sent for processing had errors {}:",
+        req.getRequestURL().toString(), exception);
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+        req.getRequestURL().toString(),
+        new Exception("An invalid value was sent or requested."));
+  }
 
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    @ExceptionHandler(NoEntityFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody ErrorInfo handleAllNoEntityFoundExceptionExceptions(HttpServletRequest req, Exception exception) {
-        logger.warn("No entity found : {}:", req.getRequestURL().toString());
-        return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST, req.getRequestURL().toString(), exception);
+  /**
+   * Handle all required value exceptions.
+   *
+   * @param req the req
+   * @param exception the exception
+   * @return the error info
+   */
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  @ExceptionHandler(RequiredValueException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public @ResponseBody ErrorInfo handleAllRequiredValueExceptions(
+      HttpServletRequest req, Exception exception) {
+    logger.warn("A required value is missing : {}:",
+        req.getRequestURL().toString());
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+        req.getRequestURL().toString(), exception);
+  }
+
+  /**
+   * Handle all no entity found exceptions.
+   *
+   * @param req the req
+   * @param exception the exception
+   * @return the error info
+   */
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  @ExceptionHandler(NoEntityFoundException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public @ResponseBody ErrorInfo handleAllNoEntityFoundExceptions(
+      HttpServletRequest req, Exception exception) {
+    logger.warn("No entity found : {}:", req.getRequestURL().toString());
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+        req.getRequestURL().toString(), exception);
+  }
+
+  /**
+   * Handle all data integrity violation exceptions.
+   *
+   * @param req
+   *            the req
+   * @param exception
+   *            the exception
+   * @return the error info
+   */
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  @ExceptionHandler(DataIntegrityViolationException.class)
+  @ResponseStatus(HttpStatus.CONFLICT)
+  public @ResponseBody ErrorInfo handleAllDataIntegrityViolationExceptions(
+      HttpServletRequest req, Exception exception) {
+    logger.error("The data sent for processing had errors {}:",
+        req.getRequestURL().toString(), exception);
+    
+    if (exception.getMessage().contains("Unique property")) {
+      return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT,
+          req.getRequestURL().toString(),
+          new Exception("The saved value already exists."));
     }
-
-	/**
-	 * Handle all data integrity violation exceptions.
-	 *
-	 * @param req
-	 *            the req
-	 * @param exception
-	 *            the exception
-	 * @return the error info
-	 */
-	@Order(Ordered.HIGHEST_PRECEDENCE)
-	@ExceptionHandler(DataIntegrityViolationException.class)
-	@ResponseStatus(HttpStatus.CONFLICT)
-	public @ResponseBody ErrorInfo handleAllDataIntegrityViolationExceptions(HttpServletRequest req,
-			Exception exception) {
-		logger.error("The data sent for processing had errors {}:", req.getRequestURL().toString(), exception);
-		if (exception.getMessage().contains("Unique property")) {
-			return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT, req.getRequestURL().toString(), new Exception("The saved value already exists."));
-		}
-		return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT, req.getRequestURL().toString(), exception);
-	}
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT,
+        req.getRequestURL().toString(), exception);
+  }
 }

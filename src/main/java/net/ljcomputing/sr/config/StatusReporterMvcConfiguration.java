@@ -91,10 +91,7 @@ public class StatusReporterMvcConfiguration extends WebMvcConfigurerAdapter {
   public void configureContentNegotiation(
       ContentNegotiationConfigurer configurer) {
     configurer.favorPathExtension(true).useJaf(false).ignoreAcceptHeader(false)
-        // .defaultContentType(MediaType.TEXT_HTML)
-        // .mediaType("json", MediaType.APPLICATION_JSON)
-        .defaultContentType(MediaType.APPLICATION_JSON);// .mediaType("xml",
-                                                        // MediaType.APPLICATION_XML);
+        .defaultContentType(MediaType.APPLICATION_JSON);
   }
 
   /**

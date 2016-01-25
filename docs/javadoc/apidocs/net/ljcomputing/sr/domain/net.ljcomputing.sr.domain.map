@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./WorkBreakdownStructure.html" title="net.ljcomputing.sr.domain.WorkBreakdownStructure" alt="" coords="16,17,173,42"/>
-<area shape="rect" id="node1" href="./WorkBreakdownStructure.html" title="&lt;TABLE&gt;" alt="" coords="5,5,184,53"/>
-<area shape="rect" id="node3_1" href="./Activity.html" title="net.ljcomputing.sr.domain.Activity" alt="" coords="66,113,123,138"/>
-<area shape="rect" id="node3" href="./Activity.html" title="&lt;TABLE&gt;" alt="" coords="55,101,134,149"/>
-<area shape="rect" id="node2_2" href="./Event.html" title="net.ljcomputing.sr.domain.Event" alt="" coords="70,209,119,234"/>
-<area shape="rect" id="node2" href="./Event.html" title="&lt;TABLE&gt;" alt="" coords="59,197,131,245"/>
-</map>

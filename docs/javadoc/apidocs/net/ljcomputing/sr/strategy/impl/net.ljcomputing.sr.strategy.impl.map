@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="./ActivityStrategy.html" title="net.ljcomputing.sr.strategy.impl.ActivityStrategy" alt="" coords="16,113,117,138"/>
-<area shape="rect" id="node1" href="./ActivityStrategy.html" title="&lt;TABLE&gt;" alt="" coords="5,101,128,149"/>
-<area shape="rect" id="node2_1" href="./EventStrategy.html" title="net.ljcomputing.sr.strategy.impl.EventStrategy" alt="" coords="19,17,114,42"/>
-<area shape="rect" id="node2" href="./EventStrategy.html" title="&lt;TABLE&gt;" alt="" coords="9,5,125,53"/>
-<area shape="rect" id="node3_2" href="./WbsStrategy.html" title="net.ljcomputing.sr.strategy.impl.WbsStrategy" alt="" coords="160,17,248,42"/>
-<area shape="rect" id="node3" href="./WbsStrategy.html" title="&lt;TABLE&gt;" alt="" coords="149,5,259,53"/>
-</map>
