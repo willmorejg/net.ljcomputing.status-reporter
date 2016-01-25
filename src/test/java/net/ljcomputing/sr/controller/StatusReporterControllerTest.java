@@ -24,8 +24,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import net.ljcomputing.core.exception.RequiredValueException;
 import net.ljcomputing.core.test.ExpectedMockResults;
+import net.ljcomputing.gson.converter.GsonConverterService;
 import net.ljcomputing.logging.annotation.InjectLogging;
 import net.ljcomputing.sr.StatusReporter;
+import net.ljcomputing.sr.domain.Activity;
 import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 
 import org.slf4j.Logger;
@@ -74,16 +76,19 @@ public class StatusReporterControllerTest {
       .getLogger(StatusReporterControllerTest.class);
 
   /** The mock mvc. */
-  private MockMvc mockMvc;
+      private MockMvc mockMvc;
 
   /** The context. */
-  @Autowired
+      @Autowired
   private WebApplicationContext context;
+
+  @Autowired
+  private GsonConverterService gsonService;
 
   /** The Status Reporter controller. */
   @InjectMocks
   private StatusReporterController srController;
-  
+
   @Autowired
   private ExpectedMockResults.Builder expectedBuilder;
 
@@ -97,6 +102,11 @@ public class StatusReporterControllerTest {
     try {
       wbs = new WorkBreakdownStructure("TEST WBS");
       wbs.description = "Testing WBS";
+
+      Activity activity = new Activity("TEST ACTIVITY");
+      activity.description = "Testing activity";
+
+      wbs.addActivity(activity);
     } catch (RequiredValueException e) {
       logger.error("failed to create wbs - other tests will fail : ", e);
     }
@@ -109,8 +119,8 @@ public class StatusReporterControllerTest {
   public void setUp() {
     MockitoAnnotations.initMocks(this);
     mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
-    
-    if(null == expectedResults) {
+
+    if (null == expectedResults) {
       expectedBuilder.url("/sr/wbs");
       expectedBuilder.postedRequestBody(wbs);
 
@@ -141,11 +151,38 @@ public class StatusReporterControllerTest {
     }
   }
 
+  @Test
+  public void test10CreateActivity() {
+    try {
+      String wbsUuid = expectedResults.getPostedRequestBody().getUuid();
+      Activity activity = wbs.getActivities().get(0);
+      String activityJson = gsonService.toJson(activity);
+      String url = expectedResults.getUrl() + "/" + wbsUuid + "/activity";
+
+      MockHttpServletRequestBuilder requestBuilder = post(url);
+      requestBuilder.contentType(MediaType.APPLICATION_JSON);
+      requestBuilder.content(activityJson);
+
+      ResultActions result = mockMvc.perform(requestBuilder);
+      MvcResult mvcResult = result.andReturn();
+      MockHttpServletResponse response = mvcResult.getResponse();
+
+      result.andExpect(status().isOk());
+
+      String jsonResponse = response.getContentAsString();
+
+      expectedResults.updatePostedRequestBody(jsonResponse);
+    } catch (Exception e) {
+      logger.error("test failed : ", e);
+      fail(e.toString());
+    }
+  }
+
   /**
    * Get all the work breakdown structures.
    */
   @Test
-  public void test1GetAllWbs() {
+  public void test80GetAllWbs() {
     try {
       ResultActions result = mockMvc.perform(get(expectedResults.getUrl()));
 
@@ -163,10 +200,11 @@ public class StatusReporterControllerTest {
   public void test99DeleteAllWbs() {
     try {
       String uuid = expectedResults.getDomainUuid();
-      /*ResultActions result = */mockMvc.perform(delete(expectedResults.getUrl() + "/" + uuid));
+      /* ResultActions result = */mockMvc
+          .perform(delete(expectedResults.getUrl() + "/" + uuid));
 
-      //MvcResult mvcResult = result.andReturn();
-      //MockHttpServletResponse response = mvcResult.getResponse();
+      // MvcResult mvcResult = result.andReturn();
+      // MockHttpServletResponse response = mvcResult.getResponse();
     } catch (Exception e) {
       logger.error("test failed : ", e);
       fail(e.toString());

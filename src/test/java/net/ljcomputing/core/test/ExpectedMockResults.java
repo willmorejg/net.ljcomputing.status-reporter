@@ -34,7 +34,7 @@ public class ExpectedMockResults {
   private String expectedValue;
   private Domain postedRequestBody;
   private String postedPathVariable;
-  
+
   ExpectedMockResults() {
   }
 

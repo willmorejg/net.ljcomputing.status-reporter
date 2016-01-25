@@ -66,6 +66,20 @@ public class StatusReporterController {
   }
 
   /**
+   * Gets the work breakdown structure by uuid.
+   *
+   * @param uuid the uuid
+   * @return the wbs by uuid
+   * @throws Exception the exception
+   */
+  @RequestMapping(value = "/wbs/{uuid}", method = RequestMethod.GET)
+  @LogResponse
+  public WorkBreakdownStructure getWbsByUuid(@PathVariable String uuid)
+      throws Exception {
+    return srService.findWbsByUuid(uuid);
+  }
+
+  /**
    * Creates or updates the work breakdown structure.
    *
    * @param wbs the wbs
@@ -90,35 +104,23 @@ public class StatusReporterController {
   @LogResponse
   public ResponseMessage deleteWbs(@PathVariable String uuid) throws Exception {
     srService.removeWbs(uuid);
-    
-    return new ResponseMessage(true, "Successfully deleted work breakdown structure." + uuid);
+
+    return new ResponseMessage(true,
+        "Successfully deleted work breakdown structure." + uuid);
   }
 
   /**
-   * Gets the work breakdown structure by uuid.
+   * Creates or update an activity.
    *
    * @param uuid the uuid
-   * @return the wbs by uuid
+   * @param activity the activity
+   * @return the activity
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/wbs/{uuid}", method = RequestMethod.GET)
+  @RequestMapping(value = "/wbs/{uuid}/activity", method = RequestMethod.POST)
   @LogResponse
-  public WorkBreakdownStructure getWbsByUuid(@PathVariable String uuid)
-      throws Exception {
-    return srService.findWbsByUuid(uuid);
-  }
-
-  /**
-   * Gets the activity by uuid.
-   *
-   * @param uuid the uuid
-   * @return the activity by uuid
-   * @throws Exception the exception
-   */
-  @RequestMapping(value = "/wbs/activity/{uuid}", method = RequestMethod.GET)
-  @LogResponse
-  public Activity getActivityByUuid(@PathVariable String uuid)
-      throws Exception {
-    return srService.findActivityByUuid(uuid);
+  public Activity createOrUpdateActivity(@PathVariable String uuid,
+      @RequestBody Activity activity) throws Exception {
+    return srService.saveActivity(activity, uuid);
   }
 }
