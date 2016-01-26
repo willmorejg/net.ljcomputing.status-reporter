@@ -17,13 +17,11 @@
 package net.ljcomputing.sr.controller;
 
 import net.ljcomputing.core.controler.ResponseMessage;
-import net.ljcomputing.logging.annotation.InjectLogging;
+import net.ljcomputing.logging.annotation.LogEvent;
 import net.ljcomputing.logging.annotation.LogResponse;
 import net.ljcomputing.sr.domain.Activity;
 import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 import net.ljcomputing.sr.service.StatusReporterService;
-
-import org.slf4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,11 +42,6 @@ import java.util.List;
 @RequestMapping("/sr")
 public class StatusReporterController {
 
-  /** The logger. */
-  @SuppressWarnings("unused")
-  @InjectLogging
-  private static Logger logger;
-
   /** The status reporter service. */
   @Autowired
   private StatusReporterService srService;
@@ -60,6 +53,7 @@ public class StatusReporterController {
    * @throws Exception the exception
    */
   @RequestMapping(value = "/wbs", method = RequestMethod.GET)
+  @LogEvent(showArgs = true)
   @LogResponse
   public List<WorkBreakdownStructure> getAllWbs() throws Exception {
     return srService.listAllWbs();
@@ -73,6 +67,7 @@ public class StatusReporterController {
    * @throws Exception the exception
    */
   @RequestMapping(value = "/wbs/{uuid}", method = RequestMethod.GET)
+  @LogEvent(showArgs = true)
   @LogResponse
   public WorkBreakdownStructure getWbsByUuid(@PathVariable String uuid)
       throws Exception {
@@ -87,6 +82,7 @@ public class StatusReporterController {
    * @throws Exception the exception
    */
   @RequestMapping(value = "/wbs", method = RequestMethod.POST)
+  @LogEvent(showArgs = true)
   @LogResponse
   public WorkBreakdownStructure createOrUpdateWbs(
       @RequestBody WorkBreakdownStructure wbs) throws Exception {
@@ -101,6 +97,7 @@ public class StatusReporterController {
    * @throws Exception the exception
    */
   @RequestMapping(value = "/wbs/{uuid}", method = RequestMethod.DELETE)
+  @LogEvent(showArgs = true)
   @LogResponse
   public ResponseMessage deleteWbs(@PathVariable String uuid) throws Exception {
     srService.removeWbs(uuid);
@@ -112,15 +109,50 @@ public class StatusReporterController {
   /**
    * Creates or update an activity.
    *
-   * @param uuid the uuid
+   * @param wbsUuid the wbs uuid
    * @param activity the activity
    * @return the activity
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/wbs/{uuid}/activity", method = RequestMethod.POST)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity",
+      method = RequestMethod.POST)
+  @LogEvent(showArgs = true)
   @LogResponse
-  public Activity createOrUpdateActivity(@PathVariable String uuid,
+  public Activity createOrUpdateActivity(@PathVariable String wbsUuid,
       @RequestBody Activity activity) throws Exception {
-    return srService.saveActivity(activity, uuid);
+    return srService.saveActivity(activity, wbsUuid);
   }
+
+  /**
+   * Gets the activity by uuid.
+   *
+   * @param uuid the uuid
+   * @return the activity by uuid
+   * @throws Exception the exception
+   */
+  @RequestMapping(value = "/activity/{uuid}", method = RequestMethod.GET)
+  @LogEvent(showArgs = true)
+  @LogResponse
+  public Activity getActivityByUuid(@PathVariable String uuid)
+      throws Exception {
+    return srService.findActivityByUuid(uuid);
+  }
+
+  /**
+   * Delete activity.
+   *
+   * @param uuid the uuid
+   * @return the response message
+   * @throws Exception the exception
+   */
+  @RequestMapping(value = "/activity/{uuid}", method = RequestMethod.DELETE)
+  @LogEvent(showArgs = true)
+  @LogResponse
+  public ResponseMessage deleteActivity(@PathVariable String uuid)
+      throws Exception {
+    srService.removeActivity(uuid);
+
+    return new ResponseMessage(true, "Successfully deleted activity.");
+  }
+
 }

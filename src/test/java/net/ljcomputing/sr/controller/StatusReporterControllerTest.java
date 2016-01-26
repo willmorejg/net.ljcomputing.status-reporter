@@ -54,6 +54,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,10 +77,11 @@ import org.mockito.MockitoAnnotations;
 public class StatusReporterControllerTest {
   /** The logger. */
   @InjectLogging
-  private static Logger logger = LoggerFactory.getLogger(StatusReporterControllerTest.class);
+  private static Logger logger = LoggerFactory
+      .getLogger(StatusReporterControllerTest.class);
 
   /** The common class unit test. */
-  @ClassRule
+      @ClassRule
   public static CommonClassUnitTest commonClassUnitTest = new CommonClassUnitTest();
 
   /** The common unit test. */
@@ -183,9 +185,9 @@ public class StatusReporterControllerTest {
 
       assertTrue("failed to create activity",
           response.getStatus() >= 200 && response.getStatus() <= 299);
-      
+
       logger.debug(response.getContentAsString());
-      
+
       url = expectedResults.getUrl() + "/" + wbsUuid;
       requestBuilder = get(url);
       result = mockMvc.perform(requestBuilder);
@@ -193,7 +195,34 @@ public class StatusReporterControllerTest {
       response = mvcResult.getResponse();
       String jsonResponse = response.getContentAsString();
       expectedResults.updatePostedRequestBody(jsonResponse);
-      logger.debug("expectedResults.getPostedRequestBody() : {}", expectedResults.getPostedRequestBody());
+      logger.debug("expectedResults.getPostedRequestBody() : {}",
+          expectedResults.getPostedRequestBody());
+    } catch (Exception e) {
+      logger.error("test failed : ", e);
+      fail(e.toString());
+    }
+  }
+
+  @Test
+  public void test14GetActivityByUuid() {
+    try {
+      WorkBreakdownStructure persistedWbs = (WorkBreakdownStructure) expectedResults
+          .getPostedRequestBody();
+      Activity activity = persistedWbs.getActivities().get(0);
+      String uuid = activity.getUuid();
+      String url = "/sr/activity/" + uuid;
+
+      MockHttpServletRequestBuilder requestBuilder = get(url);
+      requestBuilder.contentType(MediaType.APPLICATION_JSON);
+
+      ResultActions result = mockMvc.perform(requestBuilder);
+      MvcResult mvcResult = result.andReturn();
+      MockHttpServletResponse response = mvcResult.getResponse();
+
+      assertTrue("failed to get activity by uuid",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
+
+      logger.debug(response.getContentAsString());
     } catch (Exception e) {
       logger.error("test failed : ", e);
       fail(e.toString());
@@ -225,7 +254,45 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  public void test99DeleteAllWbs() {
+  public void test97DeleteActivity() {
+    try {
+      WorkBreakdownStructure persistedWbs = (WorkBreakdownStructure) expectedResults
+          .getPostedRequestBody();
+      Activity activity = persistedWbs.getActivities().get(0);
+      String uuid = activity.getUuid();
+      String url = "/sr/activity/" + uuid;
+
+      MockHttpServletRequestBuilder requestBuilder = delete(url);
+      requestBuilder.contentType(MediaType.APPLICATION_JSON);
+
+      ResultActions result = mockMvc.perform(requestBuilder);
+      MvcResult mvcResult = result.andReturn();
+      MockHttpServletResponse response = mvcResult.getResponse();
+
+      assertTrue("failed to delete activity by uuid",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
+
+      logger.debug(response.getContentAsString());
+
+      url = expectedResults.getUrl() + "/" + persistedWbs.getUuid();
+      requestBuilder = get(url);
+      result = mockMvc.perform(requestBuilder);
+      mvcResult = result.andReturn();
+      response = mvcResult.getResponse();
+      String jsonResponse = response.getContentAsString();
+      logger.debug("jsonResponse : {}", jsonResponse);
+      expectedResults.updatePostedRequestBody(jsonResponse);
+      logger.debug("expectedResults.getPostedRequestBody() : {}",
+          expectedResults.getPostedRequestBody());
+    } catch (Exception e) {
+      logger.error("test failed : ", e);
+      fail(e.toString());
+    }
+  }
+
+  @Test
+  @Ignore
+  public void test99DeleteWbs() {
     try {
       String uuid = expectedResults.getDomainUuid();
       MockHttpServletRequestBuilder requestBuilder = delete(
