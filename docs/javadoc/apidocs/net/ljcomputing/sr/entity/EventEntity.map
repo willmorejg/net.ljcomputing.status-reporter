@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../core/entity/AbstractPersistedEntity.html" title="net.ljcomputing.core.entity.AbstractPersistedEntity" alt="" coords="38,134,182,173"/>
+<area shape="rect" id="node1" href="../../core/entity/AbstractPersistedEntity.html" title="&lt;TABLE&gt;" alt="" coords="28,129,193,178"/>
+<area shape="rect" id="node5_1" href="./EventEntity.html" title="net.ljcomputing.sr.entity.EventEntity" alt="" coords="262,246,342,271"/>
+<area shape="rect" id="node5" href="./EventEntity.html" title="&lt;TABLE&gt;" alt="" coords="252,235,353,283"/>
+<area shape="rect" id="node6_2" href="./ActivityEntity.html" title="net.ljcomputing.sr.entity.ActivityEntity" alt="" coords="259,342,346,367"/>
+<area shape="rect" id="node6" href="./ActivityEntity.html" title="&lt;TABLE&gt;" alt="" coords="248,331,356,379"/>
+<area shape="rect" id="node2_3" href="../../core/entity/PersistedEntity.html" title="net.ljcomputing.core.entity.PersistedEntity" alt="" coords="46,11,175,66"/>
+<area shape="rect" id="node2" href="../../core/entity/PersistedEntity.html" title="&lt;TABLE&gt;" alt="" coords="35,6,186,71"/>
+<area shape="rect" id="node3_4" href="../../core/domain/Domain.html" title="net.ljcomputing.core.domain.Domain" alt="" coords="473,126,609,181"/>
+<area shape="rect" id="node3" href="../../core/domain/Domain.html" title="&lt;TABLE&gt;" alt="" coords="462,121,620,186"/>
+<area shape="rect" id="node4_5" href="../strategy/impl/EventStrategy.html" title="net.ljcomputing.sr.strategy.impl.EventStrategy" alt="" coords="228,134,377,173"/>
+<area shape="rect" id="node4" href="../strategy/impl/EventStrategy.html" title="&lt;TABLE&gt;" alt="" coords="217,129,388,178"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./ResponseData.html" title="net.ljcomputing.core.controler.ResponseData" alt="" coords="43,211,144,237"/>
+<area shape="rect" id="node1" href="./ResponseData.html" title="&lt;TABLE&gt;" alt="" coords="32,200,155,248"/>
+<area shape="rect" id="node2_1" href="./ResponseMessage.html" title="net.ljcomputing.core.controler.ResponseMessage" alt="" coords="31,115,156,141"/>
+<area shape="rect" id="node2" href="./ResponseMessage.html" title="&lt;TABLE&gt;" alt="" coords="20,104,167,152"/>
+<area shape="rect" id="node3_2" href="../../sr/controller/StatusReporterController.html" title="net.ljcomputing.sr.controller.StatusReporterController" alt="" coords="16,11,171,50"/>
+<area shape="rect" id="node3" href="../../sr/controller/StatusReporterController.html" title="&lt;TABLE&gt;" alt="" coords="5,6,181,55"/>
+</map>

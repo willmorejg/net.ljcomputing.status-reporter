@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="../../../core/service/AbstractDomainEntityServiceImpl.html" title="net.ljcomputing.core.service.AbstractDomainEntityServiceImpl" alt="" coords="16,19,1307,58"/>
+<area shape="rect" id="node1" href="../../../core/service/AbstractDomainEntityServiceImpl.html" title="&lt;TABLE&gt;" alt="" coords="5,14,1317,63"/>
+<area shape="rect" id="node4_1" href="./EventDomainEntityServiceImpl.html" title="net.ljcomputing.sr.service.impl.EventDomainEntityServiceImpl" alt="" coords="1180,131,1367,157"/>
+<area shape="rect" id="node4" href="./EventDomainEntityServiceImpl.html" title="&lt;TABLE&gt;" alt="" coords="1169,120,1377,168"/>
+<area shape="rect" id="node2_2" href="../../repository/ActivityEntityRepository.html" title="net.ljcomputing.sr.repository.ActivityEntityRepository" alt="" coords="1181,222,1326,277"/>
+<area shape="rect" id="node2" href="../../repository/ActivityEntityRepository.html" title="&lt;TABLE&gt;" alt="" coords="1170,217,1337,282"/>
+<area shape="rect" id="node3_3" href="../../domain/Activity.html" title="net.ljcomputing.sr.domain.Activity" alt="" coords="1372,230,1497,269"/>
+<area shape="rect" id="node3" href="../../domain/Activity.html" title="&lt;TABLE&gt;" alt="" coords="1361,225,1508,274"/>
+<area shape="rect" id="node5_4" href="../EventDomainEntityService.html" title="net.ljcomputing.sr.service.EventDomainEntityService" alt="" coords="1353,11,1517,66"/>
+<area shape="rect" id="node5" href="../EventDomainEntityService.html" title="&lt;TABLE&gt;" alt="" coords="1342,6,1527,71"/>
+</map>
