@@ -16,13 +16,15 @@
 
 package net.ljcomputing.sr.controller;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import net.ljcomputing.core.exception.RequiredValueException;
+import net.ljcomputing.core.test.CommonClassUnitTest;
+import net.ljcomputing.core.test.CommonUnitTest;
 import net.ljcomputing.core.test.ExpectedMockResults;
 import net.ljcomputing.gson.converter.GsonConverterService;
 import net.ljcomputing.logging.annotation.InjectLogging;
@@ -50,7 +52,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -72,14 +76,21 @@ import org.mockito.MockitoAnnotations;
 public class StatusReporterControllerTest {
   /** The logger. */
   @InjectLogging
-  private static Logger logger = LoggerFactory
-      .getLogger(StatusReporterControllerTest.class);
+  private static Logger logger = LoggerFactory.getLogger(StatusReporterControllerTest.class);
+
+  /** The common class unit test. */
+  @ClassRule
+  public static CommonClassUnitTest commonClassUnitTest = new CommonClassUnitTest();
+
+  /** The common unit test. */
+  @Rule
+  public CommonUnitTest commonUnitTest = new CommonUnitTest();
 
   /** The mock mvc. */
-      private MockMvc mockMvc;
+  private MockMvc mockMvc;
 
   /** The context. */
-      @Autowired
+  @Autowired
   private WebApplicationContext context;
 
   @Autowired
@@ -89,9 +100,11 @@ public class StatusReporterControllerTest {
   @InjectMocks
   private StatusReporterController srController;
 
+  /** The expected builder. */
   @Autowired
   private ExpectedMockResults.Builder expectedBuilder;
 
+  /** The expected results. */
   private static ExpectedMockResults expectedResults;
 
   /** The wbs. */
@@ -140,7 +153,8 @@ public class StatusReporterControllerTest {
       MvcResult mvcResult = result.andReturn();
       MockHttpServletResponse response = mvcResult.getResponse();
 
-      result.andExpect(status().isOk());
+      assertTrue("failed to create wbs",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
 
       String jsonResponse = response.getContentAsString();
 
@@ -167,11 +181,19 @@ public class StatusReporterControllerTest {
       MvcResult mvcResult = result.andReturn();
       MockHttpServletResponse response = mvcResult.getResponse();
 
-      result.andExpect(status().isOk());
-
+      assertTrue("failed to create activity",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
+      
+      logger.debug(response.getContentAsString());
+      
+      url = expectedResults.getUrl() + "/" + wbsUuid;
+      requestBuilder = get(url);
+      result = mockMvc.perform(requestBuilder);
+      mvcResult = result.andReturn();
+      response = mvcResult.getResponse();
       String jsonResponse = response.getContentAsString();
-
       expectedResults.updatePostedRequestBody(jsonResponse);
+      logger.debug("expectedResults.getPostedRequestBody() : {}", expectedResults.getPostedRequestBody());
     } catch (Exception e) {
       logger.error("test failed : ", e);
       fail(e.toString());
@@ -184,10 +206,16 @@ public class StatusReporterControllerTest {
   @Test
   public void test80GetAllWbs() {
     try {
-      ResultActions result = mockMvc.perform(get(expectedResults.getUrl()));
+      MockHttpServletRequestBuilder requestBuilder = get(
+          expectedResults.getUrl());
+      requestBuilder.contentType(MediaType.APPLICATION_JSON);
 
+      ResultActions result = mockMvc.perform(requestBuilder);
       MvcResult mvcResult = result.andReturn();
       MockHttpServletResponse response = mvcResult.getResponse();
+
+      assertTrue("failed to get all wbs",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
 
       logger.debug(response.getContentAsString());
     } catch (Exception e) {
@@ -200,11 +228,14 @@ public class StatusReporterControllerTest {
   public void test99DeleteAllWbs() {
     try {
       String uuid = expectedResults.getDomainUuid();
-      /* ResultActions result = */mockMvc
-          .perform(delete(expectedResults.getUrl() + "/" + uuid));
+      MockHttpServletRequestBuilder requestBuilder = delete(
+          expectedResults.getUrl() + "/" + uuid);
+      ResultActions result = mockMvc.perform(requestBuilder);
+      MvcResult mvcResult = result.andReturn();
+      MockHttpServletResponse response = mvcResult.getResponse();
 
-      // MvcResult mvcResult = result.andReturn();
-      // MockHttpServletResponse response = mvcResult.getResponse();
+      assertTrue("failed to delete wbs",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
     } catch (Exception e) {
       logger.error("test failed : ", e);
       fail(e.toString());

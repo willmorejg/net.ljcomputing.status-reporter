@@ -132,12 +132,12 @@ public class GlobalExceptionController {
    */
   @Order(Ordered.HIGHEST_PRECEDENCE)
   @ExceptionHandler(NoEntityFoundException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
   public @ResponseBody ErrorInfo handleAllNoEntityFoundExceptions(
       HttpServletRequest req, Exception exception) {
     logger.warn("No entity found : {}:", req.getRequestURL().toString());
     
-    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.NOT_FOUND,
         req.getRequestURL().toString(), exception);
   }
 

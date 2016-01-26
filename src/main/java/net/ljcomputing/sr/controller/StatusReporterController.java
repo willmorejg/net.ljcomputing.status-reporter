@@ -106,7 +106,7 @@ public class StatusReporterController {
     srService.removeWbs(uuid);
 
     return new ResponseMessage(true,
-        "Successfully deleted work breakdown structure." + uuid);
+        "Successfully deleted work breakdown structure.");
   }
 
   /**

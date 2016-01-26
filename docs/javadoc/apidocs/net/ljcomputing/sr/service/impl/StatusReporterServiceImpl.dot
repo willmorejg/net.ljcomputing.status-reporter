@@ -86,10 +86,10 @@ digraph G {
 	c2727:p -> c2730:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Event
 	c2727:p -> c2723:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
-	c2727:p -> c2724:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
 	c2727:p -> c2722:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
+	c2727:p -> c2724:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.ActivityDomainEntityService DEPEND net.ljcomputing.sr.domain.Activity
 	c2729:p -> c2724:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.EventDomainEntityService DEPEND net.ljcomputing.sr.domain.Activity
@@ -98,9 +98,9 @@ digraph G {
 	c2731:p -> c2722:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Event
 	c2732:p -> c2723:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
-	c2732:p -> c2724:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.WorkBreakdownStructure
 	c2732:p -> c2722:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
+	c2732:p -> c2724:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

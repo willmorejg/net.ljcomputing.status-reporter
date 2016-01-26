@@ -69,7 +69,7 @@ public class StatusReporterUseCaseTests {
       .getLogger(StatusReporterUseCaseTests.class);
 
   /** The common class unit test. */
-      @ClassRule
+  @ClassRule
   public static CommonClassUnitTest commonClassUnitTest = new CommonClassUnitTest();
 
   /** The common unit test. */

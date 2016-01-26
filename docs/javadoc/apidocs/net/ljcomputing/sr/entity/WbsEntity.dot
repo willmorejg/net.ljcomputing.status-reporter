@@ -87,10 +87,10 @@ digraph G {
 	c2910:p -> c2909:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.repository.WbsEntityRepository DEPEND net.ljcomputing.sr.entity.WbsEntity
 	c2902:p -> c2910:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.WbsEntity
-	c2904:p -> c2910:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.ActivityEntity
 	c2904:p -> c2909:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.WbsEntity
+	c2904:p -> c2910:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.strategy.impl.WbsStrategy DEPEND net.ljcomputing.sr.entity.WbsEntity
 	c2907:p -> c2910:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
