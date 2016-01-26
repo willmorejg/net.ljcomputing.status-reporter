@@ -18,7 +18,6 @@ package net.ljcomputing.sr.service.impl;
 
 import net.ljcomputing.core.exception.NoEntityFoundException;
 import net.ljcomputing.core.exception.RequiredValueException;
-import net.ljcomputing.logging.annotation.InjectLogging;
 import net.ljcomputing.sr.domain.Activity;
 import net.ljcomputing.sr.domain.Event;
 import net.ljcomputing.sr.domain.WorkBreakdownStructure;
@@ -26,8 +25,6 @@ import net.ljcomputing.sr.service.ActivityDomainEntityService;
 import net.ljcomputing.sr.service.EventDomainEntityService;
 import net.ljcomputing.sr.service.StatusReporterService;
 import net.ljcomputing.sr.service.WbsDomainEntityService;
-
-import org.slf4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,11 +40,6 @@ import java.util.List;
  */
 @Service
 public class StatusReporterServiceImpl implements StatusReporterService {
-
-  /** The logger. */
-  @SuppressWarnings("unused")
-  @InjectLogging
-  private static Logger logger;
 
   /** The work breakdown structure service. */
   @Autowired
@@ -117,9 +109,12 @@ public class StatusReporterServiceImpl implements StatusReporterService {
           throws RequiredValueException, NoEntityFoundException {
     WorkBreakdownStructure wbs = wbsService.findById(wbsUuid);
     activity.setWbs(wbs);
+    
     Activity domain = activityService.createOrUpdate(activity);
     wbs.addActivity(domain);
+    
     wbsService.createOrUpdate(wbs);
+    
     return activityService.findById(domain.getUuid());
   }
 
@@ -170,9 +165,12 @@ public class StatusReporterServiceImpl implements StatusReporterService {
       throws RequiredValueException, NoEntityFoundException {
     Activity activity = activityService.findById(activityUuid);
     event.setActivity(activity);
+    
     Event domain = eventService.createOrUpdate(event);
     activity.addEvent(domain);
+    
     activityService.createOrUpdate(activity);
+    
     return eventService.findById(domain.getUuid());
   }
 
@@ -199,6 +197,7 @@ public class StatusReporterServiceImpl implements StatusReporterService {
       throws RequiredValueException, NoEntityFoundException {
     Event event = eventService.findById(eventUuid);
     event.endTime = new Date();
+    
     return eventService.createOrUpdate(event);
   }
 

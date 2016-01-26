@@ -54,7 +54,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -144,7 +143,7 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  public void test0CreateWbs() {
+  public void test000CreateWbs() {
     try {
       MockHttpServletRequestBuilder requestBuilder = post(
           expectedResults.getUrl());
@@ -168,7 +167,7 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  public void test10CreateActivity() {
+  public void test010CreateActivity() {
     try {
       String wbsUuid = expectedResults.getPostedRequestBody().getUuid();
       Activity activity = wbs.getActivities().get(0);
@@ -204,7 +203,7 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  public void test14GetActivityByUuid() {
+  public void test014GetActivityByUuid() {
     try {
       WorkBreakdownStructure persistedWbs = (WorkBreakdownStructure) expectedResults
           .getPostedRequestBody();
@@ -233,7 +232,7 @@ public class StatusReporterControllerTest {
    * Get all the work breakdown structures.
    */
   @Test
-  public void test80GetAllWbs() {
+  public void test080GetAllWbs() {
     try {
       MockHttpServletRequestBuilder requestBuilder = get(
           expectedResults.getUrl());
@@ -254,7 +253,7 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  public void test97DeleteActivity() {
+  public void test097DeleteActivity() {
     try {
       WorkBreakdownStructure persistedWbs = (WorkBreakdownStructure) expectedResults
           .getPostedRequestBody();
@@ -273,17 +272,28 @@ public class StatusReporterControllerTest {
           response.getStatus() >= 200 && response.getStatus() <= 299);
 
       logger.debug(response.getContentAsString());
+    } catch (Exception e) {
+      logger.error("test failed : ", e);
+      fail(e.toString());
+    }
+  }
 
-      url = expectedResults.getUrl() + "/" + persistedWbs.getUuid();
-      requestBuilder = get(url);
-      result = mockMvc.perform(requestBuilder);
-      mvcResult = result.andReturn();
-      response = mvcResult.getResponse();
-      String jsonResponse = response.getContentAsString();
-      logger.debug("jsonResponse : {}", jsonResponse);
-      expectedResults.updatePostedRequestBody(jsonResponse);
-      logger.debug("expectedResults.getPostedRequestBody() : {}",
-          expectedResults.getPostedRequestBody());
+
+  @Test
+  public void test100GetAllWbs() {
+    try {
+      MockHttpServletRequestBuilder requestBuilder = get(
+          expectedResults.getUrl());
+      requestBuilder.contentType(MediaType.APPLICATION_JSON);
+
+      ResultActions result = mockMvc.perform(requestBuilder);
+      MvcResult mvcResult = result.andReturn();
+      MockHttpServletResponse response = mvcResult.getResponse();
+
+      assertTrue("failed to get all wbs",
+          response.getStatus() >= 200 && response.getStatus() <= 299);
+
+      logger.debug(response.getContentAsString());
     } catch (Exception e) {
       logger.error("test failed : ", e);
       fail(e.toString());
@@ -291,8 +301,7 @@ public class StatusReporterControllerTest {
   }
 
   @Test
-  @Ignore
-  public void test99DeleteWbs() {
+  public void test199DeleteWbs() {
     try {
       String uuid = expectedResults.getDomainUuid();
       MockHttpServletRequestBuilder requestBuilder = delete(
