@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href='webjars/bootstrap/3.3.6/css/bootstrap.min.css' rel="stylesheet">
+
+    <!-- FontAwesome CSS -->
+    <link href='webjars/font-awesome/4.5.0/css/font-awesome.min.css' rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   
+   <!-- AngularJS --> 
+   <script src="webjars/angularjs/1.4.8/angular.min.js"></script>
+   <script src="webjars/angularjs/1.4.8/angular-route.min.js"></script>
+   <script src="webjars/angularjs/1.4.8/angular-animate.min.js"></script>
+   <script src="webjars/angularjs/1.4.8/angular-sanitize.min.js"></script>
+   <script src="webjars/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+   <script src="webjars/angular-ui-date/0.0.11/src/date.js"></script>
+   
+   <!-- Application-specific JS -->
+   <script src="js/app.js"></script>
+   <script src="js/status-reporter/sr.js"></script>
+   <script src="js/wbs/wbsModule.js"></script>
+   <script src="js/activity/activityModule.js"></script>
+   <script src="js/event/eventModule.js"></script>
+    
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            
+            <div class="container-fluid" ng-controller="dateController">
+             <div class="row">
+              <div class="col-md-6">
+               <label>Format: <span class="muted-text">(manual alternate <em>{{altInputFormats[0]}}</em>)
+               </span></label> <select
+                class="form-control"
+                ng-model="format"
+                ng-options="f for f in formats"
+               ><option></option></select>
+              </div>
+             </div>
+             <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="picker.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openPicker()"  tooltip-placement="right" uib-tooltip="{{pickerTooltip}}" tooltip-class="customClass"><i class="fa fa-calendar"></i></button>
+                  </span>
+                </div>
+              </div>
+             </div>
+            </div>
+        
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12" ng-controller="wbsController" ng-view>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Simple Sidebar</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i id="sidebar-pointer" class="fa fa-chevron-left"></i>Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#sidebar-pointer").toggleClass("fa-chevron-left");
+    });
+    </script>
+
+</body>
+
+</html>
