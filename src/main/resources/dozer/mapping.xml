@@ -7,8 +7,7 @@
   <class-a>net.ljcomputing.sr.entity.WbsEntity</class-a>
   <class-b
    map-null="true"
-   map-empty-string="true">net.ljcomputing.sr.domain.WorkBreakdownStructure
-  </class-b>
+   map-empty-string="true">net.ljcomputing.sr.domain.WorkBreakdownStructure</class-b>
   <field>
    <a>uuid</a>
    <b is-accessible="true">uuid</b>

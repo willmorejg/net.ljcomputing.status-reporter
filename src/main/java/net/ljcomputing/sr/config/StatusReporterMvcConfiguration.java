@@ -55,10 +55,8 @@ public class StatusReporterMvcConfiguration extends WebMvcConfigurerAdapter {
    */
       @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    if (!registry.hasMappingForPattern("/**")) {
-      registry.addResourceHandler("/**")
-          .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
-    }
+    registry.addResourceHandler("/**")
+        .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
   }
 
   /**
