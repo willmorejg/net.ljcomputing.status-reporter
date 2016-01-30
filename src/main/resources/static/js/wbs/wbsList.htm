@@ -78,13 +78,13 @@
    </tr>
   </thead>
   <tbody>
-   <tr dir-paginate="wbs in wbsList | searchFilter:search:wbs | orderBy:sortKey:reverse | itemsPerPage:5">
+   <tr dir-paginate="wbs in recordsShown = (wbsList | searchFilter:search) | orderBy:sortKey:reverse | itemsPerPage:5">
     <td>{{wbs.name}}</td>
     <td>{{wbs.description}}</td>
    </tr>
   </tbody>
  </table>
-
+<div>Showing {{recordsShown.length}} of {{wbsList.length}}</div>
  <dir-pagination-controls
   max-size="5"
   direction-links="true"

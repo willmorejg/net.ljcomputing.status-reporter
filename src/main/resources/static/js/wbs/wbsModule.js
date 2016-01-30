@@ -114,8 +114,6 @@
         wbsService.getAll()
           .success(function(data){
             $scope.wbsList = data;
-            console.log('data : ', data);
-            console.log('$scope.wbsList : ', $scope.wbsList);
           })
           .error(function(error){
             $scope.status = error.message;

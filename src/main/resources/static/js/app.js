@@ -8,7 +8,7 @@
       , 'ui.bootstrap.tooltip'
       , 'angularUtils.directives.dirPagination'
       ]
-  )
+  );
   
   myApp.config([ '$routeProvider', '$locationProvider',
       function($routeProvider, $locationProvider) {
@@ -30,22 +30,21 @@
   
   myApp.filter('searchFilter', function(){
     return function(items, forWhat) {
+      if(!forWhat) {
+        return items;
+      }
       
       var results = [];
       
       angular.forEach(items, function(item){
-        console.log('item : ', item);
-        console.log('forWhat : ', forWhat);
         var itemName = item.name;
         if(itemName) {
-          console.log('item.name.toLowerCase() : ', item.name.toLowerCase());
-          console.log('item.name.toLowerCase().indexOf(forWhat) !== -1 : ', item.name.toLowerCase().indexOf(forWhat) !== -1);
           if(item.name.toLowerCase().indexOf(forWhat) !== -1) {
             results.push(item);
           }
         }
       })
-      
+
       return results;
     }
   });
