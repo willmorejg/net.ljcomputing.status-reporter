@@ -36,16 +36,17 @@
       }
       
       var results = [];
-      
-      angular.forEach(items, function(item){
-        var itemName = item.name;
-        if(itemName) {
-          if(item.name.toLowerCase().indexOf(forWhat) !== -1) {
-            results.push(item);
-          }
-        }
-      })
 
+      _.forEach(items, function(item) {
+        var s = JSON.stringify(item);
+        console.log('s : ', s);
+        if(s.indexOf(forWhat) !== -1) {
+          results.push(item);
+        }
+      });
+//--
+      
+      
       return results;
     }
   });
