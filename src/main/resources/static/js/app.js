@@ -48,5 +48,11 @@
       return results;
     }
   });
+  
+  myApp.filter('searchFilterCount', function(){
+    return function(items) {
+      return items ? items.length : 0;
+    }
+  });
 
 })();
