@@ -30,20 +30,22 @@
       }]);
   
   myApp.filter('searchFilter', function(){
-    return function(items, forWhat) {
-      if(!forWhat) {
+    return function(items, search) {
+      if(!search) {
         return items;
       }
       
+      var forWhat = search.toLowerCase();
       var results = [];
 
-      _.forEach(items, function(item) {
-        var s = JSON.stringify(item);
-        console.log('s : ', s);
-        if(s.indexOf(forWhat) !== -1) {
-          results.push(item);
-        }
-      });
+      if(forWhat) {
+        _.forEach(items, function(item) {
+          var s = JSON.stringify(item).toString().toLowerCase();
+          if(s && s.indexOf(forWhat) !== -1) {
+            results.push(item);
+          }
+        });
+      }
 //--
       
       
