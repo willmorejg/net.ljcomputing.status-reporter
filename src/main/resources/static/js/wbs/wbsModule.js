@@ -96,6 +96,14 @@
        * List of Wbs's
        */
       $scope.wbsList;
+      
+      /**
+       * Sorting functionality
+       */
+      $scope.sort = function(key) {
+        $scope.sortKey = key;
+        $scope.reverse = !$scope.reverse;
+      }
   
       getAll();
       
