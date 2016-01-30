@@ -46,6 +46,7 @@
   <webjars-jquery.version>2.1.4</webjars-jquery.version>
   <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
   <webjars-momentjs.version>2.11.0</webjars-momentjs.version>
+  <webjars-lodash.version>4.0.0</webjars-lodash.version>
   <webjars-angularjs.version>1.4.8</webjars-angularjs.version>
   <webjars-angular-moment.version>0.10.1</webjars-angular-moment.version>
   <webjars-fullcalendar.version>2.4.0</webjars-fullcalendar.version>
@@ -53,6 +54,7 @@
   <webjars-angular-ui-bootstrap.version>0.14.3</webjars-angular-ui-bootstrap.version>
   <webjars-angular-bootstrap-calendar.version>0.18.1</webjars-angular-bootstrap-calendar.version>
   <webjars-angular-ui-date.version>0.0.11</webjars-angular-ui-date.version>
+  <webjars-angular-ui-tree.version>2.13.0</webjars-angular-ui-tree.version>
   <webjars-svg.version>2.1.0</webjars-svg.version>
 
  </properties>
@@ -152,8 +154,7 @@
   <dependency>
    <groupId>org.hibernate</groupId>
    <artifactId>hibernate-validator</artifactId>
-   <version>${hibernate-validator.version}</version>
-  </dependency>
+   </dependency>
 
   <dependency>
    <groupId>com.zaxxer</groupId>
@@ -236,18 +237,6 @@
 
   <dependency>
    <groupId>org.webjars</groupId>
-   <artifactId>ionicons</artifactId>
-   <version>${webjars-ionicons.version}</version>
-  </dependency>
-
-  <dependency>
-   <groupId>org.webjars.bower</groupId>
-   <artifactId>material-design-iconic-font</artifactId>
-   <version>${webjars-material-design-iconic-font.version}</version>
-  </dependency>
-
-  <dependency>
-   <groupId>org.webjars</groupId>
    <artifactId>jquery</artifactId>
    <version>${webjars-jquery.version}</version>
   </dependency>
@@ -262,6 +251,12 @@
    <groupId>org.webjars</groupId>
    <artifactId>momentjs</artifactId>
    <version>${webjars-momentjs.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.webjars</groupId>
+   <artifactId>lodash</artifactId>
+   <version>${webjars-lodash.version}</version>
   </dependency>
 
   <dependency>
@@ -301,6 +296,12 @@
   </dependency>
 
   <dependency>
+   <groupId>org.webjars</groupId>
+   <artifactId>angular-ui-tree</artifactId>
+   <version>${webjars-angular-ui-tree.version}</version>
+  </dependency>
+
+  <dependency>
    <groupId>org.webjars.bower</groupId>
    <artifactId>svg.js</artifactId>
    <version>${webjars-svg.version}</version>
@@ -317,6 +318,12 @@
     <artifactId>ehcache-core</artifactId>
     <version>${ehcache-core.version}</version>
    </dependency>
+
+  <dependency>
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-validator</artifactId>
+   <version>${hibernate-validator.version}</version>
+  </dependency>
 
   </dependencies>
 
