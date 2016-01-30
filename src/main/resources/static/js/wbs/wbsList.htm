@@ -78,7 +78,7 @@
    </tr>
   </thead>
   <tbody>
-   <tr dir-paginate="wbs in wbsList | filter:search | orderBy:sortKey:reverse | itemsPerPage:5">
+   <tr dir-paginate="wbs in wbsList | searchFilter:search:wbs | orderBy:sortKey:reverse | itemsPerPage:5">
     <td>{{wbs.name}}</td>
     <td>{{wbs.description}}</td>
    </tr>
