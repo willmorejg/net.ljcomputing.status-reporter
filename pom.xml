@@ -55,6 +55,7 @@
   <webjars-angular-bootstrap-calendar.version>0.18.1</webjars-angular-bootstrap-calendar.version>
   <webjars-angular-ui-date.version>0.0.11</webjars-angular-ui-date.version>
   <webjars-angular-ui-tree.version>2.13.0</webjars-angular-ui-tree.version>
+  <webjars-angular-ui-router.version>0.2.17</webjars-angular-ui-router.version>
   <webjars-svg.version>2.1.0</webjars-svg.version>
 
  </properties>
@@ -299,6 +300,12 @@
    <groupId>org.webjars</groupId>
    <artifactId>angular-ui-tree</artifactId>
    <version>${webjars-angular-ui-tree.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.webjars</groupId>
+   <artifactId>angular-ui-router</artifactId>
+   <version>${webjars-angular-ui-router.version}</version>
   </dependency>
 
   <dependency>

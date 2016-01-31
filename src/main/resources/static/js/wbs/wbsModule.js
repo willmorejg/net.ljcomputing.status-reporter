@@ -13,85 +13,83 @@
      * Factory related to Wbs functionality
      */
     wbsModule.factory('wbsFactory', ['$http', function($http) {
+      $http.defaults.headers.post["Content-Type"] = 'application/json';
       
       /**
        * Constructor.
        */
-      var wbs = {};
+      var me = {};
       
       /**
        * Get all the Wbs's.
        */
-      wbs.getAll = function() {
+      me.getAll = function() {
         return $http.get(path);
       }
       
       /**
        * Get Wbs by UUID.
        */
-      wbs.getByUuid = function(uuid) {
+      me.getByUuid = function(uuid) {
         return $http.get(path + '/' + uuid);
       }
       
       /**
        * Create or update a Wbs.
        */
-      wbs.createOrUpdate = function(data) {
-        return $http.post(url, data);
+      me.createOrUpdate = function(data) {
+        return $http.post(path, data);
       }
       
       /**
        * Delete Wbs by UUID.
        */
-      wbs.deleteByUuid = function(uuid) {
+      me.deleteByUuid = function(uuid) {
         return $http.delete(path + '/' + uuid);
       }
       
-      return wbs;
+      return me;
     }]);
     /**
      * Service related to Wbs functionality
      */
-    wbsModule.service('wbsService', ['$http', 'wbsFactory', function($http, wbs){
+    wbsModule.service('wbsService', ['wbsFactory', function(wbsFactory){
+      var me = {};
+      
       /**
        * Get all the Wbs's.
        */
-      wbs.getAll = function() {
-        return $http.get(path);
+      me.getAll = function() {
+        return wbsFactory.getAll();
       }
       
       /**
        * Get Wbs by UUID.
        */
-      wbs.getByUuid = function(uuid) {
-        return $http.get(path + '/' + uuid);
+      me.getByUuid = function(uuid) {
+        return wbsFactory.getByUuid(uuid);
       }
       
       /**
        * Create or update a Wbs.
        */
-      wbs.createOrUpdate = function(data) {
-        return $http.post(url, data);
+      me.createOrUpdate = function(data) {
+        return wbsFactory.createOrUpdate(data);
       }
       
       /**
        * Delete Wbs by UUID.
        */
-      wbs.deleteByUuid = function(uuid) {
-        return $http.delete(path + '/' + uuid);
+      me.deleteByUuid = function(uuid) {
+        return wbsFactory.deleteByUuid(uuid);
       }
       
-      return wbs;
+      return me;
     }]);
     /**
      * Controller related to Wbs functionality
      */
-    wbsModule.controller('wbsController', ['$scope', 'wbsService', function($scope, wbsService){
-      /**
-       * Status
-       */
-      $scope.status;
-      
+    wbsModule.controller('wbsController', ['$scope', '$state', '$uibModal', 'wbsService', function($scope, $state, $uibModal, wbsService){
       /**
        * List of Wbs's
        */
@@ -116,7 +114,7 @@
             $scope.wbsList = data;
           })
           .error(function(error){
-            $scope.status = error.message;
+            toastr.danger(error.message);
           });
       }
       
@@ -129,7 +127,7 @@
             $scope.wbsList = data;
           })
           .error(function(error){
-            $scope.status = error.message;
+            toastr.danger(error.message);
           });
       }
       
@@ -139,10 +137,10 @@
       $scope.createOrUpdate = function(data) {
         wbsService.createOrUpdate(data)
           .success(function(){
-            $scope.status = 'Saved successfully';
+            toastr.success('Saved successfully');
           })
           .error(function(error){
-            $scope.status = error.message;
+            toastr.danger(error.message);
           });
       }
       
@@ -152,12 +150,39 @@
       $scope.deleteByUuid = function(uuid) {
         wbsService.deleteByUuid(uuid)
           .success(function(){
-            $scope.status = 'Deleted successfully';
+            toastr.success('Deleted successfully');
+            $scope.wbsList = [];
+            getAll();
           })
           .error(function(error){
-            $scope.status = error.message;
+            toastr.danger(error.message);
           });
       }
-    }]);
+      
+      $scope.edit = function(data) {
+        $scope.wbs = data;
+        var modalInstance = $uibModal.open({
+          templateUrl : 'js/wbs/wbsModal.htm',
+          controller : 'wbsModalController',
+          backdrop : 'static',
+          scope : $scope
+        });
+        
+        modalInstance.result.then(function (data) {
+          $scope.createOrUpdate(data);
+        }, function () {
+        });
 
+      }
+    }]);
+    
+    wbsModule.controller('wbsModalController', function($scope, $uibModalInstance){
+      $scope.save = function () {
+        $uibModalInstance.close($scope.wbs);
+      };
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    });
 })();

@@ -1,6 +1,6 @@
 (function() {
   var myApp = angular.module('myApp', [ 
-        'ngRoute'
+      'ui.router'
       , 'ngAnimate'
       , 'ngSanitize'
       , 'ui.bootstrap'
@@ -8,33 +8,33 @@
       , 'ui.bootstrap.tooltip'
       , 'angularUtils.directives.dirPagination'
       , 'ui.tree'
+      , 'ui.router'
       ]
   );
   
-  myApp.config([ '$routeProvider', '$locationProvider',
-      function($routeProvider, $locationProvider) {
-        $routeProvider
-        .when('/home', {
-          templateUrl : 'js/wbs/wbsList.htm',
-          controller : 'wbsController'
-        })
-        .when('/contact', {
-          templateUrl : 'js/status-reporter/contact.htm'
-        })
-        .when('/about', {
-          templateUrl : 'js/status-reporter/about.htm'
-        })
-        .otherwise({
-          redirectTo : 'home'
-        });
-      }]);
+    myApp.config(['$stateProvider', '$urlRouterProvider',
+        function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/about');
+    
+    $stateProvider
+      .state('home', {
+        url : '/home',
+        templateUrl : 'js/wbs/wbsList.htm',
+        controller : 'wbsController'
+      })
+      .state('about', {
+        url : '/about',
+        templateUrl : 'js/status-reporter/about.htm'
+      });
+  }]);
   
   myApp.filter('searchFilter', function(){
     return function(items, search) {
       if(!search) {
         return items;
       }
-      
+
       var forWhat = search.toLowerCase();
       var results = [];
 
@@ -46,8 +46,6 @@
           }
         });
       }
-//--
-      
       
       return results;
     }

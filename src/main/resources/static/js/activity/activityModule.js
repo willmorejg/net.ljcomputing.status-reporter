@@ -10,8 +10,13 @@ var activityModule = angular.module('myApp');
     /**
      * Base REST API URL.
      */
-    var path = '';
-    
+    var wbsPath = 'sr/wbs';
+
+    /**
+     * Base REST API URL.
+     */
+    var path = '/activity';
+
     /**
      * Constructor.
      */
@@ -34,7 +39,8 @@ var activityModule = angular.module('myApp');
     /**
      * Create or update a Activity.
      */
-    activity.createOrUpdate = function(data) {
+    activity.createOrUpdate = function(data, wbsUuid) {
+      var url = wbsPath + wbsUuid + path;
       return $http.post(url, data);
     }
     
@@ -73,7 +79,8 @@ var activityModule = angular.module('myApp');
     /**
      * Create or update a Activity.
      */
-    activity.createOrUpdate = function(data) {
+    activity.createOrUpdate = function(data, wbsUuid) {
+      var url = wbsPath + wbsUuid + path;
       return $http.post(url, data);
     }
     
@@ -100,7 +107,7 @@ var activityModule = angular.module('myApp');
      */
     $scope.activityList;
 
-    getAll();
+    //getAll();
     
     /**
      * Get all the Activity's.
@@ -131,8 +138,8 @@ var activityModule = angular.module('myApp');
     /**
      * Create or update a Activity.
      */
-    $scope.createOrUpdate = function(data) {
-      activityService.createOrUpdate(data)
+    $scope.createOrUpdate = function(data, wbsUuid) {
+      activityService.createOrUpdate(data, wbsUuid)
         .success(function(){
           $scope.status = 'Saved successfully';
         })
