@@ -1,5 +1,16 @@
 <div class="well well-sm">
+
+ <div class="container-fluid">
+    <div class="col-sm-2">
  
+      <button 
+       type="button" 
+       class="form-control btn btn-primary fa fa-plus-square fa-1x" 
+       ng-click="edit()">Add WBS</button>
+ 
+    </div>
+ </div>
+
  <div class="container-fluid" ng-controller="dateController">
  <form class="form">
   <div class="form-group">
@@ -46,14 +57,14 @@
       placeholder="Search" 
       tooltip-placement="right" 
       uib-tooltip="{{searchTooltip}}" 
-      tooltip-class="customClass">
+      tooltip-class="customClass" />
 
    </div>
 
   </div>
  </form>
 
- <table class="table table-responsive table-condensed table-bordered table-striped table-hover">
+ <table class="table table-responsive table-condensed table-bordered table-striped table-hover" style="width: auto !important;">
   <thead>
    <tr>
     <th class="col-sm-1">&nbsp;</th>

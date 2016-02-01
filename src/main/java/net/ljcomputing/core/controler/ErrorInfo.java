@@ -19,6 +19,9 @@ package net.ljcomputing.core.controler;
 
 import org.springframework.http.HttpStatus;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+
 /**
  * Error information.
  * 
@@ -55,7 +58,14 @@ public class ErrorInfo {
 		this.error = status.getReasonPhrase();
 		this.path = path;
 
-		if (null != exception.getLocalizedMessage()) {
+		if(exception instanceof ConstraintViolationException) {
+		  StringBuffer eb = new StringBuffer("The save failed validation as follows: ");
+		  for(ConstraintViolation<?> cv : ((ConstraintViolationException) exception).getConstraintViolations()) {
+		    eb.append(cv.getMessage() + ",");
+		  }
+		  eb.reverse().replace(0, 1, "").reverse();
+		  this.message = eb.toString();
+		} else if (null != exception.getLocalizedMessage()) {
 			this.message = exception.getLocalizedMessage();
 		} else if (null != exception.getMessage()) {
 			this.message = exception.getMessage();

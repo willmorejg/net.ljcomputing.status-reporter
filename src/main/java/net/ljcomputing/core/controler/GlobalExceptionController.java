@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -139,6 +140,27 @@ public class GlobalExceptionController {
     
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.NOT_FOUND,
         req.getRequestURL().toString(), exception);
+  }
+
+  /**
+   * Handle all constraint violation exceptions.
+   *
+   * @param req the req
+   * @param exception the exception
+   * @return the error info
+   */
+  @Order(Ordered.HIGHEST_PRECEDENCE)
+  @ExceptionHandler(ConstraintViolationException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public @ResponseBody ErrorInfo handleAllConstraintViolationExceptions(
+      HttpServletRequest req, Exception exception) {
+    ConstraintViolationException cve = (ConstraintViolationException) exception;
+    
+    logger.warn("A required value is missing : {}:",
+        req.getRequestURL().toString());
+    
+    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
+        req.getRequestURL().toString(), cve);
   }
 
   /**
