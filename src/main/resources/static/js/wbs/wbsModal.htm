@@ -9,13 +9,13 @@
       <div class="form-group">
   
         <label class="control-label" for="name">Name : </label>
-        <input id="name" name="name" type="text" class="form-control" ng-model="wbs.name" required/>
+        <input id="name" name="name" type="text" class="form-control" ng-model="wbs.name" required ng-minlength="3" ng-maxlength="20"/>
         <div ng-messages="wbsForm.name.$error">
           <div ng-messages-include="js/status-reporter/error-messages.htm"></div>
         </div>
   
         <label class="control-label for="description">Description : </label>
-        <input id="description" name="description" type="text" class="form-control" ng-model="wbs.description"/>
+        <input id="description" name="description" type="text" class="form-control" ng-model="wbs.description" ng-maxlength="255"/>
   
       </div>
     </form>

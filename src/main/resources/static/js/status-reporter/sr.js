@@ -75,12 +75,18 @@
       
       me.success = function(message) {
         toastr.success(message, 'Success!', {
-          timeout : 600
+          timeOut : 4000,
+          showDuration : 600,
+          hideDurarion : 600
         });
       };
       
       me.failure = function(message) {
-        toastr.error(message, 'FAILED');
+        toastr.error(message, 'FAILED', {
+          timeOut : 0,
+          showDuration : 600,
+          hideDurarion : 600
+        });
       };
       
       return me;
