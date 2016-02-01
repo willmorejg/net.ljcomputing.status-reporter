@@ -129,8 +129,27 @@
 
 /* begin custom styles */
 .tooltip.customClass .tooltip-inner {
+    font-size: 12pt;
     color: #000000;
-    background-color: #ffffff;
+    background-color: #a3cce5;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    width: 125px;
+    width: 175px;
+}
+
+.error {
+  font-size: 16px;
+  background-color: #bd362f;
+  color: #ffffff;
+}
+
+.error::before {
+    display: inline-block;
+    margin-right: .5em;
+    font: normal normal normal 16px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+    content: "\f06a"
 }

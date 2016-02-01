@@ -16,7 +16,7 @@
   <div class="form-group">
     <label class="control-label col-sm-1" for="dateInput">Date</label>
 
-    <div class="form-inline col-sm-4">
+    <div class="form-inline col-sm-3">
 
      <input 
       id="dateInput" 
@@ -33,10 +33,11 @@
      <button 
       type="button" 
       class="form-control btn btn-default fa fa-calendar" 
-      ng-click="openPicker()" 
+      ng-click="openPicker()"></button>
+    <i class="fa fa-question-circle fa-1x" 
       tooltip-placement="right" 
       uib-tooltip="{{pickerTooltip}}" 
-      tooltip-class="customClass"></button>
+      tooltip-class="customClass"></i>
     
     </div>
 
@@ -46,24 +47,26 @@
 
    <label class="control-label col-sm-1" for="searchInput">Search</label>
 
-   <div class="col-sm-4">
+   <div>
 
      <input 
       id="searchInput" 
       type="text" 
       ng-model="search" 
-      class="form-control"
-      style="width: 275px;" 
-      placeholder="Search" 
+      class="form-control col-sm-3"
+      style="width: 245px;" 
+      placeholder="Search" />
+    <i class="fa fa-question-circle fa-1x" 
       tooltip-placement="right" 
       uib-tooltip="{{searchTooltip}}" 
-      tooltip-class="customClass" />
+      tooltip-class="customClass"></i>
 
    </div>
 
   </div>
  </form>
-
+</div>
+<div class="container-fluid">
  <table class="table table-responsive table-condensed table-bordered table-striped table-hover" style="width: auto !important;">
   <thead>
    <tr>
