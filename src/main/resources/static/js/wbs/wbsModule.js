@@ -89,24 +89,7 @@
     /**
      * Controller related to Wbs functionality
      */
-    wbsModule.controller('wbsController', ['$scope', '$state', '$uibModal', 'wbsService', function($scope, $state, $uibModal, wbsService){
-      toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": true,
-          "progressBar": true,
-          "positionClass": "toast-top-right",
-          "preventDuplicates": true,
-          "onclick": null,
-          "showDuration": "600",
-          "hideDuration": "600",
-          "timeOut": "0",
-          "extendedTimeOut": "6000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        };
+    wbsModule.controller('wbsController', ['$scope', '$state', '$uibModal', 'utilService', 'toastrService', 'wbsService', function($scope, $state, $uibModal, utilService, toastrService, wbsService){
       
       /**
        * List of Wbs's
@@ -132,7 +115,7 @@
             $scope.wbsList = data;
           })
           .error(function(error){
-            toastr.error(error.message);
+            toastrService.failure(error.message);
           });
       }
       
@@ -145,7 +128,7 @@
             $scope.wbsList = data;
           })
           .error(function(error){
-            toastr.error(error.message);
+            toastrService.failure(error.message);
           });
       }
       
@@ -159,11 +142,11 @@
               $scope.wbsList = [];
             }
 
-            $scope.wbsList.push(data);
-            toastr.success('Saved successfully');
+            utilService.updateArray($scope.wbsList, data);
+            toastrService.success('Saved successfully');
           })
           .error(function(error){
-            toastr.error(error.message);
+            toastrService.failure(error.message);
           });
       }
       
@@ -173,17 +156,17 @@
       $scope.deleteByUuid = function(uuid) {
         wbsService.deleteByUuid(uuid)
           .success(function(){
-            toastr.success('Deleted successfully');
+            toastrService.success('Deleted successfully');
             $scope.wbsList = [];
             getAll();
           })
           .error(function(error){
-            toastr.error(error.message);
+            toastrService.failure(error.message);
           });
       }
       
       $scope.edit = function(data) {
-        $scope.wbs = data ? data : {'name' : '', 'description' : ''};
+        $scope.wbs = data ? _.cloneDeep(data) : {'name' : '', 'description' : ''};
         var modalInstance = $uibModal.open({
           templateUrl : 'js/wbs/wbsModal.htm',
           controller : 'wbsModalController',
@@ -193,7 +176,6 @@
         
         modalInstance.result.then(function (data) {
           $scope.createOrUpdate(data);
-        }, function () {
         });
 
       }

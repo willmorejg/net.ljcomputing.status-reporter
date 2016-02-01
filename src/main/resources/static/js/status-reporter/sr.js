@@ -35,4 +35,54 @@
         $scope.format = 'MMMM dd, yyyy';
         $scope.altInputFormats = ['M!/d!/yyyy'];
   }]);
+    
+    sr.service('utilService', function(){
+      var me = {};
+      
+      me.updateArray = function(ary, el) {
+        var idx = _.findIndex(ary, _.pick(el, 'uuid'));
+        
+        if(idx !== -1) {
+          ary.splice(idx, 1, el);
+        } else {
+          ary.push(el);
+        }
+      };
+      
+      return me;
+    });
+    
+    sr.service('toastrService', function(){
+      toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": true,
+          "progressBar": true,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": true,
+          "onclick": null,
+          "showDuration": "600",
+          "hideDuration": "600",
+          "timeOut": "0",
+          "extendedTimeOut": "6000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        };
+      
+      var me = {};
+      
+      me.success = function(message) {
+        toastr.success(message, 'Success!', {
+          timeout : 600
+        });
+      };
+      
+      me.failure = function(message) {
+        toastr.error(message, 'FAILED');
+      };
+      
+      return me;
+    });
 })();

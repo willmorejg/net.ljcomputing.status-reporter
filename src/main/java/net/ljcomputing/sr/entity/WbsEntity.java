@@ -78,7 +78,7 @@ public class WbsEntity extends AbstractPersistedEntity
    *
    * @return the name
    */
-  @Column(name = "name", insertable = true, updatable = false, nullable = false,
+  @Column(name = "name", insertable = true, updatable = true, nullable = false,
       unique = true)
   @NotNull(message = "name may not be null")
   @NotEmpty(message = "name may not be empty")

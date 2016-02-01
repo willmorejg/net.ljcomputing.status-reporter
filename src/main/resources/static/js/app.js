@@ -3,6 +3,7 @@
       'ui.router'
       , 'ngAnimate'
       , 'ngSanitize'
+      , 'ngMessages'
       , 'ui.bootstrap'
       , 'ui.bootstrap.datepicker'
       , 'ui.bootstrap.tooltip'
