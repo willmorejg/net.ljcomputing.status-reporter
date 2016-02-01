@@ -34,6 +34,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Activity entity.
@@ -87,6 +88,7 @@ public class ActivityEntity extends AbstractPersistedEntity
   @Column(name = "name", insertable = true, updatable = false, nullable = false,
       unique = true)
   @NotNull(message = "name may not be null")
+  @NotEmpty(message = "name may not be empty")
   public String getName() {
     return name;
   }
