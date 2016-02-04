@@ -3,17 +3,17 @@
      * Module related to Wbs functionality.
      */
     var wbsModule = angular.module('myApp');
-
-    /**
-     * Base REST API URL.
-     */
-    var path = 'sr/wbs';
     
     /**
      * Factory related to Wbs functionality
      */
-    wbsModule.factory('wbsFactory', ['$http', function($http) {
+    wbsModule.factory('wbsFactory', ['REST_API', '$http', function(REST_API, $http) {
       $http.defaults.headers.post["Content-Type"] = 'application/json';
+
+      /**
+       * Base REST API URL.
+       */
+      var path = REST_API.WBS.BASE;
       
       /**
        * Constructor.
@@ -89,12 +89,29 @@
     /**
      * Controller related to Wbs functionality
      */
-    wbsModule.controller('wbsController', ['$scope', '$state', '$uibModal', 'utilService', 'toastrService', 'wbsService', function($scope, $state, $uibModal, utilService, toastrService, wbsService){
+    wbsModule.controller('wbsController', 
+        [
+           '$scope'
+         , '$state'
+         , '$uibModal'
+         , 'utilService'
+         , 'toastrService'
+         , 'wbsService'
+         , 'activityService', 
+        function(
+              $scope
+            , $state
+            , $uibModal
+            , utilService
+            , toastrService
+            , wbsService
+            , activityService
+            ){
       
       /**
        * List of Wbs's
        */
-      $scope.wbsList;
+      $scope.wbsList = [];
       
       /**
        * Sorting functionality
@@ -103,7 +120,16 @@
         $scope.sortKey = key;
         $scope.reverse = !$scope.reverse;
       }
-  
+
+    $scope.menuOptions = [
+        ['Update', function ($itemScope, $event) {
+          $scope.edit($itemScope.wbs);
+        }],
+        ['Remove', function ($itemScope, $event) {
+          $scope.deleteByUuid($itemScope.wbs.uuid);
+        }]
+    ];
+
       getAll();
       
       /**
@@ -113,6 +139,7 @@
         wbsService.getAll()
           .success(function(data){
             $scope.wbsList = data;
+            toastrService.success('Data refreshed successfully');
           })
           .error(function(error){
             toastrService.failure(error.message);
@@ -142,7 +169,7 @@
               $scope.wbsList = [];
             }
 
-            utilService.updateArray($scope.wbsList, data);
+            getAll();
             toastrService.success('Saved successfully');
           })
           .error(function(error){
@@ -167,6 +194,7 @@
       
       $scope.edit = function(data) {
         $scope.wbs = data ? _.cloneDeep(data) : {'name' : '', 'description' : ''};
+        $scope.action = _.isUndefined(data) ? 'Edit' : 'Add';
         var modalInstance = $uibModal.open({
           templateUrl : 'js/wbs/wbsModal.htm',
           controller : 'wbsModalController',
@@ -179,11 +207,45 @@
         });
 
       }
+      
+      $scope.addActivity = function(wbs) {
+        $scope.wbs = wbs
+        $scope.wbsUuid = wbs.uuid;
+        $scope.activity = {'name' : '', 'description' : ''};
+        $scope.action = 'Add';
+        var modalInstance = $uibModal.open({
+          templateUrl : 'js/activity/activityModal.htm',
+          controller : 'activityModalController',
+          backdrop : 'static',
+          scope : $scope
+        });
+        
+        modalInstance.result.then(function (data) {
+          activityService.createOrUpdate(data, $scope.wbsUuid)
+          .success(function(data){
+            toastrService.success('Saved successfully');
+            getAll();
+          })
+          .error(function(error){
+            toastrService.failure(error.message);
+          });
+        });
+      }
     }]);
     
     wbsModule.controller('wbsModalController', function($scope, $uibModalInstance){
       $scope.save = function () {
         $uibModalInstance.close($scope.wbs);
+      };
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    });
+    
+    wbsModule.controller('activityModalController', function($scope, $uibModalInstance){
+      $scope.save = function () {
+        $uibModalInstance.close($scope.activity);
       };
 
       $scope.cancel = function () {

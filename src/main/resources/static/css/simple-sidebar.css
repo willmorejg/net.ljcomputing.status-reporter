@@ -18,16 +18,16 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-right: 250px;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    right: 250px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-right: -250px;
     overflow-y: auto;
     background: #F5F5F5;
     -webkit-transition: all 0.5s ease;
@@ -152,4 +152,8 @@
     -moz-osx-font-smoothing: grayscale;
     transform: translate(0, 0);
     content: "\f06a"
+}
+
+body > .dropdown {
+    background-color: rgba(0, 0, 0, 0.1);
 }

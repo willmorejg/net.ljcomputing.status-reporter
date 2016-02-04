@@ -65,14 +65,16 @@
 
   </div>
  </form>
-</div>
-<div class="container-fluid">
+
  <table class="table table-responsive table-condensed table-bordered table-striped table-hover" style="width: auto !important;">
   <thead>
    <tr>
-    <th class="col-sm-1">&nbsp;</th>
     <th class="col-sm-4" ng-click="sort('wbs.name')">
       Name
+      <i class="fa fa-question-circle fa-1x" 
+        tooltip-placement="right" 
+        uib-tooltip="{{contextMenuTooltip}}" 
+        tooltip-class="customClass"></i>
       <span class="fa sort-icon" ng-show="sortKey=='wbs.name'" ng-class="{'fa-chevron-up':!reverse,'fa-chevron-down':reverse}"></span>
     </th>
     <th class="col-sm-4" ng-click="sort('wbs.description')">
@@ -86,11 +88,11 @@
   </thead>
   <tbody>
    <tr dir-paginate="wbs in recordsShown = (wbsList | searchFilter:search) | orderBy:sortKey:reverse | itemsPerPage:5">
-    <td ng-click="deleteByUuid(wbs.uuid)"><a>Delete</a></td>
-    <td ng-click="edit(wbs)"><a>{{wbs.name}}</a></td>
+    <td context-menu="menuOptions">{{wbs.name}}</td>
     <td>{{wbs.description}}</td>
     <td>
-      <span ng-show="wbs.activities.length > 0">Show</span>
+      <span ng-show="wbs.activities.length == 0" ng-click="addActivity(wbs)"><a>Add</a></span>
+      <span ng-show="wbs.activities.length != 0">Show</span>
     </td>
    </tr>
   </tbody>

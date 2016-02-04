@@ -10,6 +10,7 @@
       , 'angularUtils.directives.dirPagination'
       , 'ui.tree'
       , 'ui.router'
+      , 'ui.bootstrap.contextMenu'
       ]
   );
   
@@ -29,6 +30,15 @@
         templateUrl : 'js/status-reporter/about.htm'
       });
   }]);
+    
+    myApp.constant('REST_API', {
+      "WBS" : {
+        "BASE" : 'sr/wbs'
+      },
+      "ACTIVITY" : {
+        "BASE" : '/activity'
+      }
+    });
   
   myApp.filter('searchFilter', function(){
     return function(items, search) {
@@ -41,8 +51,9 @@
 
       if(forWhat) {
         _.forEach(items, function(item) {
-          var s = JSON.stringify(item).toString().toLowerCase();
-          if(s && s.indexOf(forWhat) !== -1) {
+          var json = JSON.stringify(item).toString().toLowerCase();
+          var target = json.replace(/\"uuid\":\".*\"/igm, "");
+          if(target && target.indexOf(forWhat) !== -1) {
             results.push(item);
           }
         });

@@ -5,6 +5,7 @@
       $scope.pickerTooltip = $sce.trustAsHtml('Click to change date');
       $scope.dateInputTooltip = $sce.trustAsHtml('Use the date picker to select a date, or enter it here');
       $scope.searchTooltip = $sce.trustAsHtml('Enter text to search for in the list');
+      $scope.contextMenuTooltip = $sce.trustAsHtml('Right mouse click a name to edit or update');
         
         $scope.today = function() {
           $scope.dt = new Date();
@@ -47,6 +48,8 @@
         } else {
           ary.push(el);
         }
+        
+        return _.sortBy(ary, 'name');
       };
       
       return me;
