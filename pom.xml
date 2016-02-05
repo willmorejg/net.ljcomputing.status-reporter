@@ -54,8 +54,8 @@
   <webjars-angular-ui-bootstrap.version>0.14.3</webjars-angular-ui-bootstrap.version>
   <webjars-angular-bootstrap-calendar.version>0.18.1</webjars-angular-bootstrap-calendar.version>
   <webjars-angular-ui-date.version>0.0.11</webjars-angular-ui-date.version>
-  <webjars-angular-ui-tree.version>2.13.0</webjars-angular-ui-tree.version>
   <webjars-angular-ui-router.version>0.2.17</webjars-angular-ui-router.version>
+  <webjars-angular-tree-control.version>0.2.22</webjars-angular-tree-control.version>
   <webjars-svg.version>2.1.0</webjars-svg.version>
 
  </properties>
@@ -107,12 +107,12 @@
    <artifactId>javax.interceptor-api</artifactId>
    <version>1.2</version>
   </dependency>
- 
+
   <dependency>
    <groupId>javax.servlet</groupId>
    <artifactId>jstl</artifactId>
   </dependency>
-  
+
   <dependency>
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-starter-test</artifactId>
@@ -155,7 +155,7 @@
   <dependency>
    <groupId>org.hibernate</groupId>
    <artifactId>hibernate-validator</artifactId>
-   </dependency>
+  </dependency>
 
   <dependency>
    <groupId>com.zaxxer</groupId>
@@ -296,16 +296,17 @@
    <version>${webjars-angular-ui-date.version}</version>
   </dependency>
 
-  <dependency>
-   <groupId>org.webjars</groupId>
-   <artifactId>angular-ui-tree</artifactId>
-   <version>${webjars-angular-ui-tree.version}</version>
-  </dependency>
 
   <dependency>
    <groupId>org.webjars</groupId>
    <artifactId>angular-ui-router</artifactId>
    <version>${webjars-angular-ui-router.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.webjars</groupId>
+   <artifactId>angular-tree-control</artifactId>
+   <version>${webjars-angular-tree-control.version}</version>
   </dependency>
 
   <dependency>
@@ -326,11 +327,11 @@
     <version>${ehcache-core.version}</version>
    </dependency>
 
-  <dependency>
-   <groupId>org.hibernate</groupId>
-   <artifactId>hibernate-validator</artifactId>
-   <version>${hibernate-validator.version}</version>
-  </dependency>
+   <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>${hibernate-validator.version}</version>
+   </dependency>
 
   </dependencies>
 
@@ -428,7 +429,9 @@
       <artifactId>umlgraph</artifactId>
       <version>5.6.6</version>
      </docletArtifact>
-     <additionalparam>-inferrel -inferdep -quiet -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9 -nodefontpackagesize 7</additionalparam>
+     <additionalparam>-inferrel -inferdep -quiet -hide java.*
+      -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9
+      -nodefontpackagesize 7</additionalparam>
      <tags>
       <tag>
        <name>todo</name>

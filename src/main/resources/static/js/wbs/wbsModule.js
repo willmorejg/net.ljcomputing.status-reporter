@@ -107,12 +107,12 @@
             , wbsService
             , activityService
             ){
-      
+
       /**
        * List of Wbs's
        */
       $scope.wbsList = [];
-      
+        
       /**
        * Sorting functionality
        */
@@ -120,16 +120,38 @@
         $scope.sortKey = key;
         $scope.reverse = !$scope.reverse;
       }
-
-    $scope.menuOptions = [
-        ['Update', function ($itemScope, $event) {
-          $scope.edit($itemScope.wbs);
-        }],
-        ['Remove', function ($itemScope, $event) {
-          $scope.deleteByUuid($itemScope.wbs.uuid);
-        }]
-    ];
-
+        
+      $scope.treeOptions = {
+        nodeChildren : 'activities',
+        isLeaf : function(node) {
+          var isWbs = true;
+          //console.log('node : ', node);
+          if(!node.activities) {
+            isWbs = false;
+          }
+          //console.log('isWbs : ', isWbs);
+        }
+      };
+        
+      $scope.showSelected = function(sel) {
+          $scope.selectedNode = sel;
+          console.log('$scope.selectedNode : ', $scope.selectedNode);
+          if(!$scope.selectedNode.activities) {
+            
+          } else {
+            $scope.edit($scope.selectedNode);
+          }
+      };
+  
+      $scope.menuOptions = [
+          ['Update', function ($itemScope, $event) {
+            $scope.edit($itemScope.wbs);
+          }],
+          ['Remove', function ($itemScope, $event) {
+            $scope.deleteByUuid($itemScope.wbs.uuid);
+          }]
+      ];
+  
       getAll();
       
       /**

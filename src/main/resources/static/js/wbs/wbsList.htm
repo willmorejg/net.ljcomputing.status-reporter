@@ -11,6 +11,10 @@
     </div>
  </div>
 
+<treecontrol class="tree-classic" tree-model="wbsList" options="treeOptions" on-selection="showSelected(node)">
+     {{node.name}} - {{node.description}}
+</treecontrol>
+
  <div class="container-fluid" ng-controller="dateController">
  <form class="form">
   <div class="form-group">

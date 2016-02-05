@@ -8,9 +8,9 @@
       , 'ui.bootstrap.datepicker'
       , 'ui.bootstrap.tooltip'
       , 'angularUtils.directives.dirPagination'
-      , 'ui.tree'
       , 'ui.router'
       , 'ui.bootstrap.contextMenu'
+      , 'treeControl'
       ]
   );
   
