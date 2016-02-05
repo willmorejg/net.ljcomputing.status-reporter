@@ -157,3 +157,8 @@
 body > .dropdown {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.uiGrid {
+  width: 400px;
+  height: 250px;  
+}

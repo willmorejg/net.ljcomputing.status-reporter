@@ -11,6 +11,7 @@
       , 'ui.tree'
       , 'ui.router'
       , 'ui.bootstrap.contextMenu'
+      , 'ui.grid'
       ]
   );
   

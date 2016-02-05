@@ -56,6 +56,7 @@
   <webjars-angular-ui-date.version>0.0.11</webjars-angular-ui-date.version>
   <webjars-angular-ui-tree.version>2.13.0</webjars-angular-ui-tree.version>
   <webjars-angular-ui-router.version>0.2.17</webjars-angular-ui-router.version>
+  <webjars-angular-ui-grid.version>3.1.0</webjars-angular-ui-grid.version>
   <webjars-svg.version>2.1.0</webjars-svg.version>
 
  </properties>
@@ -306,6 +307,12 @@
    <groupId>org.webjars</groupId>
    <artifactId>angular-ui-router</artifactId>
    <version>${webjars-angular-ui-router.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.webjars.bower</groupId>
+   <artifactId>angular-ui-grid</artifactId>
+   <version>${webjars-angular-ui-grid.version}</version>
   </dependency>
 
   <dependency>
