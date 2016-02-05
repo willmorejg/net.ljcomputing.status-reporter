@@ -113,6 +113,11 @@
        */
       $scope.wbsList = [];
       
+      $scope.columnDefs = [
+        {field : 'name'}
+        , {field : 'description'}
+      ];
+      
       /**
        * Sorting functionality
        */
