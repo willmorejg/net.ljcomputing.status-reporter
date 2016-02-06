@@ -105,7 +105,8 @@
         sort: {
           direction: uiGridConstants.ASC,
           priority: 0
-        }
+        },
+        cellTemplate: '<div><span class="ui-grid-cell-contents">{{MODEL_COL_FIELD}}</span></div>'
       }, {
         field: 'description'
       }];
@@ -119,6 +120,7 @@
       $scope.gridOptions.pageSize = 10;
       $scope.gridOptions.paginationPageSizes = [10, 25, 50, 100, 250, 500];
       $scope.gridOptions.enablePaginationControls = false;
+      $scope.gridOptions.rowTemplate = 'js/wbs/wbsRow.htm';
       
       $scope.gridOptions.onRegisterApi = function (gridApi) {
         $scope.gridApi = gridApi;
@@ -135,11 +137,17 @@
       }
 
       $scope.menuOptions = [
-        ['Update', function($itemScope, $event) {
-          $scope.edit($itemScope.wbs);
-        }],
-        ['Remove', function($itemScope, $event) {
-          $scope.deleteByUuid($itemScope.wbs.uuid);
+//        ['Update', function($itemScope, $event, model) {
+//          console.log('$itemScope : ', $itemScope);
+//          console.log('$event : ', $event);
+//          console.log('model : ', model);
+//          $scope.edit(model);
+//        }],
+        ['Remove', function($itemScope, $event, model) {
+          console.log('$itemScope : ', $itemScope);
+          console.log('$event : ', $event);
+          console.log('model : ', model);
+          $scope.deleteByUuid(model.uuid);
         }]
       ];
 
@@ -210,7 +218,7 @@
           'name': '',
           'description': ''
         };
-        $scope.action = _.isUndefined(data) ? 'Edit' : 'Add';
+        $scope.action = _.isUndefined(data) ? 'Add' : 'Edit';
         var modalInstance = $uibModal.open({
           templateUrl: 'js/wbs/wbsModal.htm',
           controller: 'wbsModalController',

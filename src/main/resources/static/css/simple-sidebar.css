@@ -154,10 +154,6 @@
     content: "\f06a"
 }
 
-body > .dropdown {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
 .uiGrid {
   width: 1000px;
   height: 390px;  
@@ -170,4 +166,17 @@ body > .dropdown {
 
 .wbsGrid .ui-grid-filter-input {
   color: #000000;
+}
+
+.wbsGrid .ui-grid-row:hover .ui-grid-cell {
+  background-color: #dddddd;
+}
+
+body > .dropdown {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+body > .dropdown a:hover {
+  background-color: #337ab7;
+  color: #ffffff;
 }
