@@ -90,9 +90,9 @@
    * Controller related to Wbs functionality
    */
   wbsModule.controller('wbsController', [
-    '$scope', '$state', '$uibModal', 'uiGridConstants', 'utilService', 'toastrService', 'wbsService', 'activityService',
+    '$scope', '$state', '$uibModal', 'uiGridConstants', 'alertFactory', 'utilService', 'toastrService', 'wbsService', 'activityService',
     function(
-      $scope, $state, $uibModal, uiGridConstants, utilService, toastrService, wbsService, activityService
+      $scope, $state, $uibModal, uiGridConstants, alertFactory, utilService, toastrService, wbsService, activityService
     ) {
       /**
        * Alerts array
@@ -142,16 +142,27 @@
             row.entity.subGridOptions = {
                 data: row.entity.activities,
                 columnDefs: [
-                  {field: 'name',
-                    cellTemplate: '<span class="ui-grid-cell-contents" ng-click="row.entity.subGridOptions.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
-                  },
-                  {field: 'description'}
+                  {
+                    field: 'name',
+                    cellTemplate: '<span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
+                  }, {
+                    field: 'description'
+                  }
                 ]
             };
           }
+          
+          row.entity.subGridOptions.appScopeProvider = $scope.subGridScope;
         });
         
         $scope.gridApi = gridApi;
+      };
+      
+      $scope.subGridScope = {
+          edit: function(data) {
+            console.log('ok');
+            $scope.edit(data);
+          }
       };
 
       /**
@@ -210,10 +221,7 @@
             toastrService.success('Data refreshed successfully');
           })
           .error(function(error) {
-            $scope.alerts.push({
-              type: 'danger',
-              msg: error.message
-            });
+            $scope.alerts.push(alertFactory.errorAlert(error));
           });
       }
 
@@ -228,10 +236,7 @@
             $scope.wbsList = data;
           })
           .error(function(error) {
-            $scope.alerts.push({
-              type: 'danger',
-              msg: error.message
-            });
+            $scope.alerts.push(alertFactory.errorAlert(error));
           });
       }
 
@@ -251,10 +256,7 @@
             toastrService.success('Saved successfully');
           })
           .error(function(error) {
-            $scope.alerts.push({
-              type: 'danger',
-              msg: error.message
-            });
+            $scope.alerts.push(alertFactory.errorAlert(error));
           });
       }
 
@@ -271,10 +273,7 @@
             getAll();
           })
           .error(function(error) {
-            $scope.alerts.push({
-              type: 'danger',
-              msg: error.message
-            });
+            $scope.alerts.push(alertFactory.errorAlert(error));
           });
       }
 
@@ -329,10 +328,7 @@
               getAll();
             })
             .error(function(error) {
-              $scope.alerts.push({
-                type: 'danger',
-                msg: error.message
-              });
+              $scope.alerts.push(alertFactory.errorAlert(error));
             });
         });
       }

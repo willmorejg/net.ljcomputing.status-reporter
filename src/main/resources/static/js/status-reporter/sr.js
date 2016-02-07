@@ -55,6 +55,21 @@
 
     return me;
   });
+  
+  sr.factory('alertFactory', ['ALERTS', function(ALERTS){
+    var me = {};
+    
+    me.errorAlert = function(error) {
+      var msg = (error && error.message) ? error.message : ALERTS.UNKNOWN.MESSAGE;
+      
+      return {
+        type: 'danger',
+        msg: msg
+      };
+    }
+    
+    return me;
+  }]);
 
   sr.service('toastrService', function() {
     toastr.options = {
