@@ -94,7 +94,9 @@
     function(
       $scope, $state, $uibModal, uiGridConstants, utilService, toastrService, wbsService, activityService
     ) {
-
+      /**
+       * Alerts array
+       */
       $scope.alerts = [];
       
       /**
@@ -102,17 +104,23 @@
        */
       $scope.wbsList = [];
 
+      /**
+       * Work breakdown structure column definitions
+       */
       var columnDefs = [{
         field: 'name',
         sort: {
           direction: uiGridConstants.ASC,
           priority: 0
         },
-        cellTemplate: '<div><span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span></div>'
+        cellTemplate: '<span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
       }, {
         field: 'description'
       }];
       
+      /**
+       * ng-grid options for the work breakdown structure grid
+       */
       $scope.gridOptions = {};
       $scope.gridOptions.data= 'wbsList';
       $scope.gridOptions.enableSorting = true;
@@ -120,7 +128,7 @@
       $scope.gridOptions.columnDefs = columnDefs;
       $scope.gridOptions.pageNumber = 1;
       $scope.gridOptions.pageSize = 10;
-      $scope.gridOptions.paginationPageSizes = [10, 25, 50, 100, 250, 500];
+      $scope.gridOptions.paginationPageSizes = [10, 10, 25, 50, 100, 250, 500];
       $scope.gridOptions.enablePaginationControls = false;
       $scope.gridOptions.rowTemplate = 'js/wbs/wbsRow.htm';
       $scope.gridOptions.expandableRowHeight = 150;
@@ -135,7 +143,7 @@
                 data: row.entity.activities,
                 columnDefs: [
                   {field: 'name',
-                    cellTemplate: '<div><span class="ui-grid-cell-contents" ng-click="row.entity.subGridOptions.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span></div>'
+                    cellTemplate: '<span class="ui-grid-cell-contents" ng-click="row.entity.subGridOptions.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
                   },
                   {field: 'description'}
                 ]
@@ -145,8 +153,24 @@
         
         $scope.gridApi = gridApi;
       };
+
+      /**
+       * Change the pagination page size.
+       * 
+       * @param pageSize
+       */
+      $scope.changePageSize = function(pageSize) {
+        $scope.gridOptions.paginationPageSize = pageSize;
+      }
       
-      console.log('$scope.gridOptions : ', $scope.gridOptions);
+      /**
+       * Get the total number of pages based upon the total items and and pagination size.
+       */
+      $scope.getTotalPages = function() {
+        return ($scope.gridOptions.totalItems / $scope.gridOptions.paginationPageSize) >= 1 ? 
+            ($scope.gridOptions.totalItems / $scope.gridOptions.paginationPageSize) : 
+              1;
+      }
 
       /**
        * Sorting functionality
@@ -156,6 +180,9 @@
         $scope.reverse = !$scope.reverse;
       }
 
+      /**
+       * Context menu items
+       */
       $scope.menuOptions = [
 //        ['Update', function($itemScope, $event, model) {
 //          console.log('$itemScope : ', $itemScope);
@@ -164,9 +191,9 @@
 //          $scope.edit(model);
 //        }],
         ['Remove', function($itemScope, $event, model) {
-          console.log('$itemScope : ', $itemScope);
-          console.log('$event : ', $event);
-          console.log('model : ', model);
+//          console.log('$itemScope : ', $itemScope);
+//          console.log('$event : ', $event);
+//          console.log('model : ', model);
           $scope.deleteByUuid(model.uuid);
         }]
       ];
@@ -192,6 +219,8 @@
 
       /**
        * Get Wbs by UUID.
+       * 
+       * @param uuid
        */
       $scope.getByUuid = function(uuid) {
         wbsService.getByUuid(uuid)
@@ -199,12 +228,17 @@
             $scope.wbsList = data;
           })
           .error(function(error) {
-            toastrService.failure(error.message);
+            $scope.alerts.push({
+              type: 'danger',
+              msg: error.message
+            });
           });
       }
 
       /**
        * Create or update a Wbs.
+       * 
+       * @param data
        */
       $scope.createOrUpdate = function(data) {
         wbsService.createOrUpdate(data)
@@ -215,15 +249,19 @@
 
             getAll();
             toastrService.success('Saved successfully');
-            //alertService.success('Saved successfully');
           })
           .error(function(error) {
-            toastrService.failure(error.message);
+            $scope.alerts.push({
+              type: 'danger',
+              msg: error.message
+            });
           });
       }
 
       /**
        * Delete Wbs by UUID.
+       * 
+       * @param uuid
        */
       $scope.deleteByUuid = function(uuid) {
         wbsService.deleteByUuid(uuid)
@@ -233,10 +271,18 @@
             getAll();
           })
           .error(function(error) {
-            toastrService.failure(error.message);
+            $scope.alerts.push({
+              type: 'danger',
+              msg: error.message
+            });
           });
       }
 
+      /**
+       * Edit a wbs
+       * 
+       * @param data
+       */
       $scope.edit = function(data) {
         $scope.wbs = data ? _.cloneDeep(data) : {
           'name': '',
@@ -256,6 +302,11 @@
 
       }
 
+      /**
+       * Add an activity
+       * 
+       * @param wbs
+       */
       $scope.addActivity = function(wbs) {
         $scope.wbs = wbs
         $scope.wbsUuid = wbs.uuid;
@@ -278,28 +329,49 @@
               getAll();
             })
             .error(function(error) {
-              toastrService.failure(error.message);
+              $scope.alerts.push({
+                type: 'danger',
+                msg: error.message
+              });
             });
         });
       }
     }
   ]);
 
+  /**
+   * WBS modal controller
+   */
   wbsModule.controller('wbsModalController', function($scope, $uibModalInstance) {
+    /**
+     * Save the wbs, and close the modal
+     */
     $scope.save = function() {
       $uibModalInstance.close($scope.wbs);
     };
 
+    /**
+     * Cancel changes to the wbs, and close the modal
+     */
     $scope.cancel = function() {
       $uibModalInstance.dismiss('cancel');
     };
   });
 
+  /**
+   * Activity modal controller
+   */
   wbsModule.controller('activityModalController', function($scope, $uibModalInstance) {
+    /**
+     * Save the activity, and close the modal
+     */
     $scope.save = function() {
       $uibModalInstance.close($scope.activity);
     };
 
+    /**
+     * Cancel changes to the activity, and close the modal
+     */
     $scope.cancel = function() {
       $uibModalInstance.dismiss('cancel');
     };
