@@ -13,6 +13,7 @@
     , 'ui.bootstrap.contextMenu'
     , 'ui.grid'
     , 'ui.grid.pagination'
+    , 'ui.grid.expandable'
   ]);
 
   myApp.config(['$stateProvider', '$urlRouterProvider',

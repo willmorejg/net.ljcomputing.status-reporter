@@ -95,6 +95,8 @@
       $scope, $state, $uibModal, uiGridConstants, utilService, toastrService, wbsService, activityService
     ) {
 
+      $scope.alerts = [];
+      
       /**
        * List of Wbs's
        */
@@ -106,7 +108,7 @@
           direction: uiGridConstants.ASC,
           priority: 0
         },
-        cellTemplate: '<div><span class="ui-grid-cell-contents">{{MODEL_COL_FIELD}}</span></div>'
+        cellTemplate: '<div><span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span></div>'
       }, {
         field: 'description'
       }];
@@ -121,10 +123,28 @@
       $scope.gridOptions.paginationPageSizes = [10, 25, 50, 100, 250, 500];
       $scope.gridOptions.enablePaginationControls = false;
       $scope.gridOptions.rowTemplate = 'js/wbs/wbsRow.htm';
+      $scope.gridOptions.expandableRowHeight = 150;
+      $scope.gridOptions.expandableRowTemplate = 'js/activity/activityExpandedRow.htm';
       
       $scope.gridOptions.onRegisterApi = function (gridApi) {
+        gridApi.expandable.on.rowExpandedStateChanged($scope, function (row) {
+          console.log('row : ', row);
+          if (row.isExpanded) {
+            console.log('row.entity : ', row.entity);
+            row.entity.subGridOptions = {
+                data: row.entity.activities,
+                columnDefs: [
+                  {field: 'name',
+                    cellTemplate: '<div><span class="ui-grid-cell-contents" ng-click="row.entity.subGridOptions.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span></div>'
+                  },
+                  {field: 'description'}
+                ]
+            };
+          }
+        });
+        
         $scope.gridApi = gridApi;
-      }
+      };
       
       console.log('$scope.gridOptions : ', $scope.gridOptions);
 
@@ -163,7 +183,10 @@
             toastrService.success('Data refreshed successfully');
           })
           .error(function(error) {
-            toastrService.failure(error.message);
+            $scope.alerts.push({
+              type: 'danger',
+              msg: error.message
+            });
           });
       }
 
@@ -192,6 +215,7 @@
 
             getAll();
             toastrService.success('Saved successfully');
+            //alertService.success('Saved successfully');
           })
           .error(function(error) {
             toastrService.failure(error.message);

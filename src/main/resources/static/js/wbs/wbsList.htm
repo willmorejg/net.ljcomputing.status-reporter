@@ -1,126 +1,33 @@
-<div class="well well-sm">
- <div class="container-fluid">
-    <div class="col-sm-2">
+<div class="container container-fluid">
+ <div class="well">
+   <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+   <button 
+     type="button" 
+     class="btn btn-primary btn-sm fa fa-plus-square fa-1x" 
+     ng-click="edit()">
+     Add WBS
+   </button>
  
-      <button 
-       type="button" 
-       class="form-control btn btn-primary fa fa-plus-square fa-1x" 
-       ng-click="edit()">Add WBS</button>
- 
-    </div>
+  <div 
+   ui-grid="gridOptions" 
+   class="well well-sm uiGrid wbsGrid" 
+   ui-grid-pagination
+   ui-grid-expandable 
+   ui-grid-auto-resize>
+    <br/>
+    Displaying page {{gridOptions.paginationCurrentPage}} of {{ gridOptions.totalItems / gridOptions.paginationPageSize | number:0}}
+    <br/>
+    <uib-pagination 
+      class="pagination-sm" 
+      boundary-links="true" 
+      rotate="false" 
+      force-ellipses="true" 
+      max-size="4" 
+      total-items="gridOptions.totalItems" 
+      items-per-page="gridOptions.paginationPageSize" 
+      ng-model="gridOptions.paginationCurrentPage">
+    </uib-pagination>
+  
+  </div>
  </div>
-
-<div ui-grid="gridOptions" class="uiGrid wbsGrid" ui-grid-pagination ui-grid-auto-resize>
-<br/>
-Displaying page {{gridOptions.paginationCurrentPage}} of {{ gridOptions.totalItems / gridOptions.paginationPageSize | number:0}}
-<br/>
-<uib-pagination 
-  class="pagination-sm" 
-  boundary-links="true"
-  rotate="false" 
-  force-ellipses="true"
-  max-size="4"
-  total-items="gridOptions.totalItems" 
-  items-per-page="gridOptions.paginationPageSize" 
-  ng-model="gridOptions.paginationCurrentPage">
-</uib-pagination>
-
 </div>
-
-<!-- <br/> -->
-<!-- <br/> -->
-<!-- <br/> -->
-
-<!--  <div class="container-fluid" ng-controller="dateController"> -->
-<!--  <form class="form"> -->
-<!--   <div class="form-group"> -->
-<!--     <label class="control-label col-sm-1" for="dateInput">Date</label> -->
-
-<!--     <div class="form-inline col-sm-3"> -->
-
-<!--      <input  -->
-<!--       id="dateInput"  -->
-<!--       disabled="disabled" -->
-<!--       type="text"  -->
-<!--       class="form-control"  -->
-<!--       uib-datepicker-popup="{{format}}"  -->
-<!--       ng-model="dt"  -->
-<!--       is-open="picker.opened"  -->
-<!--       datepicker-options="dateOptions"  -->
-<!--       ng-required="true"  -->
-<!--       close-text="Close"  -->
-<!--       alt-input-formats="altInputFormats" /> -->
-<!--      <button  -->
-<!--       type="button"  -->
-<!--       class="form-control btn btn-default fa fa-calendar"  -->
-<!--       ng-click="openPicker()"></button> -->
-<!--     <i class="fa fa-question-circle fa-1x"  -->
-<!--       tooltip-placement="right"  -->
-<!--       uib-tooltip="{{pickerTooltip}}"  -->
-<!--       tooltip-class="customClass"></i> -->
-    
-<!--     </div> -->
-
-<!--   </div> -->
-
-<!--   <div class="form-group"> -->
-
-<!--    <label class="control-label col-sm-1" for="searchInput">Search</label> -->
-
-<!--    <div> -->
-
-<!--      <input  -->
-<!--       id="searchInput"  -->
-<!--       type="text"  -->
-<!--       ng-model="search"  -->
-<!--       class="form-control col-sm-3" -->
-<!--       style="width: 245px;"  -->
-<!--       placeholder="Search" /> -->
-<!--     <i class="fa fa-question-circle fa-1x"  -->
-<!--       tooltip-placement="right"  -->
-<!--       uib-tooltip="{{searchTooltip}}"  -->
-<!--       tooltip-class="customClass"></i> -->
-
-<!--    </div> -->
-
-<!--   </div> -->
-<!--  </form> -->
-
-<!--  <table class="table table-responsive table-condensed table-bordered table-striped table-hover" style="width: auto !important;"> -->
-<!--   <thead> -->
-<!--    <tr> -->
-<!--     <th class="col-sm-4" ng-click="sort('wbs.name')"> -->
-<!--       Name -->
-<!--       <i class="fa fa-question-circle fa-1x"  -->
-<!--         tooltip-placement="right"  -->
-<!--         uib-tooltip="{{contextMenuTooltip}}"  -->
-<!--         tooltip-class="customClass"></i> -->
-<!--       <span class="fa sort-icon" ng-show="sortKey=='wbs.name'" ng-class="{'fa-chevron-up':!reverse,'fa-chevron-down':reverse}"></span> -->
-<!--     </th> -->
-<!--     <th class="col-sm-4" ng-click="sort('wbs.description')"> -->
-<!--       Description -->
-<!--       <span class="fa sort-icon" ng-show="sortKey=='wbs.description'" ng-class="{'fa-chevron-up':!reverse,'fa-chevron-down':reverse}"></span> -->
-<!--     </th> -->
-<!--     <th class="col-sm-1"> -->
-<!--       Activities -->
-<!--     </th> -->
-<!--    </tr> -->
-<!--   </thead> -->
-<!--   <tbody> -->
-<!--    <tr dir-paginate="wbs in recordsShown = (wbsList | searchFilter:search) | orderBy:sortKey:reverse | itemsPerPage:5"> -->
-<!--     <td context-menu="menuOptions">{{wbs.name}}</td> -->
-<!--     <td>{{wbs.description}}</td> -->
-<!--     <td> -->
-<!--       <span ng-show="wbs.activities.length == 0" ng-click="addActivity(wbs)"><a>Add</a></span> -->
-<!--       <span ng-show="wbs.activities.length != 0">Show</span> -->
-<!--     </td> -->
-<!--    </tr> -->
-<!--   </tbody> -->
-<!--  </table> -->
-<!-- <div class="row"><em class="col-sm-4">Showing {{recordsShown|searchFilterCount}} of {{wbsList.length}} records.</em></div> -->
-<!--  <dir-pagination-controls -->
-<!--   max-size="5" -->
-<!--   direction-links="true" -->
-<!--   boundary-links="true"/> -->
- 
-<!-- </div> -->
