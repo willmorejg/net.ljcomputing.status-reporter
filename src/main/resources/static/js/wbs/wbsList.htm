@@ -14,7 +14,7 @@
    ui-grid-pagination
    ui-grid-expandable 
    ui-grid-auto-resize>
-     <div class="watermark" ng-show="!gridOptions.data.length">No data available</div>
+     <div class="watermark" ng-show="!gridOptions.totalItems > 0">No data available</div>
      <br/>
      Displaying page {{gridOptions.paginationCurrentPage}} of {{ getTotalPages() | number:0}}
      <br/><br/>
