@@ -1,11 +1,20 @@
+   <button 
+     type="button" 
+     class="btn btn-primary btn-sm fa fa-plus-square fa-1x" 
+     ng-click="grid.appScope.editActivity(undef, row.entity.uuid)">
+     Add Activity
+   </button>
 <div ui-grid="row.entity.subGridOptions" class="activityGrid">
  <div>
   <div 
     ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" 
     class="ui-grid-cell" 
     context-menu="grid.appScope.menuOptions" 
-    model="row.entity"
+    model="row.entity.activities"
     ui-grid-cell>
+    <div class="nodatatxt" ng-show="!row.entity.subGridOptions.data.length">
+    No data available
+    </div>
   </div>
  </div>
 </div>

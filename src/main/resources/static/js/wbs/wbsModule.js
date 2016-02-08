@@ -90,14 +90,34 @@
    * Controller related to Wbs functionality
    */
   wbsModule.controller('wbsController', [
-    '$scope', '$state', '$uibModal', 'uiGridConstants', 'alertFactory', 'utilService', 'toastrService', 'wbsService', 'activityService',
+    '$scope'
+    , '$state'
+    , '$uibModal'
+    , 'uiGridConstants'
+    , 'alertFactory'
+    , 'utilService'
+    , 'toastrService'
+    , 'wbsService'
+    , 'activityService',
     function(
-      $scope, $state, $uibModal, uiGridConstants, alertFactory, utilService, toastrService, wbsService, activityService
+      $scope
+      , $state
+      , $uibModal
+      , uiGridConstants
+      , alertFactory
+      , utilService
+      , toastrService
+      , wbsService
+      , activityService
     ) {
       /**
        * Alerts array
        */
       $scope.alerts = [];
+      
+      $scope.closeAlert = function(index) {
+        $scope.alerts.splice(index, 1);
+      };
       
       /**
        * List of Wbs's
@@ -113,7 +133,9 @@
           direction: uiGridConstants.ASC,
           priority: 0
         },
-        cellTemplate: '<span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
+        cellTemplate: '<span class="ui-grid-cell-contents"' 
+          + ' ng-click="grid.appScope.edit(row.entity)">' 
+          + '<a>{{MODEL_COL_FIELD}}</a></span>'
       }, {
         field: 'description'
       }];
@@ -136,15 +158,28 @@
       
       $scope.gridOptions.onRegisterApi = function (gridApi) {
         gridApi.expandable.on.rowExpandedStateChanged($scope, function (row) {
-          console.log('row : ', row);
+//          console.log('row : ', row);
           if (row.isExpanded) {
-            console.log('row.entity : ', row.entity);
+//            console.log('row.entity : ', row.entity);
             row.entity.subGridOptions = {
                 data: row.entity.activities,
                 columnDefs: [
                   {
+                    name: 'rowHeaderCol'
+                    , displayName: ''
+                    , width: 30
+                    , cellTemplate: '<span class="ui-grid-cell-contents">'
+                      + '<span ng-click="grid.appScope.deleteActivity(row.entity)" style="color: red;cursor: pointer;cursor: hand;"><i class="fa fa-minus-square"></i></span>'
+                      +'</span>'
+                    , enableSorting: false
+                    , enableHiding: false
+                    , enableColumnMenu: false
+                  },
+                  {
                     field: 'name',
-                    cellTemplate: '<span class="ui-grid-cell-contents" ng-click="grid.appScope.edit(row.entity)"><a>{{MODEL_COL_FIELD}}</a></span>'
+                    cellTemplate: '<span class="ui-grid-cell-contents"' 
+                      + ' ng-click="grid.appScope.editActivity(row.entity, grid.parentRow.entity.uuid)">'
+                      + '<span style="color: blue;cursor: pointer;cursor: hand;">{{MODEL_COL_FIELD}}</span></span>'
                   }, {
                     field: 'description'
                   }
@@ -159,9 +194,14 @@
       };
       
       $scope.subGridScope = {
-          edit: function(data) {
-            console.log('ok');
-            $scope.edit(data);
+          editActivity: function(data, uuid) {
+            $scope.editActivity(data, uuid);
+          },
+          menuOptions: function($itemScope, $event, model) { 
+            $scope.menuOptions($itemScope, $event, model);
+          }, 
+          deleteActivity: function(data) {
+            $scope.deleteActivity(data);
           }
       };
 
@@ -202,9 +242,9 @@
 //          $scope.edit(model);
 //        }],
         ['Remove', function($itemScope, $event, model) {
-//          console.log('$itemScope : ', $itemScope);
-//          console.log('$event : ', $event);
-//          console.log('model : ', model);
+          console.log('$itemScope : ', $itemScope);
+          console.log('$event : ', $event);
+          console.log('model : ', model);
           $scope.deleteByUuid(model.uuid);
         }]
       ];
@@ -302,18 +342,17 @@
       }
 
       /**
-       * Add an activity
+       * Edit an activity
        * 
        * @param wbs
        */
-      $scope.addActivity = function(wbs) {
-        $scope.wbs = wbs
-        $scope.wbsUuid = wbs.uuid;
-        $scope.activity = {
+      $scope.editActivity = function(data, uuid) {
+        $scope.wbsUuid = uuid;
+        $scope.activity = data ? _.cloneDeep(data) : {
           'name': '',
           'description': ''
         };
-        $scope.action = 'Add';
+        $scope.action = _.isUndefined(data) ? 'Add' : 'Edit';
         var modalInstance = $uibModal.open({
           templateUrl: 'js/activity/activityModal.htm',
           controller: 'activityModalController',
@@ -331,6 +370,17 @@
               $scope.alerts.push(alertFactory.errorAlert(error));
             });
         });
+      }
+      
+      $scope.deleteActivity = function(data) {
+        activityService.deleteByUuid(data.uuid)
+          .success(function(data) {
+            toastrService.success('Saved successfully');
+            getAll();
+          })
+          .error(function(error) {
+            $scope.alerts.push(alertFactory.errorAlert(error));
+          });
       }
     }
   ]);

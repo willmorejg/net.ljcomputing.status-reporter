@@ -28,14 +28,14 @@
      * Get all the Activity's.
      */
     me.getAll = function() {
-      return $http.get(path);
+      return $http.get('sr' + path);
     }
 
     /**
      * Get Activity by UUID.
      */
     me.getByUuid = function(uuid) {
-      return $http.get(path + '/' + uuid);
+      return $http.get('sr' + path + '/' + uuid);
     }
 
     /**
@@ -50,7 +50,7 @@
      * Delete Activity by UUID.
      */
     me.deleteByUuid = function(uuid) {
-      return $http.delete(path + '/' + uuid);
+      return $http.delete('sr' + path + '/' + uuid);
     }
 
     return me;
