@@ -8,6 +8,7 @@
     , 'ui.bootstrap.datepicker'
     , 'ui.bootstrap.tooltip'
     , 'angularUtils.directives.dirPagination'
+    , 'ngAside'
     , 'dm.stickyNav'
     , 'ui.tree'
     , 'ui.router'

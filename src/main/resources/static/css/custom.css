@@ -69,7 +69,7 @@ body {
 }
 
 .uiGrid {
-  width: 800px;
+  width: 550px;
   height: 395px;
 }
 
@@ -122,4 +122,9 @@ body > .dropdown a:hover {
   width: 100%;
   text-align: center;
   z-index: 1000;
+}
+
+.ng-aside .modal-content {
+  min-width: 100px;
+  max-width: 150px;
 }

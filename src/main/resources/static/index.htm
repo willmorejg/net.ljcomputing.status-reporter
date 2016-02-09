@@ -24,6 +24,9 @@
     
     <!-- Angular UI Grid CSS -->
     <link rel="stylesheet" href="webjars/angular-ui-grid/3.1.0/ui-grid.css">
+    
+    <!-- Angular Aside CSS -->
+    <link rel="stylesheet" href="webjars/angular-aside/1.3.0/dist/css/angular-aside.min.css">
 
     <!-- Toastr CSS -->
     <link href="js/lib/toastr/toastr.css" rel="stylesheet">
@@ -52,6 +55,7 @@
    <script src="webjars/angular-ui-tree/2.13.0/angular-ui-tree.min.js"></script>
    <script src="webjars/angular-ui-router/0.2.17/angular-ui-router.js"></script>
    <script src="webjars/angular-ui-grid/3.1.0/ui-grid.js"></script>
+   <script src="webjars/angular-aside/1.3.0/dist/js/angular-aside.min.js"></script>
    
    <!-- Third-party Angular libs -->
    <script src="js/lib/dirPagination/dirPagination.js"></script>
@@ -68,9 +72,14 @@
 </head>
 
 <body>
-<nav class="nav navbar nav-pills">
-<ng-include src="'js/status-reporter/mainMenu.htm'"></ng-include>
+<div class="container-fluid">
+<nav class="nav navbar nav-pills" ng-controller="asideCtrl" ng-class="asideState.position">
+<!-- <ng-include src="'js/status-reporter/mainMenu.htm'"></ng-include> -->
+            <button type="button" class="btn btn-info btn-lg" ng-click="openAside('left', true)">
+              <span class="fa fa-align-justify"></span>
+            </button>
 </nav>
+</div>
         <!-- Page Content -->
         <div id="page-content-wrapper">
           <div class="container-fluid">
@@ -80,9 +89,6 @@
         </div>
         <!-- /#page-content-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
 
@@ -91,15 +97,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        $("#sidebar-pointer").toggleClass("fa-chevron-left");
-    });
-    </script>
 
 </body>
 
