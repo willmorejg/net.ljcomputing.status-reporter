@@ -23,6 +23,9 @@ import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 import net.ljcomputing.sr.entity.WbsEntity;
 import net.ljcomputing.sr.repository.WbsEntityRepository;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Interface defining work breakdown structure domain entity service.
  * 
@@ -41,5 +44,27 @@ public interface WbsDomainEntityService extends
    * @throws NoEntityFoundException the no entity found exception
    */
   WorkBreakdownStructure findByName(String name)
+      throws RequiredValueException, NoEntityFoundException;
+  
+  /**
+   * Find events for today.
+   *
+   * @return the list
+   * @throws RequiredValueException the required value exception
+   * @throws NoEntityFoundException the no entity found exception
+   */
+  List<WorkBreakdownStructure> findEventsForToday() 
+      throws RequiredValueException, NoEntityFoundException;
+  
+  /**
+   * Find work breakdown structures where associated events are between two dates.
+   *
+   * @param start the start
+   * @param end the end
+   * @return the list
+   * @throws RequiredValueException the required value exception
+   * @throws NoEntityFoundException the no entity found exception
+   */
+  List<WorkBreakdownStructure> findEventsBetween(Date start, Date end) 
       throws RequiredValueException, NoEntityFoundException;
 }

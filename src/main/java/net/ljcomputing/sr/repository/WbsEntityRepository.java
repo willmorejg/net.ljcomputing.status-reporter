@@ -19,7 +19,11 @@ package net.ljcomputing.sr.repository;
 import net.ljcomputing.core.repository.BaseRepository;
 import net.ljcomputing.sr.entity.WbsEntity;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Work breakdown structure entity repository.
@@ -37,4 +41,14 @@ public interface WbsEntityRepository extends BaseRepository<WbsEntity, String> {
    * @return the wbs entity
    */
   WbsEntity findByName(String name);
+  
+  /**
+   * Find work breakdown structures where associated events are between two dates.
+   *
+   * @param start the start
+   * @param end the end
+   * @return the list
+   */
+  @Query("SELECT w FROM WbsEntity w JOIN w.activities a JOIN a.events e WHERE e.startTime >= ?1 AND e.endTime <= ?2")
+  List<WbsEntity> findEventsBetween(Date start, Date end);
 }

@@ -73,12 +73,14 @@
 
 <body>
 <div class="container-fluid">
-<nav class="nav navbar nav-pills" ng-controller="asideCtrl" ng-class="asideState.position">
+<!-- <nav class="nav navbar nav-pills" role="navigation" ng-controller="asideCtrl" ng-class="asideState.position"> -->
+<div ng-controller="asideCtrl" ng-class="asideState.position">
 <!-- <ng-include src="'js/status-reporter/mainMenu.htm'"></ng-include> -->
             <button type="button" class="btn btn-info btn-lg" ng-click="openAside('left', true)">
               <span class="fa fa-align-justify"></span>
             </button>
-</nav>
+</div>
+<!-- </nav> -->
 </div>
         <!-- Page Content -->
         <div id="page-content-wrapper">

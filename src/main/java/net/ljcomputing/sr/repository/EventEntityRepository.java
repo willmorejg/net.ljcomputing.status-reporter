@@ -22,6 +22,7 @@ import net.ljcomputing.sr.entity.EventEntity;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,4 +42,13 @@ public interface EventEntityRepository
    * @return the list
    */
   List<EventEntity> findByActivity(ActivityEntity activityEntity);
+  
+  /**
+   * Find by start time between.
+   *
+   * @param start the start
+   * @param end the end
+   * @return the list
+   */
+  List<EventEntity> findByStartTimeBetween(Date start, Date end);
 }

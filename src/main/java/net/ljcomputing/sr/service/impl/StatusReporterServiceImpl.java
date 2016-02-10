@@ -84,6 +84,22 @@ public class StatusReporterServiceImpl implements StatusReporterService {
       throws RequiredValueException, NoEntityFoundException {
     return wbsService.findByName(wbsName);
   }
+  
+  /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findWbsForToday()
+   */
+  public final List<WorkBreakdownStructure> findWbsForToday() 
+      throws RequiredValueException, NoEntityFoundException {
+    return wbsService.findEventsForToday();
+  }
+  
+  /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findEventsBetween(java.util.Date, java.util.Date)
+   */
+  public final List<WorkBreakdownStructure> findEventsBetween(Date start, Date end) 
+      throws RequiredValueException, NoEntityFoundException {
+    return wbsService.findEventsBetween(start, end);
+  }
 
   /**
    * @see net.ljcomputing.sr.service.StatusReporterService#removeWbs(java.lang.String)
@@ -180,6 +196,14 @@ public class StatusReporterServiceImpl implements StatusReporterService {
   public final List<Event> findEventsForActivity(final String activityUuid)
       throws RequiredValueException, NoEntityFoundException {
     return eventService.findByActivity(activityUuid);
+  }
+  
+  /**
+   * @see net.ljcomputing.sr.service.StatusReporterService#findEventsForToday()
+   */
+  public final List<Event> findEventsForToday() 
+      throws RequiredValueException, NoEntityFoundException {
+    return eventService.findEventsForToday();
   }
 
   /**

@@ -56,4 +56,14 @@ public interface EventDomainEntityService extends
    */
   List<Event> findByActivity(String activityUuid)
       throws RequiredValueException, NoEntityFoundException;
+  
+  /**
+   * Find events for today.
+   *
+   * @return the list
+   * @throws RequiredValueException the required value exception
+   * @throws NoEntityFoundException the no entity found exception
+   */
+  List<Event> findEventsForToday() 
+      throws RequiredValueException, NoEntityFoundException;
 }

@@ -22,7 +22,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AbstractDomain.html", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// net.ljcomputing.core.domain.Node
-	c827 [label=<<table title="net.ljcomputing.core.domain.Node" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../domain/Node.html">
+	c828 [label=<<table title="net.ljcomputing.core.domain.Node" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../domain/Node.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Node </td></tr>
@@ -53,7 +53,7 @@ digraph G {
 	//net.ljcomputing.core.entity.AbstractPersistedEntity extends net.ljcomputing.core.entity.AbstractDomain
 	c806:p -> c803:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.core.entity.AbstractDomain implements net.ljcomputing.core.domain.Node
-	c827:p -> c806:p [dir=back,arrowtail=empty,style=dashed];
+	c828:p -> c806:p [dir=back,arrowtail=empty,style=dashed];
 	//net.ljcomputing.sr.domain.WorkBreakdownStructure extends net.ljcomputing.core.entity.AbstractDomain
 	c806:p -> c856:p [dir=back,arrowtail=empty];
 	//net.ljcomputing.sr.domain.Event extends net.ljcomputing.core.entity.AbstractDomain

@@ -210,6 +210,12 @@ public class StatusReporterUseCaseTests {
       wbsSaved.clear();
       wbsSaved = srService.listAllWbs();
 
+      logger.info("events for today : {}",
+          gsonConverterService.toJson(srService.findEventsForToday()));
+
+      logger.info("wbs for today : {}",
+          gsonConverterService.toJson(srService.findWbsForToday()));
+
       logger.info("test results : {}", gsonConverterService.toJson(wbsSaved));
     } catch (RequiredValueException e) {
       logger.error("failed test : ", e);

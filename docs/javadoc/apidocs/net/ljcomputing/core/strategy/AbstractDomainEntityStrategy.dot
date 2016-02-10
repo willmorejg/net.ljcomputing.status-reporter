@@ -78,10 +78,10 @@ digraph G {
 	c964:p -> c1007:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy NAVASSOC net.ljcomputing.sr.strategy.impl.ActivityStrategy
 	c985:p -> c984:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity> DEPEND net.ljcomputing.core.domain.Domain
-	c964:p -> c976:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity> DEPEND net.ljcomputing.core.entity.PersistedEntity
 	c964:p -> c968:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.core.strategy.AbstractDomainEntityStrategy<T extends net.ljcomputing.core.domain.Domain, S extends net.ljcomputing.core.entity.PersistedEntity> DEPEND net.ljcomputing.core.domain.Domain
+	c964:p -> c976:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// org.dozer.Mapper
 	c1007 [label=<<table title="org.dozer.Mapper" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">

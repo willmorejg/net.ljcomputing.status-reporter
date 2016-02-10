@@ -23,6 +23,7 @@ import net.ljcomputing.sr.domain.Activity;
 import net.ljcomputing.sr.domain.Event;
 import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +75,28 @@ import java.util.List;
    * @throws NoEntityFoundException the no entity found exception
    */
    WorkBreakdownStructure findWbsByName(String wbsName) 
+       throws RequiredValueException, NoEntityFoundException;
+   
+   /**
+    * Find complete work breakdown structures for today.
+    *
+    * @return the list
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   List<WorkBreakdownStructure> findWbsForToday() 
+       throws RequiredValueException, NoEntityFoundException;
+   
+   /**
+    * Find events between.
+    *
+    * @param start the start
+    * @param end the end
+    * @return the list
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   List<WorkBreakdownStructure> findEventsBetween(Date start, Date end) 
        throws RequiredValueException, NoEntityFoundException;
   
   /**
@@ -165,6 +188,16 @@ import java.util.List;
    */
    List<Event> findEventsForActivity(String activityUuid) 
        throws RequiredValueException, NoEntityFoundException;
+   
+   /**
+    * Find events for today.
+    *
+    * @return the list
+    * @throws RequiredValueException the required value exception
+    * @throws NoEntityFoundException the no entity found exception
+    */
+   List<Event> findEventsForToday() 
+       throws RequiredValueException, NoEntityFoundException; 
   
   /**
    * Indicate the end of an event.

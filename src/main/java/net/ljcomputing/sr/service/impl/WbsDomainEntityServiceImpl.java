@@ -19,12 +19,16 @@ package net.ljcomputing.sr.service.impl;
 import net.ljcomputing.core.exception.NoEntityFoundException;
 import net.ljcomputing.core.exception.RequiredValueException;
 import net.ljcomputing.core.service.AbstractDomainEntityServiceImpl;
+import net.ljcomputing.core.util.DateUtils;
 import net.ljcomputing.sr.domain.WorkBreakdownStructure;
 import net.ljcomputing.sr.entity.WbsEntity;
 import net.ljcomputing.sr.repository.WbsEntityRepository;
 import net.ljcomputing.sr.service.WbsDomainEntityService;
 
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -58,8 +62,28 @@ public class WbsDomainEntityServiceImpl extends
   /**
    * @see net.ljcomputing.sr.service.WbsDomainEntityService#findByName(java.lang.String)
    */
-  public WorkBreakdownStructure findByName(String name) throws RequiredValueException, NoEntityFoundException {
+  public WorkBreakdownStructure findByName(String name) 
+      throws RequiredValueException, NoEntityFoundException {
     return strategy.entityToDomain(repository.findByName(name));
   }
+  
+  /**
+   * @see net.ljcomputing.sr.service.WbsDomainEntityService#findEventsForToday()
+   */
+  public List<WorkBreakdownStructure> findEventsForToday() 
+      throws RequiredValueException, NoEntityFoundException {
+    Date today = new Date();
+    return findEventsBetween(today, today);
+  }
 
+  /**
+   * @see net.ljcomputing.sr.service.WbsDomainEntityService#findEventsBetween(java.util.Date, java.util.Date)
+   */
+  public List<WorkBreakdownStructure> findEventsBetween(Date start, Date end) 
+      throws RequiredValueException, NoEntityFoundException {
+    Date started = DateUtils.midnight(start);
+    Date ended = DateUtils.endOfDay(end);
+
+    return strategy.entityToDomain(repository.findEventsBetween(started, ended));
+  }
 }

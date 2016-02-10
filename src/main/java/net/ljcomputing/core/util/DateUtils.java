@@ -16,6 +16,11 @@
 
 package net.ljcomputing.core.util;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Properties;
 
 import org.joda.time.DateTime;
@@ -25,6 +30,35 @@ import org.joda.time.DateTime;
  *
  */
 public final class DateUtils {
+  
+  /**
+   * Convert provided date to date at midnight.
+   *
+   * @param date the date
+   * @return the date
+   */
+  public static Date midnight(Date date) {
+    LocalTime midnight = LocalTime.MIDNIGHT;
+    LocalDate today = LocalDateTime.ofInstant(
+        date.toInstant(), ZoneId.systemDefault()).toLocalDate();
+    LocalDateTime instant = LocalDateTime.of(today, midnight);
+    return Date.from(instant.atZone(ZoneId.systemDefault()).toInstant());
+  }
+
+  /**
+   * Convert provided date to date at 23:59:59.
+   *
+   * @param date the date
+   * @return the date
+   */
+  public static Date endOfDay(Date date) {
+    LocalTime midnight = LocalTime.MIDNIGHT;
+    LocalDate today = LocalDateTime.ofInstant(
+        date.toInstant(), ZoneId.systemDefault()).toLocalDate();
+    LocalDateTime instant = LocalDateTime.of(today, midnight)
+        .plusDays(1).minusSeconds(1);
+    return Date.from(instant.atZone(ZoneId.systemDefault()).toInstant());
+  }
 
   /**
    * Parses the date string.

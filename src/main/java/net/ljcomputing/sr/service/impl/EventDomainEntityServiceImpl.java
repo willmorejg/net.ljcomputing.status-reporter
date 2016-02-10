@@ -19,6 +19,7 @@ package net.ljcomputing.sr.service.impl;
 import net.ljcomputing.core.exception.NoEntityFoundException;
 import net.ljcomputing.core.exception.RequiredValueException;
 import net.ljcomputing.core.service.AbstractDomainEntityServiceImpl;
+import net.ljcomputing.core.util.DateUtils;
 import net.ljcomputing.sr.domain.Activity;
 import net.ljcomputing.sr.domain.Event;
 import net.ljcomputing.sr.entity.ActivityEntity;
@@ -30,6 +31,11 @@ import net.ljcomputing.sr.service.EventDomainEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -82,4 +88,16 @@ public class EventDomainEntityServiceImpl extends
 
     return strategy.entityToDomain(repository.findByActivity(entity));
   }
+  
+  /**
+   * @see net.ljcomputing.sr.service.EventDomainEntityService#findEventsForToday()
+   */
+  public List<Event> findEventsForToday() 
+      throws RequiredValueException, NoEntityFoundException {
+    Date start = DateUtils.midnight(new Date());
+    Date end = DateUtils.endOfDay(start);
+    
+    return strategy.entityToDomain(repository.findByStartTimeBetween(start, end));
+  }
+
 }

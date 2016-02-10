@@ -62,9 +62,9 @@ digraph G {
 	c2011:p -> c2017:p [dir=back,arrowtail=empty,style=dashed];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy NAVASSOC net.ljcomputing.sr.strategy.impl.ActivityStrategy
 	c2017:p -> c2016:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.domain.Event
-	c2017:p -> c2023:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.entity.EventEntity
 	c2017:p -> c2019:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.domain.Event
+	c2017:p -> c2023:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

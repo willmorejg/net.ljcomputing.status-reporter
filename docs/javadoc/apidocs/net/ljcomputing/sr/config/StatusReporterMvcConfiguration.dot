@@ -19,13 +19,13 @@ digraph G {
 	c2632:p -> c2625:p [dir=back,arrowtail=empty];
 	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer
 	c2625:p -> c2635:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
-	c2625:p -> c2639:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.ViewResolver
-	c2625:p -> c2641:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.accept.ContentNegotiationManager
-	c2625:p -> c2644:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	c2625:p -> c2640:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+	c2625:p -> c2642:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.ViewResolver
+	c2625:p -> c2644:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.config.StatusReporterMvcConfiguration DEPEND org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
 	c2625:p -> c2646:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer
 	c2635 [label=<<table title="org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
@@ -35,7 +35,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="null", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer
-	c2639 [label=<<table title="org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
+	c2646 [label=<<table title="org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ContentNegotiationConfigurer </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> org.springframework.web.servlet.config.annotation </font></td></tr>
@@ -49,7 +49,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="null", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// org.springframework.web.servlet.ViewResolver
-	c2641 [label=<<table title="org.springframework.web.servlet.ViewResolver" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
+	c2644 [label=<<table title="org.springframework.web.servlet.ViewResolver" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> ViewResolver </td></tr>
@@ -57,14 +57,14 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="null", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
-	c2646 [label=<<table title="org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
+	c2642 [label=<<table title="org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ResourceHandlerRegistry </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> org.springframework.web.servlet.config.annotation </font></td></tr>
 		</table></td></tr>
 		</table>>, URL="null", fontname="Helvetica", fontcolor="black", fontsize=9.0];
 	// org.springframework.web.accept.ContentNegotiationManager
-	c2644 [label=<<table title="org.springframework.web.accept.ContentNegotiationManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
+	c2640 [label=<<table title="org.springframework.web.accept.ContentNegotiationManager" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ContentNegotiationManager </td></tr>
 <tr><td align="center" balign="center"><font point-size="7.0"> org.springframework.web.accept </font></td></tr>
