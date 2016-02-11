@@ -91,7 +91,7 @@ public abstract class AbstractDomainEntityServiceImpl<T extends Domain, S extend
    * @see net.ljcomputing.core.service.DomainEntityService#delete(java.io.Serializable)
    */
   @Transactional
-  public boolean delete(ID id) {
+  public boolean delete(final ID id) {
     repository.delete(id);
     repository.flush();
     return true;

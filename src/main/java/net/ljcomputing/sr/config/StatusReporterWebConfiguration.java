@@ -71,7 +71,6 @@ public class StatusReporterWebConfiguration extends SpringBootServletInitializer
        */
       @Override
       public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("contextInitialized");
         logger.info("ServletContext initialized");
       }
 
@@ -80,7 +79,6 @@ public class StatusReporterWebConfiguration extends SpringBootServletInitializer
        */
       @Override
       public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("contextDestroyed");
         logger.info("ServletContext destroyed");
       }
 
@@ -102,7 +100,6 @@ public class StatusReporterWebConfiguration extends SpringBootServletInitializer
    */
   protected SpringApplicationBuilder configure(
       SpringApplicationBuilder builder) {
-    System.out.println("configure");
     logger.debug("Configuring ... ");
     return builder.showBanner(true)
         .sources(StatusReporterWebConfiguration.class).web(true)

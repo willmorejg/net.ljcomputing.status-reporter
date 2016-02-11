@@ -52,7 +52,7 @@ public class GlobalExceptionController {
   private static Logger logger;
 
   /** The timestamp format. */
-  private final static DateTimeFormatter fmt = DateTimeFormat
+  private final static DateTimeFormatter FORMAT = DateTimeFormat
       .forPattern("MMM d, yyyy h:m:s a");
 
   /**
@@ -61,7 +61,7 @@ public class GlobalExceptionController {
    * @return the current timestamp
    */
   private String getCurrentTimestamp() {
-    return fmt.print(new DateTime());
+    return FORMAT.print(new DateTime());
   }
 
   /**
