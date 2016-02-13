@@ -53,11 +53,10 @@ public class ClientLoggingController {
 	@LogEvent(level = Level.WARN, message = "Received logging message from client")
 	@RequestMapping(method = RequestMethod.POST, consumes = { "application/json" })
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void logError(final HttpServletRequest request, @RequestBody(required = true) final LogMessage logMessage) {
-		final String ipAddress = request.getRemoteAddr();
-		final String hostname = request.getRemoteHost();
+	public void logError(HttpServletRequest request, @RequestBody(required = true) LogMessage logMessage) {
+		String ipAddress = request.getRemoteAddr();
+		String hostname = request.getRemoteHost();
 		logger.warn("Client-side log message ({}/{}) - using [{}] to request [{}]: {}", ipAddress, hostname,
-				logMessage.getBrowser(), logMessage.getLocation(), logMessage.getMessage());
+				logMessage.getBrowser(), logMessage.getLocation(), logMessage.getPrintableMessage());
 	}
-
 }

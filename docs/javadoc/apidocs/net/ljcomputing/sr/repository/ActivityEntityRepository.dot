@@ -53,9 +53,9 @@ digraph G {
 	c1266:p -> c1265:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.service.impl.EventDomainEntityServiceImpl NAVASSOC net.ljcomputing.sr.repository.ActivityEntityRepository
 	c1271:p -> c1260:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
-	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.ActivityEntity
-	c1260:p -> c1265:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.WbsEntity
 	c1260:p -> c1266:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.repository.ActivityEntityRepository DEPEND net.ljcomputing.sr.entity.ActivityEntity
+	c1260:p -> c1265:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

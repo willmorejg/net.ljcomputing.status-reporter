@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./StatusReporterMvcConfiguration.html" title="net.ljcomputing.sr.config.StatusReporterMvcConfiguration" alt="" coords="525,115,723,141"/>
-<area shape="rect" id="node1" href="./StatusReporterMvcConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="515,104,733,152"/>
+<area shape="rect" id="node1_0" href="./StatusReporterMvcConfiguration.html" title="net.ljcomputing.sr.config.StatusReporterMvcConfiguration" alt="" coords="581,115,779,141"/>
+<area shape="rect" id="node1" href="./StatusReporterMvcConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="571,104,789,152"/>
 <area shape="rect" id="node3" href="null" title="&lt;TABLE&gt;" alt="" coords="5,209,256,258"/>
-<area shape="rect" id="node4" href="null" title="&lt;TABLE&gt;" alt="" coords="280,209,475,258"/>
-<area shape="rect" id="node5" href="null" title="&lt;TABLE&gt;" alt="" coords="499,209,749,258"/>
-<area shape="rect" id="node6" href="null" title="&lt;TABLE&gt;" alt="" coords="773,201,949,266"/>
-<area shape="rect" id="node7" href="null" title="&lt;TABLE&gt;" alt="" coords="973,209,1224,258"/>
-<area shape="rect" id="node2" href="null" title="&lt;TABLE&gt;" alt="" coords="499,6,749,55"/>
+<area shape="rect" id="node4" href="null" title="&lt;TABLE&gt;" alt="" coords="280,209,531,258"/>
+<area shape="rect" id="node5" href="null" title="&lt;TABLE&gt;" alt="" coords="555,209,805,258"/>
+<area shape="rect" id="node6" href="null" title="&lt;TABLE&gt;" alt="" coords="829,209,1024,258"/>
+<area shape="rect" id="node7" href="null" title="&lt;TABLE&gt;" alt="" coords="1048,201,1224,266"/>
+<area shape="rect" id="node2" href="null" title="&lt;TABLE&gt;" alt="" coords="555,6,805,55"/>
 </map>

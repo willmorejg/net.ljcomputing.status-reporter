@@ -10,7 +10,9 @@
 -sourcepath
 '/home/jim/git/net.ljcomputing.status-reporter.git/net.ljcomputing.status-reporter/src/main/java'
 -verbose
--inferrel -inferdep -quiet -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
+-inferrel -inferdep -quiet -hide java.*
+      -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9
+      -nodefontpackagesize 7
 -bottom
 'Copyright &#169; 2016 <a href="http://ljcomputing.net/">LJ Computing</a>. All rights reserved.'
 -charset

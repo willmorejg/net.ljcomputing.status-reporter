@@ -110,14 +110,6 @@
       , wbsService
       , activityService
     ) {
-      /**
-       * Alerts array
-       */
-      $scope.alerts = [];
-      
-      $scope.closeAlert = function(index) {
-        $scope.alerts.splice(index, 1);
-      };
       
       /**
        * List of Wbs's

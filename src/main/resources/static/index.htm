@@ -43,7 +43,9 @@
     <![endif]-->
    
    <!-- Third-party JavaScript libs -->
+   <script src="js/lib/logToServer.js"></script>
    <script src="webjars/lodash/4.0.0/lodash.min.js"></script>
+   <script src="webjars/moment/2.10.6/min/moment.min.js"></script>
    
    <!-- AngularJS --> 
    <script src="webjars/angularjs/1.4.8/angular.min.js"></script>
@@ -80,6 +82,7 @@
               <span class="fa fa-align-justify"></span>
             </button>
 </div>
+<div class="container-fluid"><uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert></div>
 <!-- </nav> -->
 </div>
         <!-- Page Content -->

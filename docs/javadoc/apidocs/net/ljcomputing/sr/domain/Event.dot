@@ -74,13 +74,13 @@ digraph G {
 	c1794:p -> c1793:p [taillabel="", label="", headlabel="*", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open];
 	// net.ljcomputing.sr.strategy.impl.EventStrategy DEPEND net.ljcomputing.sr.domain.Event
 	c1787:p -> c1793:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
-	c1797:p -> c1794:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Event
 	c1797:p -> c1793:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
-	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
-	c1802:p -> c1794:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.impl.StatusReporterServiceImpl DEPEND net.ljcomputing.sr.domain.Activity
+	c1797:p -> c1794:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Event
 	c1802:p -> c1793:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
+	// net.ljcomputing.sr.service.StatusReporterService DEPEND net.ljcomputing.sr.domain.Activity
+	c1802:p -> c1794:p [taillabel="", label="", headlabel="", fontname="Helvetica", fontcolor="black", fontsize=10.0, color="black", arrowhead=open, style=dashed];
 }
 

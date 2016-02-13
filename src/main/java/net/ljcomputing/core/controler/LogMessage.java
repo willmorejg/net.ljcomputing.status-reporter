@@ -24,69 +24,78 @@ package net.ljcomputing.core.controler;
  */
 public class LogMessage {
 
-	/** The browser used by the client. */
-	private String browser;
+  /** The browser used by the client. */
+  private String browser;
 
-	/** The location requested when the request was logged. */
-	private String location;
+  /** The location requested when the request was logged. */
+  private String location;
 
-	/** The message to log. */
-	private String message;
+  /** The message to log. */
+  private String message;
 
-	/**
-	 * Gets the browser.
-	 *
-	 * @return the browser
-	 */
-	public String getBrowser() {
-		return browser;
-	}
+  /**
+   * Gets the browser.
+   *
+   * @return the browser
+   */
+  public String getBrowser() {
+    return browser;
+  }
 
-	/**
-	 * Sets the browser.
-	 *
-	 * @param browser
-	 *            the new browser
-	 */
-	public void setBrowser(String browser) {
-		this.browser = browser;
-	}
+  /**
+   * Sets the browser.
+   *
+   * @param browser
+   *            the new browser
+   */
+  public void setBrowser(String browser) {
+    this.browser = browser;
+  }
 
-	/**
-	 * Gets the location.
-	 *
-	 * @return the location
-	 */
-	public String getLocation() {
-		return location;
-	}
+  /**
+   * Gets the location.
+   *
+   * @return the location
+   */
+  public String getLocation() {
+    return location;
+  }
 
-	/**
-	 * Sets the location.
-	 *
-	 * @param location
-	 *            the new location
-	 */
-	public void setLocation(String location) {
-		this.location = location;
-	}
+  /**
+   * Sets the location.
+   *
+   * @param location
+   *            the new location
+   */
+  public void setLocation(String location) {
+    this.location = location;
+  }
 
-	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	public String getMessage() {
-		return message;
-	}
+  /**
+   * Gets the message.
+   *
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
+  }
 
-	/**
-	 * Sets the message.
-	 *
-	 * @param message
-	 *            the new message
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
+  /**
+   * Gets the printable message (convert '\n' to ' ').
+   *
+   * @return the printable message
+   */
+  public String getPrintableMessage() {
+    return message.replace("\\n", " ");
+  }
+
+  /**
+   * Sets the message.
+   *
+   * @param message
+   *            the new message
+   */
+  public void setMessage(String message) {
+    this.message = message;
+  }
 }
