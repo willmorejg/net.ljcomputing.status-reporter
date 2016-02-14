@@ -128,3 +128,22 @@ body > .dropdown a:hover {
   min-width: 100px;
   max-width: 150px;
 }
+
+#contextmenu-node{
+    position: absolute;
+    background-color: white;
+    border: solid #CCCCCC 1px;
+}
+
+.contextmenu-item{
+    background-color: #ffffff;
+    color: #337ab7;
+    margin: 0.5em;
+    padding-left: 0.5em;
+}
+
+.contextmenu-item:hover{
+    color: #ffffff;
+    background-color: #337ab7;
+    cursor: pointer;
+}

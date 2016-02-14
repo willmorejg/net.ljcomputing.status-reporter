@@ -230,24 +230,24 @@
         $scope.sortKey = key;
         $scope.reverse = !$scope.reverse;
       }
-
-      /**
-       * Context menu items
-       */
-      $scope.menuOptions = [
-//        ['Update', function($itemScope, $event, model) {
+//
+//      /**
+//       * Context menu items
+//       */
+//      $scope.menuOptions = [
+////        ['Update', function($itemScope, $event, model) {
+////          console.log('$itemScope : ', $itemScope);
+////          console.log('$event : ', $event);
+////          console.log('model : ', model);
+////          $scope.edit(model);
+////        }],
+//        ['Remove', function($itemScope, $event, model) {
 //          console.log('$itemScope : ', $itemScope);
 //          console.log('$event : ', $event);
 //          console.log('model : ', model);
-//          $scope.edit(model);
-//        }],
-        ['Remove', function($itemScope, $event, model) {
-          console.log('$itemScope : ', $itemScope);
-          console.log('$event : ', $event);
-          console.log('model : ', model);
-          $scope.deleteByUuid(model.uuid);
-        }]
-      ];
+//          $scope.deleteByUuid(model.uuid);
+//        }]
+//      ];
 
       getAll();
 

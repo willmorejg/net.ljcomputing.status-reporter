@@ -15,7 +15,7 @@
    ui-grid-auto-resize>
      <div class="watermark" ng-show="!gridOptions.totalItems > 0">No data available</div>
      <br/>
-     Displaying page {{gridOptions.paginationCurrentPage}} of {{ getTotalPages() | number:0}}
+     Displaying page {{gridOptions.paginationCurrentPage}} of {{ getTotalPages() | number:0}} (Items per page : {{gridOptions.paginationPageSize}})
      <br/><br/>
 
       <div class="btn-group" style="margin: 0px !important;" uib-dropdown is-open="status.isopen">

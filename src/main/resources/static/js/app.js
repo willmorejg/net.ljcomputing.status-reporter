@@ -19,10 +19,11 @@
     , 'dm.stickyNav'
     , 'ui.tree'
     , 'ui.router'
-    , 'ui.bootstrap.contextMenu'
     , 'ui.grid'
     , 'ui.grid.pagination'
     , 'ui.grid.expandable'
+    , 'ngIdle'
+    , 'cm'
   ]);
 
   /**
@@ -89,6 +90,15 @@
     });
   });
   
+  myApp.config(
+      ['KeepaliveProvider', 'IdleProvider', 
+       function(KeepaliveProvider, IdleProvider) {
+    IdleProvider.idle(600);
+    IdleProvider.timeout(60);
+    IdleProvider.keepalive(false);
+    KeepaliveProvider.interval(30);
+  }]);
+  
   /**
    * REST API constant
    * 
@@ -117,7 +127,13 @@
   /**
    * Run function.
    */
-  myApp.run(function($rootScope){
+  myApp.run(function($rootScope) {
+    $rootScope.myContextDiv = 
+      "<div id='contextmenu-node'>" + 
+      "<span id='contextmenu-item' ng-click='clickedItem1()'> Item 1 </span><br/>" + 
+      "<span ng-click='clickedItem2()'> Item 2 </span>" + 
+      "</div>";
+
     /**
      * Alerts array
      */

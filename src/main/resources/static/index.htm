@@ -58,10 +58,10 @@
    <script src="webjars/angular-ui-router/0.2.17/angular-ui-router.js"></script>
    <script src="webjars/angular-ui-grid/3.1.0/ui-grid.js"></script>
    <script src="webjars/angular-aside/1.3.0/dist/js/angular-aside.min.js"></script>
+   <script src="webjars/ng-idle/1.1.0/angular-idle.min.js"></script>
    
    <!-- Third-party Angular libs -->
    <script src="js/lib/dirPagination/dirPagination.js"></script>
-   <script src="js/lib/contextMenu/contextMenu.js"></script>
    <script src="js/lib/ng-sticky/ng-sticky.js"></script>
    
    <!-- Application-specific JS -->
@@ -70,6 +70,8 @@
    <script src="js/wbs/wbsModule.js"></script>
    <script src="js/activity/activityModule.js"></script>
    <script src="js/event/eventModule.js"></script>
+
+   <script src="js/lib/cm/cm.js"></script>
 
 </head>
 
@@ -87,6 +89,35 @@
 </div>
         <!-- Page Content -->
         <div id="page-content-wrapper">
+
+<div ng-controller="idleCtrl">
+
+  <script type="text/ng-template" id="warning-dialog.html">
+    <div class="modal-header">
+      <h3>You're Idle. Do Something!</h3>
+    </div>
+    <div idle-countdown="countdown" ng-init="countdown=5" class="modal-body">
+      <progressbar max="5" value="5" animate="false" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</progressbar>
+    </div>
+
+  </script>
+  <script type="text/ng-template" id="timedout-dialog.html">
+    <div class="modal-header">
+      <h3>You've Timed Out!</h3>
+    </div>
+    <div class="modal-body">
+      <p>
+        You were idle too long. Normally you'd be logged out, but in this demo just do anything and you'll be reset.
+      </p>
+    </div>
+  </script>
+
+</div>
+
+          <br/>
+            <div context-menu="myContextDiv"> Right Click On the Item!
+            </div>
+          <br/>
           <div class="container-fluid">
             <div class="row" ui-view>
             </div>
@@ -102,7 +133,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
