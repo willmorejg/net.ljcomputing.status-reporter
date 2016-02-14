@@ -1,3 +1,11 @@
+/**
+ * @ngdoc module
+ * @fileOverview Status reporter module.
+ * @author <a href="mailto:willmorejg@gmail.com">James G Willmore</a>
+ * @version 1.0.0
+ * @class sr
+ * @memberOf myApp
+ */
 (function() {
   var sr = angular.module('myApp');
 

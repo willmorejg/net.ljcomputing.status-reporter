@@ -1,8 +1,9 @@
 /**
+ * @ngdoc module
  * @fileOverview Application configuration.
  * @author <a href="mailto:willmorejg@gmail.com">James G Willmore</a>
  * @version 1.0.0
- * @class
+ * @namespace myApp
  */
 (function() {
   var myApp = angular.module('myApp', [
@@ -25,9 +26,10 @@
   ]);
 
   /**
-   * Router configuration
+   * @description Router configuration
+   * @function config
    * @param {$stateProvider} state provider
-   * @public
+   * @param {$urlRouterProvider} URL router provider
    */
   myApp.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
@@ -89,6 +91,8 @@
   
   /**
    * REST API constant
+   * 
+   * @const
    */
   myApp.constant('REST_API', {
     "WBS": {
@@ -101,6 +105,8 @@
 
   /**
    * Alert messages
+   * 
+   * @const
    */
   myApp.constant('ALERTS', {
     "UNKNOWN": {
@@ -108,12 +114,20 @@
     }
   });
   
+  /**
+   * Run function.
+   */
   myApp.run(function($rootScope){
     /**
      * Alerts array
      */
     $rootScope.alerts = [];
     
+    /**
+     * Close an alert.
+     * 
+     * @param index the index number of the alert to remove.
+     */
     $rootScope.closeAlert = function(index) {
       $rootScope.alerts.splice(index, 1);
     };

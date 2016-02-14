@@ -1,3 +1,9 @@
+/**
+ * @fileOverview Activity module.
+ * @author <a href="mailto:willmorejg@gmail.com">James G Willmore</a>
+ * @version 1.0.0
+ * @module
+ */
 (function() {
   /**
    * Module related to Activity functionality.
@@ -6,11 +12,15 @@
 
   /**
    * Factory related to Activity functionality
+   * @constructor
+   * 
+   * @exports activityFactory
    */
   activityModule.factory('activityFactory', ['REST_API', '$http', function(REST_API, $http) {
     $http.defaults.headers.post["Content-Type"] = 'application/json';
     /**
      * Base REST API URL.
+     * @private
      */
     var wbsPath = REST_API.WBS.BASE + '/';
 
@@ -25,7 +35,11 @@
     var me = {};
 
     /**
-     * Get all the Activity's.
+     * Get all the Activities.
+     * @access public
+     * @method
+     * @name getAll
+     * @returns {Object} HttpPromise
      */
     me.getAll = function() {
       return $http.get('sr' + path);
@@ -33,6 +47,11 @@
 
     /**
      * Get Activity by UUID.
+     * @access public
+     * @method
+     * @name getByUuid
+     * @param {number} activity.uuid Activity UUID
+     * @returns {Object} HttpPromise
      */
     me.getByUuid = function(uuid) {
       return $http.get('sr' + path + '/' + uuid);
@@ -40,6 +59,12 @@
 
     /**
      * Create or update a Activity.
+     * @access public
+     * @method
+     * @name createOrUpdate
+     * @param {Object} JSON Activity JSON data
+     * @param {number} wbs.uuid WBS UUID
+     * @returns {Object} HttpPromise
      */
     me.createOrUpdate = function(data, wbsUuid) {
       var url = wbsPath + wbsUuid + path;
@@ -48,6 +73,11 @@
 
     /**
      * Delete Activity by UUID.
+     * @access public
+     * @method
+     * @name deleteByUuid
+     * @param {number} activity.uuid Activity UUID
+     * @returns {Object} HttpPromise
      */
     me.deleteByUuid = function(uuid) {
       return $http.delete('sr' + path + '/' + uuid);
@@ -55,14 +85,22 @@
 
     return me;
   }]);
+  
   /**
    * Service related to Activity functionality
+   * @constructor
+   * 
+   * @exports activityService
    */
   activityModule.service('activityService', ['activityFactory', function(activityFactory) {
     var me = {};
 
     /**
      * Get all the Activity's.
+     * @access public
+     * @method
+     * @name getAll
+     * @returns {Object} HttpPromise
      */
     me.getAll = function() {
       return activityFactory.getAll();
@@ -70,6 +108,11 @@
 
     /**
      * Get Activity by UUID.
+     * @access public
+     * @method
+     * @name getByUuid
+     * @param {number} activity.uuid Activity UUID
+     * @returns {Object} HttpPromise
      */
     me.getByUuid = function(uuid) {
       return activityFactory.getByUuid(uuid);
@@ -77,6 +120,12 @@
 
     /**
      * Create or update a Activity.
+     * @access public
+     * @method
+     * @name createOrUpdate
+     * @param {Object} JSON Activity JSON data
+     * @param {number} wbs.uuid WBS UUID
+     * @returns {Object} HttpPromise
      */
     me.createOrUpdate = function(data, wbsUuid) {
       return activityFactory.createOrUpdate(data, wbsUuid);
@@ -84,6 +133,11 @@
 
     /**
      * Delete Activity by UUID.
+     * @access public
+     * @method
+     * @name deleteByUuid
+     * @param {number} activity.uuid Activity UUID
+     * @returns {Object} HttpPromise
      */
     me.deleteByUuid = function(uuid) {
       return activityFactory.deleteByUuid(uuid);
@@ -91,6 +145,7 @@
 
     return me;
   }]);
+  
   /**
    * Controller related to Activity functionality
    */

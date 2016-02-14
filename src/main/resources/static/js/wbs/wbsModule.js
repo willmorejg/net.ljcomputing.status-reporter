@@ -1,3 +1,11 @@
+/**
+ * @ngdoc module
+ * @fileOverview Work breakdown structure module.
+ * @author <a href="mailto:willmorejg@gmail.com">James G Willmore</a>
+ * @version 1.0.0
+ * @class wbsModule
+ * @memberOf myApp
+ */
 (function() {
   /**
    * Module related to Wbs functionality.

@@ -1,3 +1,11 @@
+/**
+ * @ngdoc module
+ * @fileOverview Event module.
+ * @author <a href="mailto:willmorejg@gmail.com">James G Willmore</a>
+ * @version 1.0.0
+ * @class eventModule
+ * @memberOf myApp
+ */
 (function() {
   /**
    * Module related to Event functionality.
