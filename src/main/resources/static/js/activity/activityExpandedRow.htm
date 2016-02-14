@@ -9,8 +9,6 @@
   <div 
     ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" 
     class="ui-grid-cell" 
-    context-menu="grid.appScope.menuOptions" 
-    model="row.entity.activities"
     ui-grid-cell>
     <div class="nodatatxt" ng-show="!row.entity.subGridOptions.data.length">
     No data available

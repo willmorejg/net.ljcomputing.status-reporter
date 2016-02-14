@@ -133,9 +133,10 @@
           direction: uiGridConstants.ASC,
           priority: 0
         },
-        cellTemplate: '<span class="ui-grid-cell-contents"' 
-          + ' ng-click="grid.appScope.edit(row.entity)">' 
-          + '<a>{{MODEL_COL_FIELD}}</a></span>'
+        cellTemplate: '<div class="ui-grid-cell-contents"' 
+          + ' context-menu="grid.appScope.menuOptions"'
+          + ' model="row.entity">' 
+          + '<a>{{MODEL_COL_FIELD}}</a></div>'
       }, {
         field: 'description'
       }];
@@ -164,22 +165,25 @@
             row.entity.subGridOptions = {
                 data: row.entity.activities,
                 columnDefs: [
-                  {
-                    name: 'rowHeaderCol'
-                    , displayName: ''
-                    , width: 30
-                    , cellTemplate: '<span class="ui-grid-cell-contents">'
-                      + '<span ng-click="grid.appScope.deleteActivity(row.entity)" style="color: red;cursor: pointer;cursor: hand;"><i class="fa fa-minus-square"></i></span>'
-                      +'</span>'
-                    , enableSorting: false
-                    , enableHiding: false
-                    , enableColumnMenu: false
-                  },
+//                  {
+//                    name: 'rowHeaderCol'
+//                    , displayName: ''
+//                    , width: 30
+//                    , cellTemplate: '<span class="ui-grid-cell-contents">'
+//                      + '<span ng-click="grid.appScope.deleteActivity(row.entity)"'
+//                      + ' style="color: red;cursor: pointer;cursor: hand;">'
+//                      + '<i class="fa fa-minus-square"></i></span>'
+//                      +'</span>'
+//                    , enableSorting: false
+//                    , enableHiding: false
+//                    , enableColumnMenu: false
+//                  },
                   {
                     field: 'name',
-                    cellTemplate: '<span class="ui-grid-cell-contents"' 
-                      + ' ng-click="grid.appScope.editActivity(row.entity, grid.parentRow.entity.uuid)">'
-                      + '<span style="color: blue;cursor: pointer;cursor: hand;">{{MODEL_COL_FIELD}}</span></span>'
+                    cellTemplate: '<div class="ui-grid-cell-contents"' 
+                      + ' context-menu="grid.appScope.menuOptions"'
+                      + ' model="row.entity"'
+                      + '<span style="color: blue;cursor: pointer;cursor: hand;">{{MODEL_COL_FIELD}}</span></div>'
                   }, {
                     field: 'description'
                   }
@@ -197,9 +201,14 @@
           editActivity: function(data, uuid) {
             $scope.editActivity(data, uuid);
           },
-          menuOptions: function($itemScope, $event, model) { 
-            $scope.menuOptions($itemScope, $event, model);
-          }, 
+          menuOptions: [
+            ['Edit', function($itemScope, $event, model) {
+              $scope.editActivity(model, $itemScope.grid.parentRow.entity.uuid);
+            }],
+            ['Remove', function($itemScope, $event, model) {
+              $scope.deleteActivity(model);
+            }]
+          ], 
           deleteActivity: function(data) {
             $scope.deleteActivity(data);
           }
@@ -230,24 +239,18 @@
         $scope.sortKey = key;
         $scope.reverse = !$scope.reverse;
       }
-//
-//      /**
-//       * Context menu items
-//       */
-//      $scope.menuOptions = [
-////        ['Update', function($itemScope, $event, model) {
-////          console.log('$itemScope : ', $itemScope);
-////          console.log('$event : ', $event);
-////          console.log('model : ', model);
-////          $scope.edit(model);
-////        }],
-//        ['Remove', function($itemScope, $event, model) {
-//          console.log('$itemScope : ', $itemScope);
-//          console.log('$event : ', $event);
-//          console.log('model : ', model);
-//          $scope.deleteByUuid(model.uuid);
-//        }]
-//      ];
+
+      /**
+       * Context menu items
+       */
+      $scope.menuOptions = [
+        ['Edit', function($itemScope, $event, model) {
+          $scope.edit(model);
+        }],
+        ['Remove', function($itemScope, $event, model) {
+          $scope.deleteByUuid(model.uuid);
+        }]
+      ];
 
       getAll();
 
