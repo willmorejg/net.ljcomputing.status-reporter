@@ -24,6 +24,7 @@
     , 'ui.grid.expandable'
     , 'ngIdle'
     , 'ui.bootstrap.contextMenu'
+    , 'angularUtils.directives.uiBreadcrumbs'
   ]);
 
   /**
@@ -40,28 +41,34 @@
       $stateProvider
         .state('home', {
           url: '/home',
+          data: { displayName: 'Home'},
           templateUrl: 'js/status-reporter/about.htm'
         })
         .state('dashboard', {
           url: '/dashboard',
+          data: { displayName: 'Dashboard'},
           templateUrl: 'js/wbs/wbsList.htm',
           controller: 'wbsController'
         })
         .state('manage', {
           url: '/manage',
+          data: { displayName: 'Manage'},
           templateUrl: 'js/wbs/wbsList.htm',
           controller: 'wbsController'
         })
         .state('overview', {
           url: '/overview',
+          data: { displayName: 'Overview'},
           templateUrl: 'js/status-reporter/overview.htm'
         })
         .state('about', {
           url: '/about',
+          data: { displayName: 'About'},
           templateUrl: 'js/status-reporter/about.htm'
         })
         .state('contact', {
           url: '/contact',
+          data: { displayName: 'Contact'},
           templateUrl: 'js/status-reporter/contact.htm'
         });
     }

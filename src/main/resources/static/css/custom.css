@@ -129,6 +129,12 @@ body > .dropdown a:hover {
   max-width: 150px;
 }
 
+.ng-aside .modal-content .active {
+  color: #ffffff;
+  background-color: #337ab7;/*#4fc8f3;*/
+  /*display: none;*/
+}
+
 #contextmenu-node{
     position: absolute;
     background-color: white;

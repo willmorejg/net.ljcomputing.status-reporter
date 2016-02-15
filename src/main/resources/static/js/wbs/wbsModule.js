@@ -159,25 +159,10 @@
       
       $scope.gridOptions.onRegisterApi = function (gridApi) {
         gridApi.expandable.on.rowExpandedStateChanged($scope, function (row) {
-//          console.log('row : ', row);
           if (row.isExpanded) {
-//            console.log('row.entity : ', row.entity);
             row.entity.subGridOptions = {
                 data: row.entity.activities,
                 columnDefs: [
-//                  {
-//                    name: 'rowHeaderCol'
-//                    , displayName: ''
-//                    , width: 30
-//                    , cellTemplate: '<span class="ui-grid-cell-contents">'
-//                      + '<span ng-click="grid.appScope.deleteActivity(row.entity)"'
-//                      + ' style="color: red;cursor: pointer;cursor: hand;">'
-//                      + '<i class="fa fa-minus-square"></i></span>'
-//                      +'</span>'
-//                    , enableSorting: false
-//                    , enableHiding: false
-//                    , enableColumnMenu: false
-//                  },
                   {
                     field: 'name',
                     cellTemplate: '<div class="ui-grid-cell-contents"' 

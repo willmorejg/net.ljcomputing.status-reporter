@@ -1,21 +1,21 @@
 <div class="container-fluid">
-<div>
-  <ul class="nav navbar-nav nav-pills">
-   <li>
-       <a ui-sref="dashboard" ng-click="ok($event)">Dashboard</a>
-   </li>
-   <li>
-       <a ui-sref="manage" ng-click="ok($event)">Manage</a>
-   </li>
-   <li>
-       <a ui-sref="overview" ng-click="ok($event)">Overview</a>
-   </li>
-   <li>
-       <a ui-sref="about" ng-click="ok($event)">About</a>
-   </li>
-   <li>
-       <a ui-sref="contact" ng-click="ok($event)">Contact</a>
-   </li>
- </ul>
-</div>
+ <div>
+   <ul class="nav navbar-nav nav-pills">
+    <li>
+        <a ui-sref="dashboard" ui-sref-active="active" ng-click="ok($event)">Dashboard</a>
+    </li>
+    <li>
+        <a ui-sref="manage" ui-sref-active="active" ng-click="ok($event)">Manage</a>
+    </li>
+    <li>
+        <a ui-sref="overview" ui-sref-active="active" ng-click="ok($event)">Overview</a>
+    </li>
+    <li>
+        <a ui-sref="about" ui-sref-active="active" ng-click="ok($event)">About</a>
+    </li>
+    <li>
+        <a ui-sref="contact" ui-sref-active="active" ng-click="ok($event)">Contact</a>
+    </li>
+  </ul>
+ </div>
 </div>
