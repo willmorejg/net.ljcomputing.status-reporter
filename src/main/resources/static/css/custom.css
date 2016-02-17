@@ -1,3 +1,4 @@
+/*
 @font-face {
   font-family: CaviarDreams;
   src: url('../fonts/CaviarDreams/Caviar_Dreams_Bold.ttf');
@@ -16,9 +17,10 @@
   font-family: Nunito;
   src: url('../fonts/Numito/Nunito-Regular.ttf');
 }
+*/
 
 body {
-  font-family: Nunito !important;
+  font-family: Verdana, Geneva, sans-serif !important;
 }
 
 .tooltip.customClass .tooltip-inner {
@@ -70,7 +72,7 @@ body {
 
 .uiGrid {
   width: 550px;
-  height: 395px;
+  height: 230px;
 }
 
 .wbsGrid .ui-grid-header-cell {
@@ -82,14 +84,16 @@ body {
   color: #000000;
 }
 
-/*
 .wbsGrid .ui-grid-row:hover .ui-grid-cell {
   background-color: #dddddd;
 } 
-*/
 
-.wbsGrid a {
+.wbsGrid .ui-grid-row a {
   text-decoration: none;
+}
+
+.wbsGrid .ui-grid-row-selected .ui-grid-cell {
+  background-color: #dddddd;
 }
 
 body > .dropdown {

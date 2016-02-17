@@ -100,7 +100,7 @@ public class WbsEntity extends AbstractPersistedEntity
    *
    * @return the activities
    */
-  @OneToMany(mappedBy = "wbs", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "wbs", fetch = FetchType.LAZY)
   @Fetch(FetchMode.JOIN)
   public List<ActivityEntity> getActivities() {
     return activities;

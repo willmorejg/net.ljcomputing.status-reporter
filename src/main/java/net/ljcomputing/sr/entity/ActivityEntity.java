@@ -127,7 +127,7 @@ public class ActivityEntity extends AbstractPersistedEntity
    *
    * @return the events
    */
-  @OneToMany(mappedBy = "activity", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "activity", fetch = FetchType.LAZY)
   @Fetch(FetchMode.JOIN)
   public List<EventEntity> getEvents() {
     return events;

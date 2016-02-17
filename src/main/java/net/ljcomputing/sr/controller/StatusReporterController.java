@@ -123,6 +123,14 @@ public class StatusReporterController {
     return srService.saveActivity(activity, wbsUuid);
   }
 
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity",
+      method = RequestMethod.GET)
+  @LogEvent(showArgs = true)
+  @LogResponse
+  public List<Activity> getWbsActivities(@PathVariable String wbsUuid) throws Exception {
+    return srService.findActivitiesForWbs(wbsUuid);
+  }
+
   /**
    * Gets the activity by uuid.
    *

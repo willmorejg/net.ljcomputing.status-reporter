@@ -163,12 +163,9 @@ public class StatusReporterServiceImpl implements StatusReporterService {
    */
   public final Boolean removeActivity(String activityUuid)
       throws RequiredValueException, NoEntityFoundException {
-    Activity activity = findActivityByUuid(activityUuid);
     
-    if(null != activity.getEvents()) {
-      for(Event event : activity.getEvents()) {
-        removeEvent(event.getUuid());
-      }
+    for(Event event : findEventsForActivity(activityUuid)) {
+      removeEvent(event.getUuid());
     }
     
     return activityService.delete(activityUuid);

@@ -140,7 +140,34 @@
       }, {
         field: 'description'
       }];
+
+      var columnDefs1 = [{
+        field: 'name',
+        sort: {
+          direction: uiGridConstants.ASC,
+          priority: 0
+        },
+        cellTemplate: '<div class="ui-grid-cell-contents"' 
+          + ' context-menu="grid.appScope.menuOptions1"'
+          + ' model="row.entity">' 
+          + '<a>{{MODEL_COL_FIELD}}</a></div>'
+      }, {
+        field: 'description'
+      }];
       
+      $scope.activitiesList = [];
+      $scope.gridOptions1 = {};
+      $scope.gridOptions1.data= 'activitiesList';
+      $scope.gridOptions1.enableSorting = true;
+      $scope.gridOptions1.enableFiltering = true;
+      $scope.gridOptions1.flatEntityAccess = true;
+      $scope.gridOptions1.columnDefs = columnDefs1;
+      $scope.gridOptions1.pageNumber = 1;
+      $scope.gridOptions1.pageSize = 10;
+      $scope.gridOptions1.paginationPageSizes = [10, 10, 25, 50, 100, 250, 500];
+      $scope.gridOptions1.enablePaginationControls = false;
+      $scope.gridOptions1.rowTemplate = 'js/activity/activityRow.htm';
+
       /**
        * ng-grid options for the work breakdown structure grid
        */
@@ -148,72 +175,65 @@
       $scope.gridOptions.data= 'wbsList';
       $scope.gridOptions.enableSorting = true;
       $scope.gridOptions.enableFiltering = true;
+      $scope.gridOptions.flatEntityAccess = true;
       $scope.gridOptions.columnDefs = columnDefs;
       $scope.gridOptions.pageNumber = 1;
       $scope.gridOptions.pageSize = 10;
       $scope.gridOptions.paginationPageSizes = [10, 10, 25, 50, 100, 250, 500];
       $scope.gridOptions.enablePaginationControls = false;
       $scope.gridOptions.rowTemplate = 'js/wbs/wbsRow.htm';
-      $scope.gridOptions.expandableRowHeight = 150;
-      $scope.gridOptions.expandableRowTemplate = 'js/activity/activityExpandedRow.htm';
+      
+      $scope.gridOptions.enableRowSelection = true;
+      $scope.gridOptions.enableRowHeaderSelection = false;
+      $scope.gridOptions.multiSelect = false;
+      $scope.gridOptions.modifierKeysToMultiSelect = false;
+      $scope.gridOptions.noUnselect = true;
       
       $scope.gridOptions.onRegisterApi = function (gridApi) {
-        gridApi.expandable.on.rowExpandedStateChanged($scope, function (row) {
-          if (row.isExpanded) {
-            row.entity.subGridOptions = {
-                data: row.entity.activities,
-                columnDefs: [
-                  {
-                    field: 'name',
-                    cellTemplate: '<div class="ui-grid-cell-contents"' 
-                      + ' context-menu="grid.appScope.menuOptions"'
-                      + ' model="row.entity"'
-                      + '<span style="color: blue;cursor: pointer;cursor: hand;">{{MODEL_COL_FIELD}}</span></div>'
-                  }, {
-                    field: 'description'
-                  }
-                ]
-            };
-          }
-          
-          row.entity.subGridOptions.appScopeProvider = $scope.subGridScope;
+        $scope.gridApi = gridApi;
+
+        gridApi.selection.on.rowSelectionChanged($scope,function(row){
+//          console.log('row: ', row);
+          $scope.getActivities(row);
         });
         
         $scope.gridApi = gridApi;
       };
-      
-      $scope.subGridScope = {
-          editActivity: function(data, uuid) {
-            $scope.editActivity(data, uuid);
-          },
-          menuOptions: [
-            ['Edit', function($itemScope, $event, model) {
-              $scope.editActivity(model, $itemScope.grid.parentRow.entity.uuid);
-            }],
-            ['Remove', function($itemScope, $event, model) {
-              $scope.deleteActivity(model);
-            }]
-          ], 
-          deleteActivity: function(data) {
-            $scope.deleteActivity(data);
-          }
+
+      $scope.toggleRowSelection = function() {
+        $scope.gridApi.selection.clearSelectedRows();
+        $scope.gridOptions.enableRowSelection = !$scope.gridOptions.enableRowSelection;
+        $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.OPTIONS);
       };
+      
+      $scope.getActivities = function(row) {
+        activityService.getAllByWbs(row.entity.uuid)
+        .success(function(data) {
+          var newData = _.map(data, function(element) { 
+            return _.extend({}, element, {wbs_uuid: row.entity.uuid});
+          });
+          $scope.activitiesList = newData;
+        })
+        .error(function(error) {
+          $scope.status = error.message;
+        });
+      }
 
       /**
        * Change the pagination page size.
        * 
        * @param pageSize
        */
-      $scope.changePageSize = function(pageSize) {
-        $scope.gridOptions.paginationPageSize = pageSize;
+      $scope.changePageSize = function(pageSize, opts) {
+        opts.paginationPageSize = pageSize;
       }
       
       /**
        * Get the total number of pages based upon the total items and and pagination size.
        */
-      $scope.getTotalPages = function() {
-        return ($scope.gridOptions.totalItems / $scope.gridOptions.paginationPageSize) >= 1 ? 
-            ($scope.gridOptions.totalItems / $scope.gridOptions.paginationPageSize) : 
+      $scope.getTotalPages = function(opts) {
+        return (opts.totalItems / opts.paginationPageSize) >= 1 ? 
+            (opts.totalItems / opts.paginationPageSize) : 
               1;
       }
 
@@ -237,6 +257,15 @@
         }]
       ];
 
+      $scope.menuOptions1 = [
+        ['Edit', function($itemScope, $event, model) {
+          $scope.editActivity(model, model.wbs_uuid);
+        }],
+        ['Remove', function($itemScope, $event, model) {
+          $scope.deleteActivity(model);
+        }]
+      ];
+
       getAll();
 
       /**
@@ -246,6 +275,7 @@
         wbsService.getAll()
           .success(function(data) {
             $scope.wbsList = data;
+//            console.log('data:'+ JSON.stringify(data));
             toastrService.success('Data refreshed successfully');
           })
           .error(function(error) {

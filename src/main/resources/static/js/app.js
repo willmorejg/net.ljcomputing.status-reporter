@@ -21,6 +21,7 @@
     , 'ui.router'
     , 'ui.grid'
     , 'ui.grid.pagination'
+    , 'ui.grid.selection'
     , 'ui.grid.expandable'
     , 'ngIdle'
     , 'ui.bootstrap.contextMenu'

@@ -20,10 +20,10 @@
    <a>description</a>
    <b is-accessible="true">description</b>
   </field>
-  <field>
-   <a>activities</a>
-   <b is-accessible="true">activities</b>
-  </field>
+<!--   <field> -->
+<!--    <a>activities</a> -->
+<!--    <b is-accessible="true">activities</b> -->
+<!--   </field> -->
  </mapping>
  <mapping>
   <class-a>net.ljcomputing.sr.entity.ActivityEntity</class-a>
@@ -42,10 +42,10 @@
    <a>description</a>
    <b is-accessible="true">description</b>
   </field>
-  <field>
-   <a>events</a>
-   <b is-accessible="true">events</b>
-  </field>
+<!--   <field> -->
+<!--    <a>events</a> -->
+<!--    <b is-accessible="true">events</b> -->
+<!--   </field> -->
  </mapping>
  <mapping>
   <class-a>net.ljcomputing.sr.entity.EventEntity</class-a>

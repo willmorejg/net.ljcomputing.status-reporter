@@ -86,14 +86,16 @@
       <span class="fa fa-align-justify"></span>
     </button>
 
-    <h1 class="container col-md-8">
+    <h1 class="container col-md-8 pull-right">
      <ui-breadcrumbs 
        displayname-property="data.displayName" 
        template-url="js/lib/uiBreadcrumbs/uiBreadcrumbs.tpl.html">
      </ui-breadcrumbs>
     </h1>
 </div>
-<div class="container-fluid"><uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert></div>
+<div class="container" style="margin-top: 100px;margin-left:-10px;">
+  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+</div>
 <!-- </nav> -->
 </div>
         <!-- Page Content -->

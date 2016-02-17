@@ -57,6 +57,11 @@
       return $http.get('sr' + path + '/' + uuid);
     }
 
+    me.getAllByWbs = function(wbsUuid) {
+      var url = wbsPath + wbsUuid + path;
+      return $http.get(url);
+    }
+
     /**
      * Create or update a Activity.
      * @access public
@@ -104,6 +109,10 @@
      */
     me.getAll = function() {
       return activityFactory.getAll();
+    }
+
+    me.getAllByWbs = function(wbsUuid) {
+      return activityFactory.getAllByWbs(wbsUuid);
     }
 
     /**
