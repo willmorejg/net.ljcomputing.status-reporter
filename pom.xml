@@ -28,7 +28,8 @@
 
   <spring-boot.main-class>net.ljcomputing.statusReporter.StatusReporter</spring-boot.main-class>
 
-  <ljcomputing-logging.version>1.0.0-SNAPSHOT</ljcomputing-logging.version>
+  <!-- <ljcomputing-logging.version>1.0.0-SNAPSHOT</ljcomputing-logging.version> -->
+  <ljcomputing-logging.version>logging-1.0.0</ljcomputing-logging.version>
 
   <spring-boot-starter-cache.version>1.3.1.RELEASE</spring-boot-starter-cache.version>
 
@@ -102,6 +103,15 @@
 
  </distributionManagement>
 
+ <repositories>
+
+  <repository>
+   <id>jitpack.io</id>
+   <url>https://jitpack.io</url>
+  </repository>
+
+ </repositories>
+
  <dependencies>
 
   <!-- here because the JavaDoc generation fails without it -->
@@ -139,9 +149,15 @@
    <version>${spring-boot-starter-cache.version}</version>
   </dependency>
 
+  <!-- <dependency> -->
+  <!-- <groupId>net.ljcomputing</groupId> -->
+  <!-- <artifactId>logging</artifactId> -->
+  <!-- <version>${ljcomputing-logging.version}</version> -->
+  <!-- </dependency> -->
+
   <dependency>
-   <groupId>net.ljcomputing</groupId>
-   <artifactId>logging</artifactId>
+   <groupId>com.github.willmorejg</groupId>
+   <artifactId>net.ljcomputing.logging</artifactId>
    <version>${ljcomputing-logging.version}</version>
   </dependency>
 
