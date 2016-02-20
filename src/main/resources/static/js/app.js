@@ -9,8 +9,9 @@
   var myApp = angular.module('myApp', [
     'ui.router'
     , 'ngAnimate'
-    , 'ngSanitize'
     , 'ngMessages'
+//    , 'ngResource'
+    , 'ngSanitize'
     , 'ui.bootstrap'
     , 'ui.bootstrap.datepicker'
     , 'ui.bootstrap.tooltip'

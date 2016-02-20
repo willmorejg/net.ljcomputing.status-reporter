@@ -11,6 +11,16 @@
    * Module related to Wbs functionality.
    */
   var wbsModule = angular.module('myApp');
+  
+//  wbsModule.factory('Wbs', ['$resource', 'REST_API' ,function($resource, REST_API){
+//    return $resource(
+//        REST_API.WBS.BASE+'/:uuid',
+//        {uuid: "@uuid"},
+//        {
+//          "update": {method: "POST"}
+//        }
+//    );
+//  }]);
 
   /**
    * Factory related to Wbs functionality

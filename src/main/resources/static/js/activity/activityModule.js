@@ -84,8 +84,9 @@
      * @param {number} activity.uuid Activity UUID
      * @returns {Object} HttpPromise
      */
-    me.deleteByUuid = function(uuid) {
-      return $http.delete('sr' + path + '/' + uuid);
+    me.deleteByUuid = function(wbsUuid, uuid) {
+      var url = wbsPath + wbsUuid + path;
+      return $http.delete(url + uuid);
     }
 
     return me;

@@ -134,14 +134,15 @@ public class StatusReporterController {
   /**
    * Gets the activity by uuid.
    *
+   * @param wbsUuid the wbs uuid
    * @param uuid the uuid
    * @return the activity by uuid
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/activity/{uuid}", method = RequestMethod.GET)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}", method = RequestMethod.GET)
   @LogEvent(showArgs = true)
   @LogResponse
-  public Activity getActivityByUuid(@PathVariable String uuid)
+  public Activity getActivityByUuid(@PathVariable String wbsUuid, @PathVariable String uuid)
       throws Exception {
     return srService.findActivityByUuid(uuid);
   }
@@ -149,14 +150,15 @@ public class StatusReporterController {
   /**
    * Delete activity.
    *
+   * @param wbsUuid the wbs uuid
    * @param uuid the uuid
    * @return the response message
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/activity/{uuid}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}", method = RequestMethod.DELETE)
   @LogEvent(showArgs = true)
   @LogResponse
-  public ResponseMessage deleteActivity(@PathVariable String uuid)
+  public ResponseMessage deleteActivity(@PathVariable String wbsUuid, @PathVariable String uuid)
       throws Exception {
     srService.removeActivity(uuid);
 
