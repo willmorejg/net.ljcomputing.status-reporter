@@ -320,8 +320,8 @@
               $scope.wbsList = [];
             }
 
-            getAll();
             toastrService.success('Saved successfully');
+            getAll();
           })
           .error(function(error) {
             $scope.alerts.push(alertFactory.errorAlert(error));
@@ -338,6 +338,7 @@
           .success(function() {
             toastrService.success('Deleted successfully');
             $scope.wbsList = [];
+            $scope.activitiesList = [];
             getAll();
           })
           .error(function(error) {

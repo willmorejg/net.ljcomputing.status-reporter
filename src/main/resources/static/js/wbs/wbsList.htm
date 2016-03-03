@@ -2,8 +2,9 @@
  <div class="uiGrid">
    <button 
      type="button" 
-     class="btn btn-primary btn-sm fa fa-plus-square fa-1x" 
+     class="btn btn-primary btn-sm" 
      ng-click="edit()">
+     <span class="fa fa-plus-square fa-1x"></span>
      Add WBS
    </button>
  
@@ -14,7 +15,7 @@
    ui-grid-selection 
    ui-grid-auto-resize>
      <div class="watermark" ng-show="!gridOptions.totalItems > 0">No data available</div>
-     <br/>
+     <br/><br/>
      Displaying page {{gridOptions.paginationCurrentPage}} of {{ getTotalPages(gridOptions) | number:0}} (Items per page : {{gridOptions.paginationPageSize}})
      <br/><br/>
 
@@ -22,7 +23,7 @@
         <button id="pagination-size-btn" type="button" class="btn btn-primary btn-sm btn-block" uib-dropdown-toggle ng-disabled="disabled">
           Page size<span class="caret"></span>
         </button>
-        <ul uib-dropdown-menu role="menu" aria-labelledby="pagination-size-btn">
+        <ul uib-dropdown-menu role="menu" aria-labelledby="pagination-size-btn" style="cursor: pointer;" class="dropdown-toggle">
           <li role="menuitem" ng-click="changePageSize(10, gridOptions)">10</li>
           <li role="menuitem" ng-click="changePageSize(25, gridOptions)">25</li>
           <li role="menuitem" ng-click="changePageSize(50, gridOptions)">50</li>
@@ -56,7 +57,7 @@
    ui-grid-pagination
    ui-grid-auto-resize>
      <div class="watermark" ng-show="!gridOptions1.totalItems > 0">No data available</div>
-     <br/>
+     <br/><br/>
      Displaying page {{gridOptions1.paginationCurrentPage}} of {{ getTotalPages(gridOptions1) | number:0}} (Items per page : {{gridOptions1.paginationPageSize}})
      <br/><br/>
 
@@ -64,7 +65,7 @@
         <button id="pagination1-size-btn" type="button" class="btn btn-primary btn-sm btn-block" uib-dropdown-toggle ng-disabled="disabled">
           Page size<span class="caret"></span>
         </button>
-        <ul uib-dropdown-menu role="menu" aria-labelledby="pagination1-size-btn">
+        <ul uib-dropdown-menu role="menu" aria-labelledby="pagination1-size-btn" style="cursor: pointer;">
           <li role="menuitem" ng-click="changePageSize(10, gridOptions1)">10</li>
           <li role="menuitem" ng-click="changePageSize(25, gridOptions1)">25</li>
           <li role="menuitem" ng-click="changePageSize(50, gridOptions1)">50</li>

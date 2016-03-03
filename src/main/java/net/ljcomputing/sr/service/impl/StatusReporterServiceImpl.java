@@ -106,10 +106,10 @@ public class StatusReporterServiceImpl implements StatusReporterService {
    */
   public final Boolean removeWbs(final String wbsUuid)
       throws RequiredValueException, NoEntityFoundException {
-    WorkBreakdownStructure wbs = findWbsByUuid(wbsUuid);
+    List<Activity> activities = findActivitiesForWbs(wbsUuid);
     
-    if(null != wbs.getActivities()) {
-      for(Activity activity : wbs.getActivities()) {
+    if(null != activities) {
+      for(Activity activity : activities) {
         removeActivity(activity.getUuid());
       }
     }

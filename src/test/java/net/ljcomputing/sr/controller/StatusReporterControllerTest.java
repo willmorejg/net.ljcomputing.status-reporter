@@ -209,7 +209,7 @@ public class StatusReporterControllerTest {
           .getPostedRequestBody();
       Activity activity = persistedWbs.getActivities().get(0);
       String uuid = activity.getUuid();
-      String url = "/sr/activity/" + uuid;
+      String url = "/sr/" + persistedWbs.getUuid() + "/activity/" + uuid;
 
       MockHttpServletRequestBuilder requestBuilder = get(url);
       requestBuilder.contentType(MediaType.APPLICATION_JSON);
@@ -259,7 +259,7 @@ public class StatusReporterControllerTest {
           .getPostedRequestBody();
       Activity activity = persistedWbs.getActivities().get(0);
       String uuid = activity.getUuid();
-      String url = "/sr/activity/" + uuid;
+      String url = "/sr/" + persistedWbs.getUuid() + "/activity/" + uuid;
 
       MockHttpServletRequestBuilder requestBuilder = delete(url);
       requestBuilder.contentType(MediaType.APPLICATION_JSON);
