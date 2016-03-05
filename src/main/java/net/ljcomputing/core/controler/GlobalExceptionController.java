@@ -31,6 +31,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.nio.file.AccessDeniedException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
@@ -80,10 +82,29 @@ public class GlobalExceptionController {
       Exception exception) {
     logger.error("An error occured during the processing of {}:",
         req.getRequestURL().toString(), exception);
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
         req.getRequestURL().toString(), exception);
   }
+
+//  /**
+//   * Handle all access denied exceptions.
+//   *
+//   * @param req the req
+//   * @param exception the exception
+//   * @return the error info
+//   */
+//  @Order(Ordered.HIGHEST_PRECEDENCE)
+//  @ExceptionHandler(AccessDeniedException.class)
+//  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+//  public @ResponseBody ErrorInfo handleAllAccessDeniedExceptions(
+//      HttpServletRequest req, Exception exception) {
+//    logger.error("An error occured during the processing of {}:",
+//        req.getRequestURL().toString(), exception);
+//
+//    return new ErrorInfo(getCurrentTimestamp(), HttpStatus.UNAUTHORIZED,
+//        req.getRequestURL().toString(), exception);
+//  }
 
   /**
    * Handle all null pointer exceptions.
@@ -99,7 +120,7 @@ public class GlobalExceptionController {
       HttpServletRequest req, Exception exception) {
     logger.error("The data sent for processing had errors {}:",
         req.getRequestURL().toString(), exception);
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
         req.getRequestURL().toString(),
         new Exception("An invalid value was sent or requested."));
@@ -119,7 +140,7 @@ public class GlobalExceptionController {
       HttpServletRequest req, Exception exception) {
     logger.warn("A required value is missing : {}:",
         req.getRequestURL().toString());
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
         req.getRequestURL().toString(), exception);
   }
@@ -137,7 +158,7 @@ public class GlobalExceptionController {
   public @ResponseBody ErrorInfo handleAllNoEntityFoundExceptions(
       HttpServletRequest req, Exception exception) {
     logger.warn("No entity found : {}:", req.getRequestURL().toString());
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.NOT_FOUND,
         req.getRequestURL().toString(), exception);
   }
@@ -155,10 +176,10 @@ public class GlobalExceptionController {
   public @ResponseBody ErrorInfo handleAllConstraintViolationExceptions(
       HttpServletRequest req, Exception exception) {
     ConstraintViolationException cve = (ConstraintViolationException) exception;
-    
+
     logger.warn("A required value is missing : {}:",
         req.getRequestURL().toString());
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.BAD_REQUEST,
         req.getRequestURL().toString(), cve);
   }
@@ -179,13 +200,13 @@ public class GlobalExceptionController {
       HttpServletRequest req, Exception exception) {
     logger.error("The data sent for processing had errors {}:",
         req.getRequestURL().toString(), exception);
-    
+
     if (exception.getMessage().contains("Unique property")) {
       return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT,
           req.getRequestURL().toString(),
           new Exception("The saved value already exists."));
     }
-    
+
     return new ErrorInfo(getCurrentTimestamp(), HttpStatus.CONFLICT,
         req.getRequestURL().toString(), exception);
   }

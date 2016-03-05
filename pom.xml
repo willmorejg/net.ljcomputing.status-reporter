@@ -39,6 +39,7 @@
   <ehcache.version>2.10.1</ehcache.version>
   <ehcache-core.version>2.6.11</ehcache-core.version>
   <dozer.version>5.5.1</dozer.version>
+  <jjwt.version>0.6.0</jjwt.version>
 
   <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
   <webjars-font-awesome.version>4.5.0</webjars-font-awesome.version>
@@ -135,6 +136,11 @@
   <dependency>
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-starter-aop</artifactId>
+  </dependency>
+
+  <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
   </dependency>
 
   <dependency>
@@ -241,6 +247,12 @@
    <groupId>net.sf.dozer</groupId>
    <artifactId>dozer-spring</artifactId>
    <version>${dozer.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>io.jsonwebtoken</groupId>
+   <artifactId>jjwt</artifactId>
+   <version>${jjwt.version}</version>
   </dependency>
 
   <dependency>

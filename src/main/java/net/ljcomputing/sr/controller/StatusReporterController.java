@@ -123,11 +123,11 @@ public class StatusReporterController {
     return srService.saveActivity(activity, wbsUuid);
   }
 
-  @RequestMapping(value = "/wbs/{wbsUuid}/activity",
-      method = RequestMethod.GET)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity", method = RequestMethod.GET)
   @LogEvent(showArgs = true)
   @LogResponse
-  public List<Activity> getWbsActivities(@PathVariable String wbsUuid) throws Exception {
+  public List<Activity> getWbsActivities(@PathVariable String wbsUuid)
+      throws Exception {
     return srService.findActivitiesForWbs(wbsUuid);
   }
 
@@ -139,11 +139,12 @@ public class StatusReporterController {
    * @return the activity by uuid
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}", method = RequestMethod.GET)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}",
+      method = RequestMethod.GET)
   @LogEvent(showArgs = true)
   @LogResponse
-  public Activity getActivityByUuid(@PathVariable String wbsUuid, @PathVariable String uuid)
-      throws Exception {
+  public Activity getActivityByUuid(@PathVariable String wbsUuid,
+      @PathVariable String uuid) throws Exception {
     return srService.findActivityByUuid(uuid);
   }
 
@@ -155,11 +156,12 @@ public class StatusReporterController {
    * @return the response message
    * @throws Exception the exception
    */
-  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/wbs/{wbsUuid}/activity/{uuid}",
+      method = RequestMethod.DELETE)
   @LogEvent(showArgs = true)
   @LogResponse
-  public ResponseMessage deleteActivity(@PathVariable String wbsUuid, @PathVariable String uuid)
-      throws Exception {
+  public ResponseMessage deleteActivity(@PathVariable String wbsUuid,
+      @PathVariable String uuid) throws Exception {
     srService.removeActivity(uuid);
 
     return new ResponseMessage(true, "Successfully deleted activity.");
