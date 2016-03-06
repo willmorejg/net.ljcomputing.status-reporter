@@ -51,8 +51,8 @@ import com.zaxxer.hikari.HikariDataSource;
 @PropertySource("classpath:application.properties")
 @ComponentScan
 @EnableJpaRepositories(
-    basePackages = { "net.ljcomputing.sr.repository" })
-@EntityScan("net.ljcomputing.sr.entity")
+    basePackages = { "net.ljcomputing.sr.repository", "net.ljcomputing.core.security.repository" })
+@EntityScan({"net.ljcomputing.sr.entity", "net.ljcomputing.core.security.entity"})
 @EnableTransactionManagement
 public class JpaConfiguration {
   

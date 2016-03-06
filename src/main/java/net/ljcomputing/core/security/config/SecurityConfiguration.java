@@ -30,6 +30,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -72,6 +73,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.exceptionHandling()
         .accessDeniedHandler(new AccessDeniedHandlerCustomImpl()).and()
         .anonymous().and().servletApi().and().headers().cacheControl().and()
+        .httpBasic().and().sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
         .authorizeRequests()
 
     // // Allow anonymous logins
@@ -79,15 +82,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     .antMatchers(new String[] { "/", "/favicon.ico", "/**/*.htm", "/**/*.html",
         "/**/*.css", "/**/*.js", "/webjars/*" }).permitAll()
-
-    // All other request need to be authenticated
-        .anyRequest().authenticated().and()
-
-    // Custom Token based authentication based on the header previously given to
-    // the client
-        .addFilterBefore(
-            new StatelessAuthenticationFilter(tokenAuthenticationService),
-            UsernamePasswordAuthenticationFilter.class);
+    .anyRequest().authenticated().and()
+    .addFilterBefore(
+        new StatelessAuthenticationFilter(tokenAuthenticationService),
+        UsernamePasswordAuthenticationFilter.class);
   }
 
   /**
@@ -95,7 +93,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
    */
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService())
+    auth
+    .userDetailsService(userDetailsService)
         .passwordEncoder(new BCryptPasswordEncoder());
   }
 
